@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7ab6c944d25c469cf8b619bbe9817, type: 3}
+  m_Name: TirePumper
+  m_EditorClassIdentifier: 
+  name: Tire Pumper
+  description: A tire pump is a manual or electric device used to inflate vehicle
+    or tires by forcing air into them through a valve.
+  price: 200
+  icon: {fileID: 21300000, guid: b0bac70a52d2b8940b9aed0e300963f5, type: 3}
+  isTool: 1
+  requiredLevel: 4
+  itemObject: {fileID: 2778489973647602615, guid: 4b8b155002da55a48bff13c87ccf75ab, type: 3}
+  toolObject: 0
+  itemType: 18

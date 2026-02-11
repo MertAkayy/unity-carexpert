@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7ab6c944d25c469cf8b619bbe9817, type: 3}
+  m_Name: ExhaustGasAnalyserItem
+  m_EditorClassIdentifier: 
+  name: Exhaust Gas Analyser
+  description: "An exhaust gas analyzer is a device used to measure the level of
+    pollutants emitted from a vehicle\u2019s exhaust system. It detects gases such
+    as carbon monoxide (CO), carbon dioxide (CO\u2082), hydrocarbons (HC), and nitrogen
+    oxides (NOx). This tool is essential for emissions testing, environmental compliance,
+    and diagnosing engine combustion efficiency."
+  price: 500
+  icon: {fileID: 21300000, guid: 4988002b98cb43e4690fef232934422b, type: 3}
+  isTool: 1
+  requiredLevel: 12
+  itemObject: {fileID: 3711689536356034156, guid: cf0ca85ee5669e34288515f20f0c7516, type: 3}
+  toolObject: 5
+  itemType: 8

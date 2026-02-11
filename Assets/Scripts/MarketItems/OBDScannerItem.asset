@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7ab6c944d25c469cf8b619bbe9817, type: 3}
+  m_Name: OBDScannerItem
+  m_EditorClassIdentifier: 
+  name: OBD Scanner
+  description: "An OBD scanner is a diagnostic device that connects to a vehicle\u2019s
+    On-Board Diagnostics (OBD) port to read fault codes, monitor engine data, and
+    detect system issues."
+  price: 300
+  icon: {fileID: 21300000, guid: ffaf1176a55c04442b6e340c01d94b23, type: 3}
+  isTool: 1
+  requiredLevel: 10
+  itemObject: {fileID: 1338911972109736317, guid: 8d6926507853591439feb56d84a6b1ee, type: 3}
+  toolObject: 6
+  itemType: 12

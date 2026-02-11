@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a27e23cf93c4c46b8ba00ba4c586ce, type: 3}
+  m_Name: Brake_Pad_Wear
+  m_EditorClassIdentifier: 
+  FailureName: Brake_Pad_Wear
+  Description: Brake pads are worn below minimum thickness, reducing braking efficiency.
+  AvailableLevel: 14
+  AffectedPartType: 4
+  PossibilityWeight: 10
+  ObdCode: C1231
+  RequiredTool: 6
+  Clues:
+  - clueText: The vehicle takes longer to stop, or braking performance feels weaker
+      than usual.
+    isCollected: 0

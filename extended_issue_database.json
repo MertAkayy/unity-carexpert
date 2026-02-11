@@ -1,0 +1,732 @@
+{
+    "items": [
+        {
+            "FailureName": "Brake_Pad_Wear",
+            "Description": "Brake pads are worn below minimum thickness, reducing braking efficiency.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 4,
+            "PossibilityWeight": 1,
+            "ObdCode": "C1231"
+        },
+        {
+            "FailureName": "Brake_Disc_Warping",
+            "Description": "Brake discs are warped, causing vibration during braking.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 4,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Brake_Fluid_Leak",
+            "Description": "Leakage in brake fluid lines or calipers, leading to reduced brake pressure.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 4,
+            "PossibilityWeight": 1,
+            "ObdCode": "C1234"
+        },
+        {
+            "FailureName": "ABS_Pump_Failure",
+            "Description": "Anti-lock brake system pump is malfunctioning, affecting brake modulation.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 4,
+            "PossibilityWeight": 1,
+            "ObdCode": "C1210"
+        },
+        {
+            "FailureName": "Brake_Master_Cylinder_Failure",
+            "Description": "Master cylinder is leaking or failing, causing spongy brake pedal.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 4,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Power_Steering_Pump_Failure",
+            "Description": "Power steering pump is not providing adequate pressure, making steering difficult.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "C1511"
+        },
+        {
+            "FailureName": "Steering_Rack_Leak",
+            "Description": "Power steering rack is leaking fluid, causing stiff steering.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Tie_Rod_End_Wear",
+            "Description": "Worn tie rod ends causing loose steering and uneven tire wear.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 4,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Ball_Joint_Failure",
+            "Description": "Ball joints are worn, leading to clunking noises and poor handling.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 4,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Thermostat_Stuck_Open",
+            "Description": "Thermostat is stuck open, causing engine to run cooler than optimal.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 7,
+            "PossibilityWeight": 1,
+            "ObdCode": "P0128"
+        },
+        {
+            "FailureName": "Water_Pump_Failure",
+            "Description": "Water pump is leaking or not circulating coolant properly.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 7,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Coolant_Hose_Leak",
+            "Description": "Coolant hose is cracked or leaking, leading to coolant loss.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 7,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Radiator_Fan_Failure",
+            "Description": "Radiator fan is not operating, causing engine overheating.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 7,
+            "PossibilityWeight": 1,
+            "ObdCode": "P0480"
+        },
+        {
+            "FailureName": "Heater_Core_Leak",
+            "Description": "Heater core is leaking, causing coolant smell inside the cabin.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 7,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Fuel_Pump_Relay_Failure",
+            "Description": "Fuel pump relay is faulty, causing intermittent fuel delivery.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "P0230"
+        },
+        {
+            "FailureName": "Fuel_Filter_Clog",
+            "Description": "Fuel filter is clogged, reducing fuel flow to the engine.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Fuel_Tank_Vent_Valve_Failure",
+            "Description": "Fuel tank vent valve is stuck, causing refueling issues.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "P0446"
+        },
+        {
+        "FailureName": "Mass_Airflow_Sensor_Failure",
+        "Description": "Mass airflow sensor is faulty, affecting air-fuel mixture.",
+        "AvailableLevel": 1,
+        "AffectedPartType": 5,
+        "PossibilityWeight": 1,
+        "ObdCode": "P0101"
+        },
+        {
+            "FailureName": "Throttle_Position_Sensor_Failure",
+            "Description": "Throttle position sensor is malfunctioning, causing erratic acceleration.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "P0121"
+        },
+        {
+            "FailureName": "Crankshaft_Position_Sensor_Failure",
+            "Description": "Crankshaft position sensor is faulty, causing misfires or no-start condition.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "P0335"
+        },
+        {
+            "FailureName": "Camshaft_Position_Sensor_Failure",
+            "Description": "Camshaft position sensor is faulty, affecting engine timing.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "P0340"
+        },
+        {
+            "FailureName": "Knock_Sensor_Failure",
+            "Description": "Knock sensor is not detecting engine knock, risking engine damage.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "P0325"
+        },
+        {
+            "FailureName": "Intake_Manifold_Gasket_Leak",
+            "Description": "Intake manifold gasket is leaking, causing vacuum leaks.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Head_Gasket_Failure",
+            "Description": "Head gasket is blown, causing coolant and oil mixing or exhaust leaks.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Timing_Belt_Wear",
+            "Description": "Timing belt is worn or stretched, risking engine timing issues.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Timing_Chain_Tensioner_Failure",
+            "Description": "Timing chain tensioner is faulty, causing rattling noises.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Clutch_Slippage",
+            "Description": "Clutch is slipping, causing poor power transfer in manual transmissions.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "CV_Joint_Failure",
+            "Description": "Constant velocity joint is worn, causing clicking noises during turns.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 4,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Wheel_Bearing_Failure",
+            "Description": "Wheel bearing is worn, causing humming or grinding noises.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 4,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Shock_Absorber_Leak",
+            "Description": "Shock absorber is leaking oil, reducing suspension performance.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 4,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Strut_Mount_Failure",
+            "Description": "Strut mount is worn, causing clunking noises over bumps.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 4,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Control_Arm_Bushing_Wear",
+            "Description": "Control arm bushings are worn, causing poor handling and vibrations.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 4,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Sway_Bar_Link_Failure",
+            "Description": "Sway bar links are worn, causing rattling during cornering.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 4,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Starter_Motor_Failure",
+            "Description": "Starter motor is not engaging, preventing engine start.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 6,
+            "PossibilityWeight": 1,
+            "ObdCode": "P0615"
+        },
+        {
+            "FailureName": "Battery_Cable_Loose",
+            "Description": "Battery cables are loose or corroded, causing poor electrical connection.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 6,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Alternator_Bearing_Failure",
+            "Description": "Alternator bearings are worn, causing whining noises.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Serpentine_Belt_Wear",
+            "Description": "Serpentine belt is worn or cracked, risking accessory drive failure.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Belt_Tensioner_Failure",
+            "Description": "Serpentine belt tensioner is faulty, causing belt slippage or noise.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Ignition_Switch_Failure",
+            "Description": "Ignition switch is malfunctioning, preventing vehicle start.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 6,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Window_Regulator_Failure",
+            "Description": "Window regulator is broken, preventing window movement.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 2,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Windshield_Wiper_Motor_Failure",
+            "Description": "Wiper motor is not functioning, affecting visibility in adverse weather.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 2,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Windshield_Wiper_Blade_Wear",
+            "Description": "Wiper blades are worn, causing streaking and poor visibility.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 2,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Headlight_Alignment_Issue",
+            "Description": "Headlights are misaligned, reducing nighttime visibility.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 3,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Tail_Light_Failure",
+            "Description": "Tail light is not functioning, reducing vehicle visibility.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 3,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Brake_Light_Switch_Failure",
+            "Description": "Brake light switch is faulty, preventing brake lights from activating.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 3,
+            "PossibilityWeight": 1,
+            "ObdCode": "P0504"
+        },
+        {
+            "FailureName": "Turn_Signal_Relay_Failure",
+            "Description": "Turn signal relay is faulty, causing turn signals to malfunction.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 3,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Fog_Light_Failure",
+            "Description": "Fog lights are not working, reducing visibility in fog.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 3,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Exhaust_Manifold_Crack",
+            "Description": "Exhaust manifold is cracked, causing exhaust leaks and noise.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Catalytic_Converter_Clog",
+            "Description": "Catalytic converter is clogged, reducing engine performance.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "P0421"
+        },
+        {
+            "FailureName": "DPF_Filter_Clog",
+            "Description": "Diesel particulate filter is clogged, causing reduced power.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "P2002"
+        },
+        {
+            "FailureName": "EGR_Valve_Stuck",
+            "Description": "EGR valve is stuck open or closed, affecting emissions and performance.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "P0401"
+        },
+        {
+            "FailureName": "Turbocharger_Wastegate_Failure",
+            "Description": "Turbo wastegate is stuck, causing improper boost pressure.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "P0243"
+        },
+        {
+            "FailureName": "Intake_Air_Leak",
+            "Description": "Air leak in intake system, causing lean air-fuel mixture.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "P0170"
+        },
+        {
+            "FailureName": "Throttle_Body_Failure",
+            "Description": "Throttle body is dirty or malfunctioning, causing poor acceleration.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "P0220"
+        },
+        {
+            "FailureName": "PCV_Valve_Clog",
+            "Description": "PCV valve is clogged, causing oil consumption and pressure issues.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Oil_Pump_Failure",
+            "Description": "Oil pump is not providing adequate oil pressure to the engine.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "P0521"
+        },
+        {
+            "FailureName": "Valve_Cover_Gasket_Leak",
+            "Description": "Valve cover gasket is leaking, causing oil to seep out.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Engine_Mount_Failure",
+            "Description": "Engine mounts are worn, causing excessive vibrations.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Transmission_Solenoid_Failure",
+            "Description": "Transmission solenoid is faulty, causing shifting issues.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "P0750"
+        },
+        {
+            "FailureName": "Transmission_Fluid_Leak",
+            "Description": "Transmission fluid is leaking, causing low fluid levels and shifting problems.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Differential_Seal_Leak",
+            "Description": "Differential seal is leaking, causing loss of gear oil.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Transfer_Case_Leak",
+            "Description": "Transfer case is leaking fluid, affecting 4WD operation.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Axle_Shaft_Damage",
+            "Description": "Axle shaft is damaged, causing noise and power loss.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 4,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Wheel_Hub_Damage",
+            "Description": "Wheel hub is damaged, causing wheel instability.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 4,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Tire_Pressure_Sensor_Failure",
+            "Description": "Tire pressure monitoring sensor is faulty, giving incorrect readings.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 4,
+            "PossibilityWeight": 1,
+            "ObdCode": "C0050"
+        },
+        {
+            "FailureName": "Exhaust_Gasket_Leak",
+            "Description": "Exhaust gasket is leaking, causing noise and emission issues.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Oxygen_Sensor_Heater_Failure",
+            "Description": "Oxygen sensor heater circuit is faulty, affecting emissions.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "P0135"
+        },
+        {
+            "FailureName": "MAP_Sensor_Failure",
+            "Description": "Manifold absolute pressure sensor is faulty, affecting engine performance.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "P0106"
+        },
+        {
+            "FailureName": "Coolant_Temperature_Sensor_Failure",
+            "Description": "Coolant temperature sensor is faulty, causing incorrect temperature readings.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 7,
+            "PossibilityWeight": 1,
+            "ObdCode": "P0115"
+        },
+        {
+            "FailureName": "Airbag_Sensor_Failure",
+            "Description": "Airbag sensor is malfunctioning, potentially disabling airbag deployment.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "B0001"
+        },
+        {
+            "FailureName": "Seat_Heater_Failure",
+            "Description": "Seat heater is not functioning, causing discomfort in cold weather.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Power_Window_Switch_Failure",
+            "Description": "Power window switch is faulty, preventing window operation.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 2,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Door_Lock_Actuator_Failure",
+            "Description": "Door lock actuator is not working, preventing door locking/unlocking.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 1,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Hood_Latch_Failure",
+            "Description": "Hood latch is stuck or broken, preventing hood from opening or closing properly.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 1,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Trunk_Latch_Failure",
+            "Description": "Trunk latch is malfunctioning, preventing trunk access.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 1,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Fuel_Gauge_Sensor_Failure",
+            "Description": "Fuel level sensor is faulty, causing inaccurate fuel gauge readings.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "P0460"
+        },
+        {
+            "FailureName": "Speedometer_Sensor_Failure",
+            "Description": "Vehicle speed sensor is faulty, causing inaccurate speedometer readings.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "P0500"
+        },
+        {
+            "FailureName": "ECU_Software_Error",
+            "Description": "Engine control unit software has errors, causing performance issues.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "P0600"
+        },
+        {
+            "FailureName": "ABS_Control_Module_Failure",
+            "Description": "ABS control module is malfunctioning, disabling anti-lock braking system.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 4,
+            "PossibilityWeight": 1,
+            "ObdCode": "C1201"
+        },
+        {
+            "FailureName": "Traction_Control_Sensor_Failure",
+            "Description": "Traction control sensor is faulty, affecting vehicle stability.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 4,
+            "PossibilityWeight": 1,
+            "ObdCode": "C1223"
+        },
+        {
+            "FailureName": "Parking_Brake_Failure",
+            "Description": "Parking brake is not engaging or releasing properly.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 4,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Brake_Booster_Failure",
+            "Description": "Brake booster is faulty, increasing pedal effort required for braking.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 4,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Steering_Column_Sensor_Failure",
+            "Description": "Steering column sensor is faulty, affecting power steering functionality.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "C1513"
+        },
+        {
+            "FailureName": "Suspension_Spring_Breakage",
+            "Description": "Suspension spring is broken, causing poor ride quality and handling.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 4,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Radiator_Cap_Failure",
+            "Description": "Radiator cap is not maintaining proper pressure, causing coolant loss.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 7,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Coolant_Reservoir_Crack",
+            "Description": "Coolant reservoir is cracked, causing coolant leakage.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 7,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Intake_Air_Temperature_Sensor_Failure",
+            "Description": "Intake air temperature sensor is faulty, affecting engine performance.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "P0110"
+        },
+        {
+            "FailureName": "Oil_Cooler_Leak",
+            "Description": "Oil cooler is leaking, causing oil loss and engine overheating.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Distributor_Cap_Failure",
+            "Description": "Distributor cap is cracked or worn, causing ignition issues.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "PXXXX"
+        },
+        {
+            "FailureName": "Ignition_Control_Module_Failure",
+            "Description": "Ignition control module is faulty, causing misfires or no-start condition.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "P0351"
+        },
+        {
+            "FailureName": "Fuel_Injector_Leak",
+            "Description": "Fuel injector is leaking, causing fuel loss and poor performance.",
+            "AvailableLevel": 1,
+            "AffectedPartType": 5,
+            "PossibilityWeight": 1,
+            "ObdCode": "P0200"
+        }
+    ]
+}

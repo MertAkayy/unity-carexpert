@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7ab6c944d25c469cf8b619bbe9817, type: 3}
+  m_Name: EngineTesterItem
+  m_EditorClassIdentifier: 
+  name: Engine Analyser
+  description: "An engine analyzer or engine diagnostic tool is used to assess the
+    health and performance of a vehicle's engine. It connects to the vehicle\u2019s
+    onboard diagnostic system (OBD) to read fault codes, monitor engine parameters,
+    and detect issues such as misfires, fuel problems, or sensor failures. Modern
+    versions are often digital and provide real-time data."
+  price: 2500
+  icon: {fileID: 21300000, guid: e4c945bdd5344d145b2f7b28efdc9de8, type: 3}
+  isTool: 0
+  requiredLevel: 28
+  itemObject: {fileID: 0}
+  toolObject: 0
+  itemType: 7

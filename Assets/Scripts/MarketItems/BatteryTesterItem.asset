@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7ab6c944d25c469cf8b619bbe9817, type: 3}
+  m_Name: BatteryTesterItem
+  m_EditorClassIdentifier: 
+  name: Battery Tester
+  description: A battery tester is a device used to check the condition and charge
+    level of a vehicle's battery. It measures voltage, cold cranking amps (CCA),
+    and overall battery health to determine if the battery is functioning properly
+    or needs replacement. Battery testers can be analog or digital, and are commonly
+    used in automotive maintenance and diagnostics.
+  price: 500
+  icon: {fileID: 21300000, guid: b3b8491b3fca39049b312f7e0419728e, type: 3}
+  isTool: 1
+  requiredLevel: 15
+  itemObject: {fileID: 6870111662656102104, guid: 1e9f9d4eb842e994b80ef0103dab876c, type: 3}
+  toolObject: 4
+  itemType: 1

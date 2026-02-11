@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7ab6c944d25c469cf8b619bbe9817, type: 3}
+  m_Name: DigitalThicknessGaugeItem
+  m_EditorClassIdentifier: 
+  name: Digital Paint Tickness Gauge
+  description: A digital paint thickness gauge is an electronic device that provides
+    accurate and quick measurements of coating thickness. It uses magnetic or eddy
+    current technology, depending on the substrate, and displays results on a digital
+    screen. It is widely used in automotive inspections due to its precision and
+    ease of use.
+  price: 200
+  icon: {fileID: 21300000, guid: 0fb4d804e0767e6418e0d60bb4c5d3e9, type: 3}
+  isTool: 1
+  requiredLevel: 4
+  itemObject: {fileID: 1217692679313571623, guid: 42b013b179c8387439de3e7584beb6b3, type: 3}
+  toolObject: 3
+  itemType: 6

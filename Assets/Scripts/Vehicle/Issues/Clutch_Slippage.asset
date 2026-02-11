@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a27e23cf93c4c46b8ba00ba4c586ce, type: 3}
+  m_Name: Clutch_Slippage
+  m_EditorClassIdentifier: 
+  FailureName: Clutch_Slippage
+  Description: Clutch is slipping, causing poor power transfer in manual transmissions.
+  AvailableLevel: 20
+  AffectedPartType: 5
+  PossibilityWeight: 1
+  ObdCode: PXXXX
+  RequiredTool: 1
+  Clues:
+  - clueText: "When pressing the gas pedal, the RPM rises quickly but speed doesn\u2019t
+      match."
+    isCollected: 0
+  - clueText: The clutch engagement point feels unusually high.
+    isCollected: 0

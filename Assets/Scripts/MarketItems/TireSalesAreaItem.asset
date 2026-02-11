@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7ab6c944d25c469cf8b619bbe9817, type: 3}
+  m_Name: TireSalesAreaItem
+  m_EditorClassIdentifier: 
+  name: Tire Sales Area
+  description: 'A tire sales area is a dedicated space within a garage or store where
+    tires are displayed and sold. '
+  price: 2500
+  icon: {fileID: 21300000, guid: 4b2a06d757a003b4d8eb3977f5b4bb13, type: 3}
+  isTool: 0
+  requiredLevel: 35
+  itemObject: {fileID: 0}
+  toolObject: 0
+  itemType: 19

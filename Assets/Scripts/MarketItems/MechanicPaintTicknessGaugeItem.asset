@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7ab6c944d25c469cf8b619bbe9817, type: 3}
+  m_Name: MechanicPaintTicknessGaugeItem
+  m_EditorClassIdentifier: 
+  name: Mechanic Paint Tickness Gauge
+  description: "A mechanical paint thickness gauge is a simple, manual tool used
+    to measure the thickness of paint or coatings on metal surfaces. It usually works
+    with a spring-loaded probe and provides approximate readings. It\u2019s cost-effective
+    and does not require batteries but is less precise than digital models."
+  price: 100
+  icon: {fileID: 21300000, guid: eb9de22a04abab94bbf2c9cd215340a9, type: 3}
+  isTool: 1
+  requiredLevel: 1
+  itemObject: {fileID: 7361428123988452879, guid: e3532333eb199ee42b4572a88fa9698e, type: 3}
+  toolObject: 2
+  itemType: 11

@@ -1,0 +1,270 @@
+{
+    "items": [
+        {
+            "name": "Battery Tester",
+            "description": "A battery tester is a device used to check the condition and charge level of a vehicle's battery. It measures voltage, cold cranking amps (CCA), and overall battery health to determine if the battery is functioning properly or needs replacement. Battery testers can be analog or digital, and are commonly used in automotive maintenance and diagnostics.",
+            "price": 500,
+            "icon": {
+                "instanceID": 43670
+            },
+            "isTool": true,
+            "requiredLevel": 15,
+            "itemObject": {
+                "instanceID": 0
+            },
+            "toolObject": 4
+        },
+        {
+            "name": "Brake Analyser",
+            "description": "A brake tester is a device used to evaluate the performance of a vehicle’s braking system. It measures braking force, balance between wheels, and overall brake efficiency. This tool is commonly used in inspection stations and garages to ensure vehicle safety and compliance with legal standards.",
+            "price": 2500,
+            "icon": {
+                "instanceID": 43660
+            },
+            "isTool": false,
+            "requiredLevel": 26,
+            "itemObject": {
+                "instanceID": 0
+            },
+            "toolObject": 0
+        },
+        {
+            "name": "Car Lift",
+            "description": "A car lift is a mechanical device used to raise vehicles off the ground for maintenance, inspection, or storage.",
+            "price": 750,
+            "icon": {
+                "instanceID": 43664
+            },
+            "isTool": false,
+            "requiredLevel": 20,
+            "itemObject": {
+                "instanceID": 0
+            },
+            "toolObject": 0
+        },
+        {
+            "name": "Car Paint Booth",
+            "description": "An automotive paint booth is a specially designed, enclosed space where vehicles are painted or refinished.",
+            "price": 4000,
+            "icon": {
+                "instanceID": 43668
+            },
+            "isTool": false,
+            "requiredLevel": 40,
+            "itemObject": {
+                "instanceID": 0
+            },
+            "toolObject": 0
+        },
+        {
+            "name": "Car Wash Machine",
+            "description": "A car wash machine is a device designed to clean the exterior of vehicles automatically or manually.",
+            "price": 3000,
+            "icon": {
+                "instanceID": 43658
+            },
+            "isTool": false,
+            "requiredLevel": 30,
+            "itemObject": {
+                "instanceID": 0
+            },
+            "toolObject": 0
+        },
+        {
+            "name": "Digital Paint Tickness Gauge",
+            "description": "A digital paint thickness gauge is an electronic device that provides accurate and quick measurements of coating thickness. It uses magnetic or eddy current technology, depending on the substrate, and displays results on a digital screen. It is widely used in automotive inspections due to its precision and ease of use.",
+            "price": 200,
+            "icon": {
+                "instanceID": 43650
+            },
+            "isTool": true,
+            "requiredLevel": 4,
+            "itemObject": {
+                "instanceID": 0
+            },
+            "toolObject": 3
+        },
+        {
+            "name": "Engine Analyser",
+            "description": "An engine analyzer or engine diagnostic tool is used to assess the health and performance of a vehicle's engine. It connects to the vehicle’s onboard diagnostic system (OBD) to read fault codes, monitor engine parameters, and detect issues such as misfires, fuel problems, or sensor failures. Modern versions are often digital and provide real-time data.",
+            "price": 2500,
+            "icon": {
+                "instanceID": 43662
+            },
+            "isTool": false,
+            "requiredLevel": 28,
+            "itemObject": {
+                "instanceID": 0
+            },
+            "toolObject": 0
+        },
+        {
+            "name": "Exhaust Gas Analyser",
+            "description": "An exhaust gas analyzer is a device used to measure the level of pollutants emitted from a vehicle’s exhaust system. It detects gases such as carbon monoxide (CO), carbon dioxide (CO₂), hydrocarbons (HC), and nitrogen oxides (NOx). This tool is essential for emissions testing, environmental compliance, and diagnosing engine combustion efficiency.",
+            "price": 500,
+            "icon": {
+                "instanceID": 43682
+            },
+            "isTool": true,
+            "requiredLevel": 12,
+            "itemObject": {
+                "instanceID": 0
+            },
+            "toolObject": 5
+        },
+        {
+            "name": "Garage Expansion Kit",
+            "description": "A garage expansion kit is a practical solution designed to increase usable space in your garage.",
+            "price": 1500,
+            "icon": {
+                "instanceID": 43648
+            },
+            "isTool": false,
+            "requiredLevel": 27,
+            "itemObject": {
+                "instanceID": 0
+            },
+            "toolObject": 0
+        },
+        {
+            "name": "Hand",
+            "description": "-",
+            "price": 0,
+            "icon": {
+                "instanceID": 43676
+            },
+            "isTool": true,
+            "requiredLevel": 1,
+            "itemObject": {
+                "instanceID": 43678
+            },
+            "toolObject": 1
+        },
+        {
+            "name": "Mechanic Paint Tickness Gauge",
+            "description": "A mechanical paint thickness gauge is a simple, manual tool used to measure the thickness of paint or coatings on metal surfaces. It usually works with a spring-loaded probe and provides approximate readings. It’s cost-effective and does not require batteries but is less precise than digital models.",
+            "price": 100,
+            "icon": {
+                "instanceID": 43644
+            },
+            "isTool": true,
+            "requiredLevel": 1,
+            "itemObject": {
+                "instanceID": 43646
+            },
+            "toolObject": 2
+        },
+        {
+            "name": "OBD Scanner",
+            "description": "An OBD scanner is a diagnostic device that connects to a vehicle’s On-Board Diagnostics (OBD) port to read fault codes, monitor engine data, and detect system issues.",
+            "price": 300,
+            "icon": {
+                "instanceID": 43674
+            },
+            "isTool": true,
+            "requiredLevel": 10,
+            "itemObject": {
+                "instanceID": 0
+            },
+            "toolObject": 6
+        },
+        {
+            "name": "Operator",
+            "description": "A tire tread depth gauge is a device used to measure the depth of the grooves on a tire’s tread. It helps determine how much the tire has worn down and whether it is still safe for use.",
+            "price": 250,
+            "icon": {
+                "instanceID": 43656
+            },
+            "isTool": false,
+            "requiredLevel": 25,
+            "itemObject": {
+                "instanceID": 0
+            },
+            "toolObject": 0
+        },
+        {
+            "name": "Shelf",
+            "description": " In garages or workshops, shelves help organize tools, parts, and equipment, maximizing space and keeping the area tidy.",
+            "price": 300,
+            "icon": {
+                "instanceID": 43654
+            },
+            "isTool": false,
+            "requiredLevel": 8,
+            "itemObject": {
+                "instanceID": 0
+            },
+            "toolObject": 0
+        },
+        {
+            "name": "Suspansion Test Device",
+            "description": "A suspension test machine is a device used to evaluate the performance of a vehicle's suspension system. It measures how effectively the shock absorbers and springs function in terms of ride comfort, road handling, and safety. By simulating vibrations, bumps, and road conditions, the machine helps detect faults or inefficiencies in the suspension components. It is commonly used in vehicle inspection centers, service workshops, and automotive R&D facilities.",
+            "price": 250,
+            "icon": {
+                "instanceID": 48776
+            },
+            "isTool": false,
+            "requiredLevel": 17,
+            "itemObject": {
+                "instanceID": 0
+            },
+            "toolObject": 0
+        },
+        {
+            "name": "Tablet",
+            "description": "This tablet is a versatile device designed for easy use in automotive workshops or garages. It features a fast and seamless connection to the online market, allowing users to instantly open and browse the store from anywhere. ",
+            "price": 1000,
+            "icon": {
+                "instanceID": 43652
+            },
+            "isTool": false,
+            "requiredLevel": 22,
+            "itemObject": {
+                "instanceID": 0
+            },
+            "toolObject": 7
+        },
+        {
+            "name": "Tire Sales Area",
+            "description": "A tire sales area is a dedicated space within a garage or store where tires are displayed and sold. ",
+            "price": 2500,
+            "icon": {
+                "instanceID": 43680
+            },
+            "isTool": false,
+            "requiredLevel": 35,
+            "itemObject": {
+                "instanceID": 0
+            },
+            "toolObject": 0
+        },
+        {
+            "name": "Tire Tread Depth Gauge",
+            "description": "A tire tread depth gauge is a device used to measure the depth of the grooves on a tire’s tread. It helps determine how much the tire has worn down and whether it is still safe for use.",
+            "price": 250,
+            "icon": {
+                "instanceID": 43672
+            },
+            "isTool": true,
+            "requiredLevel": 6,
+            "itemObject": {
+                "instanceID": 0
+            },
+            "toolObject": 8
+        },
+        {
+            "name": "Toolbox",
+            "description": "A toolbox is a portable container used to organize, carry, and protect hand tools and small equipment. It helps mechanics and technicians keep their tools accessible and organized on the job.",
+            "price": 250,
+            "icon": {
+                "instanceID": 43666
+            },
+            "isTool": false,
+            "requiredLevel": 17,
+            "itemObject": {
+                "instanceID": 0
+            },
+            "toolObject": 0
+        }
+    ]
+}

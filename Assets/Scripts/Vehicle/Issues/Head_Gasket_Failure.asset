@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a27e23cf93c4c46b8ba00ba4c586ce, type: 3}
+  m_Name: Head_Gasket_Failure
+  m_EditorClassIdentifier: 
+  FailureName: Head_Gasket_Failure
+  Description: Head gasket is blown, causing coolant and oil mixing or exhaust leaks.
+  AvailableLevel: 35
+  AffectedPartType: 5
+  PossibilityWeight: 1
+  ObdCode: PXXXX
+  RequiredTool: 1
+  Clues:
+  - clueText: White smoke or steam is visible from the exhaust, indicating coolant
+      leaking into the combustion chamber.
+    isCollected: 0
+  - clueText: Coolant in the reservoir appears thick, viscous, or sludge-like, suggesting
+      contamination from oil or combustion byproducts.
+    isCollected: 0
+  - clueText: Oil in the engine appears milky or frothy when checked on the dipstick,
+      indicating coolant mixing with oil.
+    isCollected: 0

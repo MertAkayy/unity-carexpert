@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a7ab6c944d25c469cf8b619bbe9817, type: 3}
+  m_Name: BrakeTesterItem
+  m_EditorClassIdentifier: 
+  name: Brake Analyser
+  description: "A brake tester is a device used to evaluate the performance of a
+    vehicle\u2019s braking system. It measures braking force, balance between wheels,
+    and overall brake efficiency. This tool is commonly used in inspection stations
+    and garages to ensure vehicle safety and compliance with legal standards."
+  price: 2500
+  icon: {fileID: 21300000, guid: 214d1e813ab2888449aa9f82bb1b3d01, type: 3}
+  isTool: 0
+  requiredLevel: 26
+  itemObject: {fileID: 0}
+  toolObject: 0
+  itemType: 2
