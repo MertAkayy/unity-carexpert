@@ -124,12 +124,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
   paintThickness: 0
   productionName: 
   hingedPart: 1
   partPosition: 6
   openingDirection: 1
-  windowTransform: {fileID: 0}
 --- !u!1 &526461062961066522
 GameObject:
   m_ObjectHideFlags: 0
@@ -9951,12 +9951,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
   paintThickness: 0
   productionName: 
   hingedPart: 1
   partPosition: 4
   openingDirection: 3
-  windowTransform: {fileID: 0}
 --- !u!64 &4471856130821562588
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10973,6 +10973,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
 --- !u!1 &706793643665256011
 GameObject:
   m_ObjectHideFlags: 0
@@ -22073,12 +22074,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
   paintThickness: 0
   productionName: 
   hingedPart: 0
   partPosition: 2
   openingDirection: 3
-  windowTransform: {fileID: 0}
 --- !u!64 &4678737836505034627
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23207,12 +23208,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
   paintThickness: 0
   productionName: 
   hingedPart: 0
   partPosition: 11
   openingDirection: 0
-  windowTransform: {fileID: 0}
 --- !u!1 &938369106904690083
 GameObject:
   m_ObjectHideFlags: 0
@@ -23424,12 +23425,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
   paintThickness: 0
   productionName: 
   hingedPart: 0
   partPosition: 0
   openingDirection: 0
-  windowTransform: {fileID: 0}
 --- !u!1 &1001019431526591337
 GameObject:
   m_ObjectHideFlags: 0
@@ -23532,6 +23533,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
+  possibleTireBrands:
+  - Michelin
+  - Bridgestone
+  - Continental
+  - Goodyear
+  - Pirelli
+  - Dunlop
+  - Hankook
+  - Yokohama
 --- !u!1 &1069450284810407402
 GameObject:
   m_ObjectHideFlags: 0
@@ -25633,6 +25644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
 --- !u!1 &1333814863723860271
 GameObject:
   m_ObjectHideFlags: 0
@@ -26627,6 +26639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
 --- !u!1 &1466335784944306934
 GameObject:
   m_ObjectHideFlags: 0
@@ -38044,12 +38057,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
   paintThickness: 0
   productionName: 
   hingedPart: 1
   partPosition: 3
   openingDirection: 2
-  windowTransform: {fileID: 0}
 --- !u!64 &1977580805672366899
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -43374,12 +43387,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
   paintThickness: 0
   productionName: 
   hingedPart: 0
   partPosition: 9
   openingDirection: 0
-  windowTransform: {fileID: 0}
 --- !u!1 &1831050500822062462
 GameObject:
   m_ObjectHideFlags: 0
@@ -44822,6 +44835,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
 --- !u!1 &2175227337792824779
 GameObject:
   m_ObjectHideFlags: 0
@@ -44947,6 +44961,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
+  possibleTireBrands:
+  - Michelin
+  - Bridgestone
+  - Continental
+  - Goodyear
+  - Pirelli
+  - Dunlop
+  - Hankook
+  - Yokohama
 --- !u!1 &2314078732157044127
 GameObject:
   m_ObjectHideFlags: 0
@@ -45267,6 +45291,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
+  possibleTireBrands:
+  - Michelin
+  - Bridgestone
+  - Continental
+  - Goodyear
+  - Pirelli
+  - Dunlop
+  - Hankook
+  - Yokohama
 --- !u!1 &2899522063572329973
 GameObject:
   m_ObjectHideFlags: 0
@@ -55392,12 +55426,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
   paintThickness: 0
   productionName: 
   hingedPart: 1
   partPosition: 5
   openingDirection: 2
-  windowTransform: {fileID: 0}
 --- !u!64 &3700096875115143807
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -128230,6 +128264,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
+  possibleTireBrands:
+  - Michelin
+  - Bridgestone
+  - Continental
+  - Goodyear
+  - Pirelli
+  - Dunlop
+  - Hankook
+  - Yokohama
 --- !u!1 &4271814191759616876
 GameObject:
   m_ObjectHideFlags: 0
@@ -129624,6 +129668,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
+  minAcceptableCoolantLevel: 0.3
+  maxCoolantCapacity: 8
 --- !u!1 &4490873156079464923
 GameObject:
   m_ObjectHideFlags: 0
@@ -130499,6 +130546,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
 --- !u!1 &4581081109744095620
 GameObject:
   m_ObjectHideFlags: 0
@@ -141710,12 +141758,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
   paintThickness: 0
   productionName: 
   hingedPart: 0
   partPosition: 8
   openingDirection: 0
-  windowTransform: {fileID: 0}
 --- !u!1 &5423073726371706891
 GameObject:
   m_ObjectHideFlags: 0
@@ -143223,8 +143271,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
   fuelType: 0
   isWorking: 1
+  minAcceptableOilLevel: 0.5
 --- !u!1 &5940432593020671895
 GameObject:
   m_ObjectHideFlags: 0
@@ -144218,12 +144268,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
   paintThickness: 0
   productionName: 
   hingedPart: 0
   partPosition: 1
   openingDirection: 0
-  windowTransform: {fileID: 0}
 --- !u!1 &6415346839500754066
 GameObject:
   m_ObjectHideFlags: 0
@@ -144434,6 +144484,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
 --- !u!1 &6607111998350860353
 GameObject:
   m_ObjectHideFlags: 0
@@ -144559,12 +144610,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
   paintThickness: 0
   productionName: 
   hingedPart: 1
   partPosition: 0
   openingDirection: 0
-  windowTransform: {fileID: 0}
 --- !u!1 &6663107471081469130
 GameObject:
   m_ObjectHideFlags: 0
@@ -144689,6 +144740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
 --- !u!1 &6679058752436820785
 GameObject:
   m_ObjectHideFlags: 0
@@ -145016,6 +145068,7 @@ MonoBehaviour:
   battery: {fileID: 1064081827582660384}
   engine: {fileID: 8782437993047988408}
   radiator: {fileID: 8623021166306105855}
+  exhaust: {fileID: 0}
   liftPlatform: {fileID: 0}
   milage: 250
 --- !u!1 &6771964240882489678
@@ -152189,12 +152242,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
   paintThickness: 0
   productionName: 
   hingedPart: 0
   partPosition: 10
   openingDirection: 0
-  windowTransform: {fileID: 0}
 --- !u!1 &7784166724636724936
 GameObject:
   m_ObjectHideFlags: 0
@@ -153276,6 +153329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
 --- !u!1 &7857654535803513154
 GameObject:
   m_ObjectHideFlags: 0
@@ -153509,6 +153563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
 --- !u!1 &8293814015547127963
 GameObject:
   m_ObjectHideFlags: 0
@@ -153936,6 +153991,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
 --- !u!1 &9145226470996495456
 GameObject:
   m_ObjectHideFlags: 0
@@ -155615,12 +155671,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
   paintThickness: 0
   productionName: 
   hingedPart: 0
   partPosition: 6
   openingDirection: 0
-  windowTransform: {fileID: 0}
 --- !u!1001 &6707497080203158002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -155721,9 +155777,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedIssues: []
   predictedIssues: []
+  partUniqueType: 0
   chargeLevel: 0
   voltage: 0
   isWorking: 1
+  normalVoltage: 12.6
+  minVoltage: 11.5
+  minWorkingCharge: 20
 --- !u!43 &-8846666644163854900
 Mesh:
   m_ObjectHideFlags: 0

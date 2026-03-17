@@ -40,7 +40,7 @@ namespace PlayerScripts
         private void Start()
         {
             LoadAllItems();
-            SelectTool(playerData.inventory[0]);
+            SelectTool(playerData.inventory[6]);
         }
 
         private void LoadAllItems()
@@ -198,6 +198,11 @@ namespace PlayerScripts
                 Debug.Log("No save file found. Creating new player data.");
                 playerData = new PlayerData("selamo"); // Varsayılan isim
             }
+        }
+
+        public void AddNoteToVehicle(string s)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

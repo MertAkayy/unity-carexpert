@@ -8,8 +8,17 @@ namespace PlayerScripts
         [SerializeField] private PlayerCharacter playerCharacter;
         [SerializeField]  private PlayerDataManager playerDataManager;
         [SerializeField] private PlayerCamera playerCamera;
+
+        [Header("Tool Targeting")]
+        [SerializeField] private LayerMask vehiclePartLayerMask = 1 << 6; // Default to layer 6
+        [SerializeField] private float maxToolDistance = 3f;
+        [SerializeField] private Material highlightMaterial;
+
         private IUsableTool _tool;
         private PlayerInputActions _playerInputActions;
+        private VehiclePart _currentTargetedPart;
+        private Material _originalMaterial;
+        private Renderer _targetRenderer;
         void Start()
         {
              Cursor.lockState = CursorLockMode.Locked;
@@ -23,7 +32,12 @@ namespace PlayerScripts
             _playerInputActions.Gameplay.PointerPosition.performed += ResumeJob;
             _playerInputActions.Gameplay.Job.canceled += CancelJob;
             _playerInputActions.Gameplay.Read.performed += PerformRead;
-             _tool = this.GetComponentInChildren<IUsableTool>();
+             RefreshCurrentTool();
+        }
+
+        private void RefreshCurrentTool()
+        {
+            _tool = this.GetComponentInChildren<IUsableTool>();
         }
 
         private void PerformRead(InputAction.CallbackContext obj)
@@ -78,11 +92,103 @@ namespace PlayerScripts
             };
             playerCharacter.UpdateInput(characterInput);
             playerCharacter.UpdateBody(deltaTime);
+
+            // Refresh tool reference in case it was added/removed
+            if (_tool == null)
+            {
+                RefreshCurrentTool();
+            }
+
+            UpdateTargetHighlight();
         }
 
         private void LateUpdate()
         {
             playerCamera.UpdatePosition(playerCharacter.GetCameraTransform());
         }
+
+        #region Tool Targeting System
+        /// <summary>
+        /// Gets the vehicle part currently targeted by the player's camera
+        /// </summary>
+        /// <returns>The targeted VehiclePart or null if none found</returns>
+        public VehiclePart GetTargetPart()
+        {
+            if (playerCamera == null) return null;
+
+            Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, maxToolDistance, vehiclePartLayerMask))
+            {
+                return hit.collider.GetComponentInParent<VehiclePart>();
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Updates the visual highlight on the targeted part
+        /// </summary>
+        private void UpdateTargetHighlight()
+        {
+            VehiclePart newTarget = GetTargetPart();
+
+            // If target changed, clear old highlight
+            if (newTarget != _currentTargetedPart)
+            {
+                ClearHighlight();
+                _currentTargetedPart = newTarget;
+
+                // Apply new highlight if target exists and tool is equipped
+                if (_currentTargetedPart != null && _tool != null)
+                {
+                    ApplyHighlight();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Applies highlight material to the current target
+        /// </summary>
+        private void ApplyHighlight()
+        {
+            if (_currentTargetedPart == null) return;
+
+            _targetRenderer = _currentTargetedPart.GetComponent<Renderer>();
+            if (_targetRenderer != null && highlightMaterial != null)
+            {
+                _originalMaterial = _targetRenderer.material;
+                _targetRenderer.material = highlightMaterial;
+            }
+        }
+
+        /// <summary>
+        /// Removes highlight from the current target
+        /// </summary>
+        private void ClearHighlight()
+        {
+            if (_targetRenderer != null && _originalMaterial != null)
+            {
+                _targetRenderer.material = _originalMaterial;
+            }
+            _targetRenderer = null;
+            _originalMaterial = null;
+        }
+
+        /// <summary>
+        /// Checks if a target is valid for the current tool
+        /// </summary>
+        /// <param name="target">The part to check</param>
+        /// <returns>True if the target is valid and within range</returns>
+        public bool IsTargetValid(VehiclePart target)
+        {
+            if (target == null) return false;
+            if (playerCamera == null) return false;
+
+            float distance = Vector3.Distance(playerCamera.transform.position, target.transform.position);
+            return distance <= maxToolDistance;
+        }
+        #endregion
     }
 }

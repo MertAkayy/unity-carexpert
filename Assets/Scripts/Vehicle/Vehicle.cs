@@ -14,9 +14,10 @@ public class Vehicle : MonoBehaviour
     [SerializeField] public List<VehicleWheel> wheels=new List<VehicleWheel>();
     [SerializeField] public List<VehicleGlass> glasses=new List<VehicleGlass>();
     [SerializeField] public List<VehicleLight> lights=new List<VehicleLight>();
-    [SerializeField] public VehicleBattery battery=new VehicleBattery();
-    [SerializeField] public VehicleEngine engine = new VehicleEngine();
-    [SerializeField] public VehicleRadiator radiator = new VehicleRadiator();
+    [SerializeField] public VehicleBattery battery;
+    [SerializeField] public VehicleEngine engine;
+    [SerializeField] public VehicleRadiator radiator;
+    [SerializeField] public VehicleExhaust exhaust;
     public List<AccidentReport> AccidentReports = new();
     [SerializeField] private Transform liftPlatform;
     public readonly VehicleRegistration Registration=new VehicleRegistration();
@@ -28,13 +29,64 @@ public class Vehicle : MonoBehaviour
         foreach (var part in exteriorParts)
         {
             part.paintThickness=UnityEngine.Random.Range(60, 100);
-        } 
+        }
+    }
+
+    /// <summary>
+    /// Initializes all vehicle parts with their default values.
+    /// This should be called before assigning issues so that parts have data.
+    /// </summary>
+    private void InitializeAllParts()
+    {
+        GameLogger.Log("[Vehicle] Initializing all vehicle parts...");
+
+        // Initialize all wheels
+        foreach (var wheel in wheels)
+        {
+            if (wheel != null)
+            {
+                wheel.InitializeWheel();
+            }
+        }
+
+        // Initialize battery
+        if (battery != null)
+        {
+            battery.InitializeBattery();
+        }
+
+        // Initialize engine
+        if (engine != null)
+        {
+            engine.InitializeEngine();
+        }
+
+        // Initialize radiator
+        if (radiator != null)
+        {
+            radiator.InitializeRadiator();
+        }
+
+        // Initialize exhaust (if exists)
+        if (exhaust != null)
+        {
+            exhaust.InitializeExhaust();
+        }
+
+        GameLogger.Log("[Vehicle] All vehicle parts initialized.");
     }
 
     private void Start()
     {
         transform.SetParent(liftPlatform);
+
+        // Initialize all vehicle parts first
+        InitializeAllParts();
+
+        // Then set paint thickness (overwrites some initialization)
         AssignRandomPaintThickness();
+
+        // Then calculate and assign issues
         CalculateVehicleMillage();
         _totalIssueCount = GetIssueCount(PlayerDataManager.Instance.playerData.level);
         CreateAccidentReports();
@@ -47,9 +99,10 @@ public class Vehicle : MonoBehaviour
         allParts.AddRange(wheels);
         allParts.AddRange(glasses);
         allParts.AddRange(lights);
-        allParts.Add(battery);
-        allParts.Add(engine);
-        allParts.Add(radiator);
+        if (battery != null) allParts.Add(battery);
+        if (engine != null) allParts.Add(engine);
+        if (radiator != null) allParts.Add(radiator);
+        if (exhaust != null) allParts.Add(exhaust);
         foreach (var carPart in allParts)
         {
             foreach (var printedissue in carPart.assignedIssues)
@@ -136,9 +189,10 @@ public class Vehicle : MonoBehaviour
         allParts.AddRange(wheels);
         allParts.AddRange(glasses);
         allParts.AddRange(lights);
-        allParts.Add(battery);
-        allParts.Add(engine);
-        allParts.Add(radiator);
+        if (battery != null) allParts.Add(battery);
+        if (engine != null) allParts.Add(engine);
+        if (radiator != null) allParts.Add(radiator);
+        if (exhaust != null) allParts.Add(exhaust);
         if (allParts.Count == 0)
         {
             GameLogger.LogWarning("No vehicle parts are defined.");

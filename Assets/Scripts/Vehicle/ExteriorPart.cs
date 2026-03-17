@@ -21,10 +21,12 @@ public class ExteriorPart : VehiclePart ,IInteractable,IExteriorPart,IReadable
     private bool _partOpeningState = false;
     private enum OpeningDirection
     {
+        None,
         Upward,
         Downward,
         Right,
         Left
+        
     }
     public override void AssignIssue(Issue issue)
     {
@@ -62,6 +64,8 @@ public class ExteriorPart : VehiclePart ,IInteractable,IExteriorPart,IReadable
         if (!_partOpeningState)
             switch (openingDirection)
             {
+                case  OpeningDirection.None:
+                    break;
                 case OpeningDirection.Upward: OpenUpward();
                     break;
                 case OpeningDirection.Downward: OpenDawnward();

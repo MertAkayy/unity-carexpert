@@ -5,6 +5,7 @@ using Random = System.Random;
 
 public class VehicleRegistration
 {
+    
       // Temel ruhsat bilgileri
       public string PlateNumber;             // Plaka
       public string ChassisNumber;           // Şase no (VIN)
@@ -80,13 +81,6 @@ public class VehicleRegistration
     }
 }
 
-public enum FuelType
-{
-    Petrol,
-    Diesel,
-    Electric,
-    Hybrid
-}
 
 public enum TransmissionType
 {

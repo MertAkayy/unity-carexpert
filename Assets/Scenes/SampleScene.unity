@@ -1333,6 +1333,8 @@ MonoBehaviour:
   assignedIssues: []
   predictedIssues: []
   partUniqueType: 0
+  minAcceptableCoolantLevel: 0.3
+  maxCoolantCapacity: 8
 --- !u!65 &163296999
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2256,9 +2258,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 983902559}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1799.0598, y: -45}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &245165766
@@ -2864,6 +2866,15 @@ MonoBehaviour:
   assignedIssues: []
   predictedIssues: []
   partUniqueType: 0
+  possibleTireBrands:
+  - Michelin
+  - Bridgestone
+  - Continental
+  - Goodyear
+  - Pirelli
+  - Dunlop
+  - Hankook
+  - Yokohama
 --- !u!136 &272538851
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3303,7 +3314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deskCanvas: {fileID: 0}
-  uiManager: {fileID: 0}
+  uiManager: {fileID: 1466589154}
 --- !u!1 &302035491
 GameObject:
   m_ObjectHideFlags: 0
@@ -3374,10 +3385,10 @@ RectTransform:
   - {fileID: 401758252}
   m_Father: {fileID: 656362716}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 960.0508, y: -450}
+  m_SizeDelta: {x: 512, y: 256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &305596819
 MonoBehaviour:
@@ -4036,6 +4047,15 @@ MonoBehaviour:
   assignedIssues: []
   predictedIssues: []
   partUniqueType: 0
+  possibleTireBrands:
+  - Michelin
+  - Bridgestone
+  - Continental
+  - Goodyear
+  - Pirelli
+  - Dunlop
+  - Hankook
+  - Yokohama
 --- !u!136 &389691913
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6246,10 +6266,10 @@ RectTransform:
   - {fileID: 426984522}
   m_Father: {fileID: 656362716}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 448.05078, y: -450}
+  m_SizeDelta: {x: 512, y: 256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &581532583
 MonoBehaviour:
@@ -7235,9 +7255,9 @@ RectTransform:
   - {fileID: 1925784864}
   m_Father: {fileID: 1107465153}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 959.2383, y: -540.2858}
   m_SizeDelta: {x: 1920.1016, y: 900}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &656362717
@@ -9509,9 +9529,9 @@ RectTransform:
   - {fileID: 245165765}
   m_Father: {fileID: 1107465153}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 959.2383, y: -45}
   m_SizeDelta: {x: 1920.1016, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &983902560
@@ -9616,6 +9636,9 @@ MonoBehaviour:
   chargeLevel: 0
   voltage: 0
   isWorking: 1
+  normalVoltage: 12.6
+  minVoltage: 11.5
+  minWorkingCharge: 20
 --- !u!65 &1005353469
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10319,6 +10342,11 @@ MonoBehaviour:
   playerCharacter: {fileID: 1009075218}
   playerDataManager: {fileID: 1009075221}
   playerCamera: {fileID: 878072851}
+  vehiclePartLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  maxToolDistance: 3
+  highlightMaterial: {fileID: 0}
 --- !u!1 &1107465152
 GameObject:
   m_ObjectHideFlags: 0
@@ -10337,7 +10365,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1107465153
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10461,6 +10489,7 @@ MonoBehaviour:
   partUniqueType: 0
   fuelType: 0
   isWorking: 1
+  minAcceptableOilLevel: 0.5
 --- !u!65 &1117561160
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11348,8 +11377,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fe99a2067419484daa7648ae59f8990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainFrame: {fileID: 0}
-  computerFrame: {fileID: 0}
+  mainFrame: {fileID: 395483530}
+  computerFrame: {fileID: 1107465152}
 --- !u!1 &1153429414
 GameObject:
   m_ObjectHideFlags: 0
@@ -13011,9 +13040,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1107465153}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 959.2383, y: -1035.5717}
   m_SizeDelta: {x: 1920.1016, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1343925081
@@ -16952,6 +16981,15 @@ MonoBehaviour:
   assignedIssues: []
   predictedIssues: []
   partUniqueType: 0
+  possibleTireBrands:
+  - Michelin
+  - Bridgestone
+  - Continental
+  - Goodyear
+  - Pirelli
+  - Dunlop
+  - Hankook
+  - Yokohama
 --- !u!136 &1680813941
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -17422,6 +17460,7 @@ MonoBehaviour:
   battery: {fileID: 1005353468}
   engine: {fileID: 1117561159}
   radiator: {fileID: 163296998}
+  exhaust: {fileID: 0}
   liftPlatform: {fileID: 0}
   milage: 250
 --- !u!4 &1719739564
@@ -17512,9 +17551,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 983902559}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 839.0091, y: -45}
   m_SizeDelta: {x: 1678.0182, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1736558819
@@ -19329,6 +19368,15 @@ MonoBehaviour:
   assignedIssues: []
   predictedIssues: []
   partUniqueType: 0
+  possibleTireBrands:
+  - Michelin
+  - Bridgestone
+  - Continental
+  - Goodyear
+  - Pirelli
+  - Dunlop
+  - Hankook
+  - Yokohama
 --- !u!136 &1890538892
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -19794,10 +19842,10 @@ RectTransform:
   - {fileID: 1959780367}
   m_Father: {fileID: 656362716}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1472.0508, y: -450}
+  m_SizeDelta: {x: 512, y: 256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1925784865
 MonoBehaviour:
@@ -21401,6 +21449,10 @@ PrefabInstance:
       propertyPath: _partUniqueType
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 2869828665731923499, guid: 060fe3c2c3e409c4395f5b6423809573, type: 3}
+      propertyPath: openingDirection
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2909691132808355862, guid: 060fe3c2c3e409c4395f5b6423809573, type: 3}
       propertyPath: partUniqueType
       value: 15
@@ -21465,6 +21517,10 @@ PrefabInstance:
       propertyPath: _partUniqueType
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4281690816525849833, guid: 060fe3c2c3e409c4395f5b6423809573, type: 3}
+      propertyPath: openingDirection
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4346671660116314222, guid: 060fe3c2c3e409c4395f5b6423809573, type: 3}
       propertyPath: partUniqueType
       value: 14
@@ -21515,6 +21571,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6023383805573388689, guid: 060fe3c2c3e409c4395f5b6423809573, type: 3}
       propertyPath: _partUniqueType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023383805573388689, guid: 060fe3c2c3e409c4395f5b6423809573, type: 3}
+      propertyPath: openingDirection
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6265422569563083314, guid: 060fe3c2c3e409c4395f5b6423809573, type: 3}
@@ -21585,6 +21645,10 @@ PrefabInstance:
       propertyPath: _partUniqueType
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6820145127020752303, guid: 060fe3c2c3e409c4395f5b6423809573, type: 3}
+      propertyPath: openingDirection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6951118857418699724, guid: 060fe3c2c3e409c4395f5b6423809573, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.002000809
@@ -21600,6 +21664,10 @@ PrefabInstance:
     - target: {fileID: 6966424685165249907, guid: 060fe3c2c3e409c4395f5b6423809573, type: 3}
       propertyPath: _partUniqueType
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6966424685165249907, guid: 060fe3c2c3e409c4395f5b6423809573, type: 3}
+      propertyPath: openingDirection
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7160930218996973526, guid: 060fe3c2c3e409c4395f5b6423809573, type: 3}
       propertyPath: m_LocalPosition.z
@@ -21656,6 +21724,10 @@ PrefabInstance:
     - target: {fileID: 8937429990881784034, guid: 060fe3c2c3e409c4395f5b6423809573, type: 3}
       propertyPath: _partUniqueType
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937429990881784034, guid: 060fe3c2c3e409c4395f5b6423809573, type: 3}
+      propertyPath: openingDirection
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9124479140808819879, guid: 060fe3c2c3e409c4395f5b6423809573, type: 3}
       propertyPath: partUniqueType
