@@ -1,0 +1,367 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using Core;
+using PlayerScripts;
+
+namespace Progression
+{
+    /// <summary>
+    /// Interface for the ProgressionManager system.
+    /// Handles XP calculation, level management, and unlocks.
+    /// </summary>
+    public interface IProgressionManager : ISystem
+    {
+        int CurrentLevel { get; }
+        int CurrentXP { get; }
+        int XPToNextLevel { get; }
+        float LevelProgress { get; }
+
+        event Action<int> OnLevelUp;
+        event Action<int, int> OnXPChanged;
+
+        void AddXP(int amount, string reason);
+        void CalculateAndAwardInspectionXP(float accuracy, int issuesFound, int totalIssues);
+        int GetXPThresholdForLevel(int level);
+        bool IsToolUnlocked(string toolId);
+        bool IsIssueTypeUnlocked(string issueType);
+        IReadOnlyList<string> GetUnlockedTools();
+        IReadOnlyList<string> GetUnlockedIssueTypes();
+    }
+
+    /// <summary>
+    /// Manages player progression including XP, leveling, and unlocks.
+    /// Registers with ServiceLocator as IProgressionManager.
+    /// </summary>
+    public class ProgressionManager : MonoBehaviour, IProgressionManager
+    {
+        #region Serialized Fields
+
+        [Header("XP Settings")]
+        [SerializeField] private int baseXPPerInspection = 50;
+        [SerializeField] private float accuracyMultiplier = 100f;
+        [SerializeField] private float levelBonusMultiplier = 10f;
+        [SerializeField] private int baseXPThreshold = 100;
+        [SerializeField] private float thresholdGrowthRate = 1.5f;
+
+        [Header("Level Unlocks")]
+        [SerializeField] private LevelUnlockData[] levelUnlocks;
+
+        #endregion
+
+        #region Properties
+
+        public int Priority => 10;
+
+        public int CurrentLevel { get; private set; } = 1;
+
+        private void Awake()
+        {
+            // Self-register with ServiceLocator
+            ServiceLocator.Register<IProgressionManager>(this);
+        }
+
+        private void OnDestroy()
+        {
+            // Unregister when destroyed
+            ServiceLocator.Unregister<IProgressionManager>();
+        }
+        public int CurrentXP { get; private set; } = 0;
+        public int XPToNextLevel => GetXPThresholdForLevel(CurrentLevel + 1) - GetXPThresholdForLevel(CurrentLevel);
+        public float LevelProgress => (float)(CurrentXP - GetXPThresholdForLevel(CurrentLevel)) / XPToNextLevel;
+
+        #endregion
+
+        #region Events
+
+        public event Action<int> OnLevelUp;
+        public event Action<int, int> OnXPChanged; // (currentXP, delta)
+
+        #endregion
+
+        #region Private Fields
+
+        private readonly List<string> _unlockedTools = new List<string>();
+        private readonly List<string> _unlockedIssueTypes = new List<string>();
+        private readonly Dictionary<int, LevelUnlockData> _unlockCache = new Dictionary<int, LevelUnlockData>();
+
+        #endregion
+
+        #region ISystem Implementation
+
+        public void OnRegistered()
+        {
+            BuildUnlockCache();
+            ApplyInitialUnlocks();
+            Debug.Log("[ProgressionManager] Registered with ServiceLocator");
+        }
+
+        public void Initialize()
+        {
+            // Load saved progression data if available
+            LoadProgressionData();
+            Debug.Log($"[ProgressionManager] Initialized. Level: {CurrentLevel}, XP: {CurrentXP}");
+        }
+
+        public void Shutdown()
+        {
+            SaveProgressionData();
+            Debug.Log("[ProgressionManager] Shutdown complete");
+        }
+
+        #endregion
+
+        #region XP Management
+
+        /// <summary>
+        /// Adds XP to the player with a reason for logging/debugging.
+        /// </summary>
+        public void AddXP(int amount, string reason)
+        {
+            if (amount <= 0) return;
+
+            int oldXP = CurrentXP;
+            CurrentXP += amount;
+
+            Debug.Log($"[ProgressionManager] Gained {amount} XP for: {reason}. Total: {CurrentXP}");
+
+            CheckForLevelUp();
+            OnXPChanged?.Invoke(CurrentXP, amount);
+        }
+
+        /// <summary>
+        /// Calculates and awards XP based on inspection performance.
+        /// Formula: Base XP + (Accuracy * 100) + (Level * 10)
+        /// </summary>
+        public void CalculateAndAwardInspectionXP(float accuracy, int issuesFound, int totalIssues)
+        {
+            // Base XP for completing inspection
+            int baseXP = baseXPPerInspection;
+
+            // Accuracy bonus (0-100 based on 0-1 accuracy)
+            int accuracyBonus = Mathf.RoundToInt(accuracy * accuracyMultiplier);
+
+            // Level bonus (current level * multiplier)
+            int levelBonus = Mathf.RoundToInt(CurrentLevel * levelBonusMultiplier);
+
+            // Perfect inspection bonus
+            int perfectBonus = 0;
+            if (accuracy >= 1.0f && issuesFound == totalIssues)
+            {
+                perfectBonus = 25; // Bonus for perfect inspection
+            }
+
+            int totalXP = baseXP + accuracyBonus + levelBonus + perfectBonus;
+
+            string reason = $"Inspection (Accuracy: {accuracy:P0}, Issues: {issuesFound}/{totalIssues})";
+            AddXP(totalXP, reason);
+        }
+
+        /// <summary>
+        /// Gets the total XP required to reach a specific level.
+        /// Uses exponential growth formula.
+        /// </summary>
+        public int GetXPThresholdForLevel(int level)
+        {
+            if (level <= 1) return 0;
+            return Mathf.RoundToInt(baseXPThreshold * Mathf.Pow(thresholdGrowthRate, level - 2));
+        }
+
+        private void CheckForLevelUp()
+        {
+            int newLevel = CurrentLevel;
+
+            // Check if we've passed the threshold for next level
+            while (CurrentXP >= GetXPThresholdForLevel(newLevel + 1))
+            {
+                newLevel++;
+            }
+
+            if (newLevel > CurrentLevel)
+            {
+                int oldLevel = CurrentLevel;
+                CurrentLevel = newLevel;
+
+                // Apply unlocks for each level gained
+                for (int lvl = oldLevel + 1; lvl <= newLevel; lvl++)
+                {
+                    ApplyLevelUnlocks(lvl);
+                }
+
+                Debug.Log($"[ProgressionManager] LEVEL UP! {oldLevel} -> {CurrentLevel}");
+                OnLevelUp?.Invoke(CurrentLevel);
+
+                // Fire global event
+                EventManager.TriggerEvent("OnPlayerLevelUp");
+            }
+        }
+
+        #endregion
+
+        #region Unlock System
+
+        /// <summary>
+        /// Checks if a tool is unlocked for the current level.
+        /// </summary>
+        public bool IsToolUnlocked(string toolId)
+        {
+            return _unlockedTools.Contains(toolId);
+        }
+
+        /// <summary>
+        /// Checks if an issue type is unlocked for the current level.
+        /// </summary>
+        public bool IsIssueTypeUnlocked(string issueType)
+        {
+            return _unlockedIssueTypes.Contains(issueType);
+        }
+
+        /// <summary>
+        /// Gets all unlocked tools.
+        /// </summary>
+        public IReadOnlyList<string> GetUnlockedTools()
+        {
+            return _unlockedTools.AsReadOnly();
+        }
+
+        /// <summary>
+        /// Gets all unlocked issue types.
+        /// </summary>
+        public IReadOnlyList<string> GetUnlockedIssueTypes()
+        {
+            return _unlockedIssueTypes.AsReadOnly();
+        }
+
+        private void BuildUnlockCache()
+        {
+            _unlockCache.Clear();
+
+            if (levelUnlocks != null)
+            {
+                foreach (var unlock in levelUnlocks)
+                {
+                    _unlockCache[unlock.level] = unlock;
+                }
+            }
+        }
+
+        private void ApplyInitialUnlocks()
+        {
+            // Apply all unlocks for current level and below
+            for (int lvl = 1; lvl <= CurrentLevel; lvl++)
+            {
+                ApplyLevelUnlocks(lvl);
+            }
+        }
+
+        private void ApplyLevelUnlocks(int level)
+        {
+            if (!_unlockCache.TryGetValue(level, out LevelUnlockData unlock))
+                return;
+
+            // Unlock tools
+            if (unlock.unlockedTools != null)
+            {
+                foreach (string tool in unlock.unlockedTools)
+                {
+                    if (!_unlockedTools.Contains(tool))
+                    {
+                        _unlockedTools.Add(tool);
+                        Debug.Log($"[ProgressionManager] Unlocked tool: {tool} at level {level}");
+                    }
+                }
+            }
+
+            // Unlock issue types
+            if (unlock.unlockedIssueTypes != null)
+            {
+                foreach (string issueType in unlock.unlockedIssueTypes)
+                {
+                    if (!_unlockedIssueTypes.Contains(issueType))
+                    {
+                        _unlockedIssueTypes.Add(issueType);
+                        Debug.Log($"[ProgressionManager] Unlocked issue type: {issueType} at level {level}");
+                    }
+                }
+            }
+        }
+
+        #endregion
+
+        #region Save/Load
+
+        private void LoadProgressionData()
+        {
+            // Try to load from PlayerDataManager singleton if available
+            if (PlayerDataManager.Instance != null)
+            {
+                var playerData = PlayerDataManager.Instance.playerData;
+                if (playerData != null)
+                {
+                    CurrentLevel = playerData.level;
+                    CurrentXP = playerData.experience;
+                }
+            }
+
+            // Load unlocks from PlayerPrefs as backup
+            CurrentLevel = Mathf.Max(CurrentLevel, PlayerPrefs.GetInt("Progression_Level", 1));
+            CurrentXP = Mathf.Max(CurrentXP, PlayerPrefs.GetInt("Progression_XP", 0));
+        }
+
+        private void SaveProgressionData()
+        {
+            PlayerPrefs.SetInt("Progression_Level", CurrentLevel);
+            PlayerPrefs.SetInt("Progression_XP", CurrentXP);
+            PlayerPrefs.Save();
+
+            // Update PlayerDataManager singleton if available
+            if (PlayerDataManager.Instance != null)
+            {
+                var playerData = PlayerDataManager.Instance.playerData;
+                if (playerData != null)
+                {
+                    playerData.level = CurrentLevel;
+                    playerData.experience = CurrentXP;
+                }
+            }
+        }
+
+        #endregion
+
+        #region Debug
+
+        [ContextMenu("Add Test XP (100)")]
+        private void DebugAddXP()
+        {
+            AddXP(100, "Debug Test");
+        }
+
+        [ContextMenu("Force Level Up")]
+        private void DebugForceLevelUp()
+        {
+            int xpNeeded = GetXPThresholdForLevel(CurrentLevel + 1);
+            int delta = xpNeeded - CurrentXP;
+            if (delta > 0)
+            {
+                AddXP(delta, "Debug Force Level Up");
+            }
+        }
+
+        #endregion
+    }
+
+    #region Data Structures
+
+    /// <summary>
+    /// Defines what unlocks at a specific level.
+    /// </summary>
+    [Serializable]
+    public struct LevelUnlockData
+    {
+        public int level;
+        public string[] unlockedTools;
+        public string[] unlockedIssueTypes;
+    }
+
+    #endregion
+}

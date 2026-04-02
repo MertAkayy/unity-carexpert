@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a471383e74576704db21bd8cc829f305, type: 3}
+  m_Name: CustomerData 5
+  m_EditorClassIdentifier: 
+  customerName: 
+  description: 
+  portrait: {fileID: 0}
+  personality: 5
+  patienceLevel: 3
+  tipTendency: 0.5
+  satisfactionThreshold: 0.7
+  preferredInspectionTypes: 01000000
+  prefersBasicInspections: 0
+  willingToPayExtraForSpeed: 0
+  baseRewardModifier: 1
+  tipModifier: 1
+  xpModifier: 1
+  patienceBonusReward: 0.1
+  greetingLines:
+  - Hello, I need my car inspected.
+  - Hi there! Can you take a look at my vehicle?
+  - Good day. I have a car that needs inspection.
+  waitingLines:
+  - Is it taking long?
+  - How much longer will this take?
+  - I'm waiting...
+  impatientLines:
+  - This is taking too long!
+  - I don't have all day!
+  - Can you hurry up please?
+  completionLines:
+  - Thank you for the inspection!
+  - Great work, thanks!
+  - Appreciate your help.
+  satisfiedLines:
+  - Excellent work! I'm very satisfied.
+  - You did a great job!
+  - This is exactly what I needed.
+  dissatisfiedLines:
+  - I'm not happy with this service.
+  - This isn't what I expected.
+  - I expected better quality.
+  leavingLines:
+  - Goodbye!
+  - Take care!
+  - See you next time.

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Core;
 using PlayerScripts;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -23,7 +24,12 @@ public class Vehicle : MonoBehaviour
     public readonly VehicleRegistration Registration=new VehicleRegistration();
     public int milage=250;
     public Guid VehicleId = Guid.NewGuid();
-    private int _totalIssueCount;
+
+    /// <summary>
+    /// Reference to the fault generator service.
+    /// If null, falls back to legacy behavior.
+    /// </summary>
+    private IFaultGenerator _faultGenerator;
     private void AssignRandomPaintThickness()
     {
         foreach (var part in exteriorParts)
@@ -86,14 +92,48 @@ public class Vehicle : MonoBehaviour
         // Then set paint thickness (overwrites some initialization)
         AssignRandomPaintThickness();
 
-        // Then calculate and assign issues
+        // Calculate vehicle mileage
         CalculateVehicleMillage();
-        _totalIssueCount = GetIssueCount(PlayerDataManager.Instance.playerData.level);
+
+        // Create accident reports (generates damage history)
         CreateAccidentReports();
+
+        // Try to get FaultGenerator from ServiceLocator
+        if (ServiceLocator.TryGet(out _faultGenerator) && _faultGenerator != null)
+        {
+            // Use the new FaultGenerator service
+            int playerLevel = PlayerDataManager.Instance.playerData.level;
+            _faultGenerator.GenerateFaultsForVehicle(this, playerLevel);
+        }
+        else
+        {
+            // Fallback to legacy behavior if FaultGenerator is not available
+            GameLogger.LogWarning("[Vehicle] FaultGenerator not available, using legacy fault assignment");
+            LegacyFaultAssignment();
+        }
+
+        // Log all assigned issues for debugging
+        LogAssignedIssues();
+    }
+
+    /// <summary>
+    /// Legacy fault assignment method used when FaultGenerator is not available.
+    /// This maintains backward compatibility.
+    /// </summary>
+    private void LegacyFaultAssignment()
+    {
+        int totalIssueCount = GetIssueCount(PlayerDataManager.Instance.playerData.level);
         CalculateIssuePossibilityWeights();
-        AssignRandomIssues(_totalIssueCount-AccidentReports.Count);
-        
-        GameLogger.Log("Accident Reports : "+ AccidentReports.Count);
+        AssignRandomIssues(totalIssueCount - AccidentReports.Count);
+    }
+
+    /// <summary>
+    /// Logs all assigned issues to the parts for debugging purposes.
+    /// </summary>
+    private void LogAssignedIssues()
+    {
+        GameLogger.Log("Accident Reports : " + AccidentReports.Count);
+
         List<VehiclePart> allParts = new List<VehiclePart>();
         allParts.AddRange(exteriorParts);
         allParts.AddRange(wheels);
@@ -103,11 +143,12 @@ public class Vehicle : MonoBehaviour
         if (engine != null) allParts.Add(engine);
         if (radiator != null) allParts.Add(radiator);
         if (exhaust != null) allParts.Add(exhaust);
+
         foreach (var carPart in allParts)
         {
             foreach (var printedissue in carPart.assignedIssues)
             {
-                GameLogger.Log(carPart.name+" --- "+printedissue.FailureName +" ---- "+printedissue.AvailableLevel);
+                GameLogger.Log(carPart.name + " --- " + printedissue.FailureName + " ---- " + printedissue.AvailableLevel);
             }
         }
     }
@@ -120,9 +161,22 @@ public class Vehicle : MonoBehaviour
             AccidentReports.Add(report);
         }
         AccidentReports = AccidentReports.OrderBy(report => report.AccidentDate).ToList();
-        AssignRepairIssuesFromAccidents();
+
+        // Assign repair issues from accidents - try FaultGenerator first, then fallback
+        if (_faultGenerator != null)
+        {
+            _faultGenerator.AssignRepairIssuesFromAccidents(this, PlayerDataManager.Instance.playerData.level);
+        }
+        else
+        {
+            AssignRepairIssuesFromAccidentsLegacy();
+        }
     }
-    private void AssignRepairIssuesFromAccidents()
+
+    /// <summary>
+    /// Legacy method for assigning repair issues when FaultGenerator is unavailable.
+    /// </summary>
+    private void AssignRepairIssuesFromAccidentsLegacy()
     {
         foreach (var report in AccidentReports)
         {
@@ -137,7 +191,7 @@ public class Vehicle : MonoBehaviour
                             randomSign = UnityEngine.Random.Range(0, 2);
                         else
                             randomSign = UnityEngine.Random.Range(0, 3);
-        
+
                         if (randomSign == 0)
                             vehiclePart.AssignIssue(issuePool.GetByName("Painted_Part"));
                         else if (randomSign == 1)
@@ -161,6 +215,13 @@ public class Vehicle : MonoBehaviour
             milage=Random.Range(yearDifference*12000,yearDifference*25000);
         }
     }
+
+    #region Legacy Methods (Fallback when FaultGenerator is unavailable)
+
+    /// <summary>
+    /// Legacy method - Calculates possibility weights for issues.
+    /// Used as fallback when FaultGenerator is not available.
+    /// </summary>
     private void CalculateIssuePossibilityWeights()
     {
         var list = issuePool.GetAvailableForLevel(PlayerDataManager.Instance.playerData.level);
@@ -173,9 +234,14 @@ public class Vehicle : MonoBehaviour
                 issue.PossibilityWeight += 10;
             if(AccidentReports.Count>0 && issue.IsValidFor(exteriorParts[0]))
                 issue.PossibilityWeight += 25;
-            
-        } 
+
+        }
     }
+
+    /// <summary>
+    /// Legacy method - Assigns random issues to vehicle parts.
+    /// Used as fallback when FaultGenerator is not available.
+    /// </summary>
     public void AssignRandomIssues(int issueCount)
     {
         if (issuePool == null || issuePool.issues == null || issuePool.issues.Count == 0)
@@ -183,7 +249,7 @@ public class Vehicle : MonoBehaviour
             GameLogger.LogWarning("IssueDatabase not defined or empty.");
             return;
         }
-        // Tüm araç parçalarını tek bir listede topla
+        // Tum arac parcalarini tek bir listede topla
         List<VehiclePart> allParts = new List<VehiclePart>();
         allParts.AddRange(exteriorParts);
         allParts.AddRange(wheels);
@@ -198,10 +264,10 @@ public class Vehicle : MonoBehaviour
             GameLogger.LogWarning("No vehicle parts are defined.");
             return;
         }
-        // Rastgele issueCount (örn. 5) adet arıza seç
+        // Rastgele issueCount (orn. 5) adet ariza sec
         List<Issue> selectedIssues = new List<Issue>();
-        List<Issue> availableIssues = new List<Issue>(issuePool.GetAvailableForLevel(PlayerDataManager.Instance.playerData.level)); 
-        int maxIssues = Mathf.Min(issueCount, availableIssues.Count); // Mevcut arıza sayısını aşmamak için
+        List<Issue> availableIssues = new List<Issue>(issuePool.GetAvailableForLevel(PlayerDataManager.Instance.playerData.level));
+        int maxIssues = Mathf.Min(issueCount, availableIssues.Count); // Mevcut ariza sayisini asmmak icin
         for (int i = 0; i < maxIssues; i++)
         {
             if (availableIssues.Count == 0)
@@ -210,18 +276,18 @@ public class Vehicle : MonoBehaviour
                 break;
             }
 
-            var selectedIssue = Utilities.WeightedRandom(availableIssues,i=>i.PossibilityWeight); // GetWeightedRandomIndex(availableIssues);
+            var selectedIssue = Utilities.WeightedRandom(availableIssues,i=>i.PossibilityWeight);
             selectedIssues.Add(selectedIssue);
             availableIssues.Remove(selectedIssue);
         }
-        // Seçilen her arızayı uygun bir parçaya ata
+        // Secilen her arizayi uygun bir parcaya ata
         foreach (var issue in selectedIssues)
         {
-            // Arızaya uygun parçaları bul
+            // Arizaya uygun parcalari bul
             var validParts = allParts.Where(part => issue.IsValidFor(part)).ToList();
             if (validParts.Count > 0)
             {
-                // Rastgele bir uygun parça seç
+                // Rastgele bir uygun parca sec
                 VehiclePart selectedPart = validParts[Random.Range(0, validParts.Count)];
                 selectedPart.AssignIssue(issue);
                 GameLogger.LogWarning($" The {issue.FailureName} fault has been assigned to the '{selectedPart.name}' component.");
@@ -231,16 +297,21 @@ public class Vehicle : MonoBehaviour
                 GameLogger.LogWarning($"No suitable part was found for the '{issue.FailureName}' fault.");
             }
         }
-        // Eğer seçilen arıza sayısı istenenden azsa, logla
+        // Eger secilen ariza sayisi istenenden azsa, logla
         if (selectedIssues.Count < issueCount)
         {
             GameLogger.LogWarning($"Not enough faults could be assigned. Only {selectedIssues.Count} fault(s) were assigned.");
         }
     }
+
+    /// <summary>
+    /// Legacy method - Gets issue count based on player level.
+    /// Used as fallback when FaultGenerator is not available.
+    /// </summary>
     private int GetIssueCount(int level)
     {
         float random = UnityEngine.Random.value;
-        if (level <= 10) 
+        if (level <= 10)
         {
             if (random < 0.50f) return 3; // %50
             if (random < 0.80f) return 4; // %30
@@ -248,21 +319,21 @@ public class Vehicle : MonoBehaviour
             if (random < 0.97f) return 6; // %7
             return 7;
         }
-        else if (level <= 20) 
+        else if (level <= 20)
         {
             if (random < 0.10f) return 3; // %10
             if (random < 0.60f) return 4; // %50
             if (random < 0.90f) return 5; // %30
             if (random < 0.97f) return 6; // %7
-            return 7; 
+            return 7;
         }
-        else if (level <= 30) 
+        else if (level <= 30)
         {
             if (random < 0.05f) return 3; // %5
             if (random < 0.15f) return 4; // %10
             if (random < 0.65f) return 5; // %50
             if (random < 0.95f) return 6; // %30
-            return 7; 
+            return 7;
         }
         else
         {
@@ -270,7 +341,9 @@ public class Vehicle : MonoBehaviour
             if (random < 0.10f) return 4; // %5
             if (random < 0.20f) return 5; // %10
             if (random < 0.70f) return 6; // %50
-            return 7; 
+            return 7;
         }
     }
+
+    #endregion
 }

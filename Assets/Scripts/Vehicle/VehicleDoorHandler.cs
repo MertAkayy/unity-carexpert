@@ -10,6 +10,7 @@ public class VehicleDoorHandler : MonoBehaviour,IInteractable
     private Vector3 _windowPosition;
     private Vector3 _windowRotation;
     [SerializeField] private WindowLocation windowLocation;
+    [SerializeField] private Transform windowEndPosition;
     public enum WindowLocation
     {
         FrontLeft,
@@ -22,27 +23,13 @@ public class VehicleDoorHandler : MonoBehaviour,IInteractable
         _windowPosition = windowTransform.localPosition;
         _windowRotation = windowTransform.localRotation.eulerAngles;
     }
-    private void OpenFrontLeftWindow()
+
+    private void OpenWindow()
     {
-        windowTransform.DOLocalMove(new Vector3(_windowPosition.x-0.095f,_windowPosition.y-0.2668764f,_windowPosition.z+0.1270038f), 1.5f);
-        windowTransform.DOLocalRotate(new Vector3(_windowRotation.x,_windowRotation.y,_windowRotation.z+8.9f), 1.5f);
-        _isWindowOpen=true;
-    }
-    private void OpenFrontRightWindow()
-    {
-        windowTransform.DOLocalMove(new Vector3(_windowPosition.x+0.095f,_windowPosition.y-0.2668764f,_windowPosition.z+0.1270038f), 1.5f);
-        windowTransform.DOLocalRotate(new Vector3(_windowRotation.x,_windowRotation.y,_windowRotation.z-8.9f), 1.5f);
-        _isWindowOpen=true;
-    }
-    private void OpenRearLeftWindow()
-    {
-        windowTransform.DOLocalMove(new Vector3(_windowPosition.x-0.1592976f,_windowPosition.y-0.3662445f,_windowPosition.z+0.0329833f), 1.5f);
-        _isWindowOpen=true;
-    }
-    private void OpenRearRightWindow()
-    {
-        windowTransform.DOLocalMove(new Vector3(_windowPosition.x+0.1592976f,_windowPosition.y-0.3662445f,_windowPosition.z+0.0329833f), 1.5f);
-        _isWindowOpen=true;
+        windowTransform.DOLocalMove(windowEndPosition.localPosition, 1.5f);
+        windowTransform.DOLocalRotate(windowEndPosition.localEulerAngles, 1.5f);
+
+        _isWindowOpen=true; 
     }
     private void CloseWindow()
     {
@@ -54,23 +41,11 @@ public class VehicleDoorHandler : MonoBehaviour,IInteractable
     {
         if (!_isWindowOpen)
         {
-            switch (windowLocation)
-            {
-                case WindowLocation.FrontLeft:
-                    OpenFrontLeftWindow();
-                    break;
-                case WindowLocation.FrontRight:
-                    OpenFrontRightWindow();
-                    break;
-                case WindowLocation.RearLeft:
-                    OpenRearLeftWindow();
-                    break;
-                case WindowLocation.RearRight:
-                    OpenRearRightWindow();
-                    break;
-            }
+            OpenWindow();
         }
         else
+        {
             CloseWindow();
+        }
     }
 }

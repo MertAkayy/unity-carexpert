@@ -33,22 +33,35 @@ namespace PlayerScripts
             }
 
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            if (transform.parent != null)
+            {
+                DontDestroyOnLoad(gameObject);
+            }
             _saveFilePath = Path.Combine(Application.persistentDataPath, "playerdata.json");
             LoadData();
         }
+
+        private void OnApplicationQuit()
+        {
+            SaveData();
+        }
         private void Start()
         {
+            Debug.Log("START START START ");
             LoadAllItems();
-            SelectTool(playerData.inventory[6]);
+            
+             SelectTool(playerData.inventory[6]);
+            Debug.Log("END END END ");
         }
 
         private void LoadAllItems()
         {
+            playerData.inventory.Clear();
             foreach (var item in AllItems)
             {
                 if (item.isTool)
                 {
+                    Debug.Log(item.name);
                     playerData.inventory.Add(item);
                 }
                
@@ -203,6 +216,43 @@ namespace PlayerScripts
         public void AddNoteToVehicle(string s)
         {
             throw new System.NotImplementedException();
+        }
+
+        /// <summary>
+        /// Adds money to the player's balance.
+        /// </summary>
+        /// <param name="amount">Amount to add (positive value)</param>
+        public void AddMoney(float amount)
+        {
+            if (amount < 0)
+            {
+                Debug.LogWarning("[PlayerDataManager] AddMoney called with negative value. Use DeductMoney instead.");
+                return;
+            }
+            playerData.money += amount;
+            Debug.Log($"[PlayerDataManager] Added ${amount:F2}. New balance: ${playerData.money:F2}");
+        }
+
+        /// <summary>
+        /// Deducts money from the player's balance.
+        /// </summary>
+        /// <param name="amount">Amount to deduct (positive value)</param>
+        /// <returns>True if the deduction was successful</returns>
+        public bool DeductMoney(float amount)
+        {
+            if (amount < 0)
+            {
+                Debug.LogWarning("[PlayerDataManager] DeductMoney called with negative value.");
+                return false;
+            }
+            if (playerData.money >= amount)
+            {
+                playerData.money -= amount;
+                Debug.Log($"[PlayerDataManager] Deducted ${amount:F2}. New balance: ${playerData.money:F2}");
+                return true;
+            }
+            Debug.LogWarning($"[PlayerDataManager] Insufficient funds. Have: ${playerData.money:F2}, Need: ${amount:F2}");
+            return false;
         }
     }
 }
