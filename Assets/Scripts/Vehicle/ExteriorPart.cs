@@ -108,6 +108,7 @@ public class ExteriorPart : VehiclePart ,IInteractable,IExteriorPart,IReadable
     public void Read()
     {
         GameLogger.Log("[ExteriorPart] Reading part");
+        GameLogger.Log(productionName+"\n"+_productionDateTime);
         DebugToScreen.ShowMessage("Label: \n"+productionName+"\n"+_productionDateTime,5F);
     }
 }

@@ -71,8 +71,10 @@ namespace ToolScripts.Base
         #region IUsableTool Implementation
         public virtual void StartJob(InputAction.CallbackContext context)
         {
+          
             if (context.performed)
             {
+               
                 TryStartInspection();
             }
         }
@@ -94,14 +96,14 @@ namespace ToolScripts.Base
         #region Inspection Flow
         protected virtual void TryStartInspection()
         {
+            Debug.Log("TryStartInspection");
             if (isInspecting)
             {
                 CancelInspection();
                 return;
             }
-
+            Debug.Log("TryStartInspection is inspectinbg true");
             currentTargetPart = GetTargetPart();
-
             if (!ValidateTarget())
             {
                 OnTargetInvalid();
@@ -113,21 +115,26 @@ namespace ToolScripts.Base
 
         protected virtual VehiclePart GetTargetPart()
         {
+            Debug.Log("before hit GetTargetPart");
             if (player == null)
             {
                 player = FindObjectOfType<Player>();
                 if (player == null) return null;
             }
-
+            Debug.Log("before hit 1");
             // Use PlayerCamera for raycasting
             PlayerCamera playerCamera = FindObjectOfType<PlayerCamera>();
-            if (playerCamera == null) return null;
-
+            if (playerCamera == null)
+            {
+                return null;
+            }
+            Debug.Log("before hit 2");
             Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
             RaycastHit hit;
-
+            Debug.Log("before hit");
             if (Physics.Raycast(ray, out hit, maxInspectionDistance, targetLayerMask))
             {
+                Debug.Log("part find");
                 return hit.collider.GetComponentInParent<VehiclePart>();
             }
 
@@ -136,6 +143,7 @@ namespace ToolScripts.Base
 
         protected virtual void BeginInspection()
         {
+            Debug.Log("Trying to start JOB BeginInspection");
             isInspecting = true;
             inspectionProgress = 0f;
 

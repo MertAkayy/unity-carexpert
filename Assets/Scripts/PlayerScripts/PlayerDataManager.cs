@@ -47,11 +47,9 @@ namespace PlayerScripts
         }
         private void Start()
         {
-            Debug.Log("START START START ");
             LoadAllItems();
             
-             SelectTool(playerData.inventory[6]);
-            Debug.Log("END END END ");
+             SelectTool(playerData.inventory[1]);
         }
 
         private void LoadAllItems()
@@ -175,6 +173,7 @@ namespace PlayerScripts
         {
             if (_activeObject )
             {
+                
                 IReadable readable = _activeObject.GetComponent<IReadable>();
                 if (readable != null)
                     readable.Read();

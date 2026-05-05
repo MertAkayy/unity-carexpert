@@ -47,6 +47,7 @@ namespace PlayerScripts
 
         private void DoJob(InputAction.CallbackContext context)
         {
+            
             _tool.StartJob(context);
         }
         private void ResumeJob(InputAction.CallbackContext obj)
