@@ -18,6 +18,7 @@ public class VehicleManager : MonoBehaviour
     private VehicleFactory _vehicleFactory;
 
     public VehicleFactory Factory => _vehicleFactory;
+    public IssueDataBase IssueDatabase => _issueDatabase;
 
     private void Awake()
     {

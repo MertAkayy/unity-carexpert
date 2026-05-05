@@ -115,26 +115,21 @@ namespace ToolScripts.Base
 
         protected virtual VehiclePart GetTargetPart()
         {
-            Debug.Log("before hit GetTargetPart");
             if (player == null)
             {
                 player = FindObjectOfType<Player>();
                 if (player == null) return null;
             }
-            Debug.Log("before hit 1");
             // Use PlayerCamera for raycasting
             PlayerCamera playerCamera = FindObjectOfType<PlayerCamera>();
             if (playerCamera == null)
             {
                 return null;
             }
-            Debug.Log("before hit 2");
             Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
             RaycastHit hit;
-            Debug.Log("before hit");
             if (Physics.Raycast(ray, out hit, maxInspectionDistance, targetLayerMask))
             {
-                Debug.Log("part find");
                 return hit.collider.GetComponentInParent<VehiclePart>();
             }
 
@@ -143,7 +138,6 @@ namespace ToolScripts.Base
 
         protected virtual void BeginInspection()
         {
-            Debug.Log("Trying to start JOB BeginInspection");
             isInspecting = true;
             inspectionProgress = 0f;
 
@@ -247,8 +241,9 @@ namespace ToolScripts.Base
         {
             if (result.TargetPart == null || result.DetectedIssues == null) return;
 
-            // Get IssueDataBase to find issues by name
-            IssueDataBase issueDatabase = FindObjectOfType<IssueDataBase>();
+            // Get IssueDataBase via VehicleManager
+            VehicleManager vehicleManager = FindObjectOfType<VehicleManager>();
+            IssueDataBase issueDatabase = vehicleManager != null ? vehicleManager.IssueDatabase : null;
             if (issueDatabase == null)
             {
                 GameLogger.LogWarning("IssueDataBase not found in scene.");

@@ -37,7 +37,6 @@ namespace ToolScripts
 
         protected override VehiclePart GetTargetPart()
         {
-            // Use Player's GetTargetPart method
             Player player = FindObjectOfType<Player>();
             if (player != null)
             {
@@ -133,18 +132,18 @@ namespace ToolScripts
         {
             ToolUIManager.Instance?.ClearInstruction();
 
-            if (result.Success && _targetExteriorPart != null)
-            {
-                // Also check for existing issues on the part
-                if (_targetExteriorPart.IsPartReplaced)
-                {
-                    GameLogger.Log($"[DigitalPaintGauge] This part has been replaced.");
-                }
-                if (_targetExteriorPart.IsPartDentRepaired)
-                {
-                    GameLogger.Log($"[DigitalPaintGauge] This part has had dent repair.");
-                }
-            }
+            // if (result.Success && _targetExteriorPart != null)
+            // {
+            //     // Also check for existing issues on the part
+            //     if (_targetExteriorPart.IsPartReplaced)
+            //     {
+            //         GameLogger.Log($"[DigitalPaintGauge] This part has been replaced.");
+            //     }
+            //     if (_targetExteriorPart.IsPartDentRepaired)
+            //     {
+            //         GameLogger.Log($"[DigitalPaintGauge] This part has had dent repair.");
+            //     }
+            // }
         }
 
         protected override void OnInspectionCancelled()

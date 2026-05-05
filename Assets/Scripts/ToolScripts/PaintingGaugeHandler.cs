@@ -217,7 +217,8 @@ public class PaintingGaugeHandler : MonoBehaviour, IUsableTool
     {
         if (_targetPart == null) return;
 
-        IssueDataBase issueDatabase = FindObjectOfType<IssueDataBase>();
+        VehicleManager vehicleManager = FindObjectOfType<VehicleManager>();
+        IssueDataBase issueDatabase = vehicleManager != null ? vehicleManager.IssueDatabase : null;
         if (issueDatabase == null)
         {
             GameLogger.LogWarning("IssueDataBase not found in scene.");
