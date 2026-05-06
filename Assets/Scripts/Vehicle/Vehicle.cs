@@ -79,6 +79,13 @@ public class Vehicle : MonoBehaviour
             exhaust.InitializeExhaust();
         }
 
+        // Initialize exterior parts with registration data for label-based detection
+        foreach (var part in exteriorParts)
+        {
+            if (part != null)
+                part.InitializePart(Registration);
+        }
+
         GameLogger.Log("[Vehicle] All vehicle parts initialized.");
     }
 
@@ -187,17 +194,12 @@ public class Vehicle : MonoBehaviour
                     if (vehiclePart.partPosition == damagedPart)
                     {
                         int randomSign;
-                        if(PlayerDataManager.Instance.playerData.level<issuePool.GetByName("Dent_Repaired").AvailableLevel)
                             randomSign = UnityEngine.Random.Range(0, 2);
-                        else
-                            randomSign = UnityEngine.Random.Range(0, 3);
 
                         if (randomSign == 0)
                             vehiclePart.AssignIssue(issuePool.GetByName("Painted_Part"));
                         else if (randomSign == 1)
                             vehiclePart.AssignIssue(issuePool.GetByName("Replaced_Part"));
-                        else if (randomSign == 2)
-                            vehiclePart.AssignIssue(issuePool.GetByName("Dent_Repaired"));
                     }
                 }
             }

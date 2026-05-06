@@ -45,6 +45,7 @@ namespace ToolScripts
 
         protected override VehiclePart GetTargetPart()
         {
+            Debug.Log("GET TARGET PART");
             // OBD scanner finds the entire vehicle
             Player player = FindObjectOfType<Player>();
             if (player == null) return null;

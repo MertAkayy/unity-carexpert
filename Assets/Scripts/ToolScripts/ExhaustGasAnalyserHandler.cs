@@ -134,19 +134,17 @@ namespace ToolScripts
 
             // Check if broken
             if (_targetExhaust.IsBroken)
-            {
                 result.AddMeasurement("Exhaust", "DAMAGED");
-                result.AddDetectedIssue("Emission_Fault");
-            }
 
             // Overall result
             bool overallPass = coPass && hcPass && noxPass && !_targetExhaust.IsBroken;
             result.AddMeasurement("Overall", overallPass ? "PASS" : "FAIL");
 
-            // Add emission fault if any reading exceeds limits
+            // Detect specific issues from the emission signature and add to result
             if (!overallPass)
             {
-                result.AddDetectedIssue("Emission_Fault");
+                foreach (string issueName in _targetExhaust.GetDetectedIssueNames())
+                    result.AddDetectedIssue(issueName);
             }
 
             // Build display message

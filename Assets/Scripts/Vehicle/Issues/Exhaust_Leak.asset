@@ -15,11 +15,12 @@ MonoBehaviour:
   FailureName: Exhaust_Leak
   Description: Loud noise due to holes or cracks in the exhaust system.
   AvailableLevel: 21
-  AffectedPartType: 5
+  AffectedPartType: 8
   PossibilityWeight: 1
   ObdCode: PXXXX
   RequiredTool: 5
   Clues:
   - clueText: Visible soot or burn marks are observed around the exhaust manifold,
       pipes, or muffler joints.
+    isAcitve: 0
     isCollected: 0

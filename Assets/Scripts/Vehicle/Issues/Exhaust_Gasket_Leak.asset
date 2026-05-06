@@ -15,10 +15,11 @@ MonoBehaviour:
   FailureName: Exhaust_Gasket_Leak
   Description: Exhaust gasket is leaking, causing noise and emission issues.
   AvailableLevel: 21
-  AffectedPartType: 5
+  AffectedPartType: 8
   PossibilityWeight: 1
   ObdCode: PXXXX
   RequiredTool: 5
   Clues:
   - clueText: Louder than normal engine sound or hissing/whistling noise.
+    isAcitve: 0
     isCollected: 0

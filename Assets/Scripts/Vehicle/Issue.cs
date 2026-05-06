@@ -39,6 +39,8 @@ public class Issue : ScriptableObject
                 return vehiclePart is IVehicleGlass;
             case AffectedPartType.Exterior:
                 return vehiclePart is IExteriorPart;
+            case AffectedPartType.Exhaust:
+                return vehiclePart is IVehicleExhaust;
             default:
                 return false;
         }
@@ -70,7 +72,8 @@ public enum AffectedPartType
     Wheel,
     Engine,
     Battery,
-    Radiator
+    Radiator,
+    Exhaust,
 }
 [Serializable]
 public class IssueDto

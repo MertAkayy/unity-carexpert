@@ -15,12 +15,14 @@ MonoBehaviour:
   FailureName: Exhaust_Manifold_Crack
   Description: Exhaust manifold is cracked, causing exhaust leaks and noise.
   AvailableLevel: 15
-  AffectedPartType: 5
+  AffectedPartType: 8
   PossibilityWeight: 1
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:
   - clueText: Cracking or ticking noises heard when engine is running.
+    isAcitve: 0
     isCollected: 0
   - clueText: Cracks or deformation observed on the exhaust manifold.
+    isAcitve: 0
     isCollected: 0

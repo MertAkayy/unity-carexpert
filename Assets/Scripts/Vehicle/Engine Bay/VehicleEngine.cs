@@ -34,32 +34,42 @@ public class VehicleEngine : VehiclePart, IInteractable, IVehicleEngine, IReadab
     }
 
     /// <summary>
-    /// Initializes the engine with random realistic values
+    /// Initializes the engine with a clean normal baseline.
+    /// Issues assigned afterwards drive condition flags and abnormal values.
     /// </summary>
     public void InitializeEngine()
     {
-        // Oil level: 50-100% (0.5-1.0 as percentage of capacity)
-        OilLevel = (int)Math.Round(Random.Range(0.5f, 1.0f) * OilCapacity);
+        // Oil capacity: 4.0–6.0 litres stored in 100ml units (40–60)
+        OilCapacity = Random.Range(40, 61);
 
-        // Random issues based on chance
-        HasOilLeak = Random.value < 0.1f; // 10% chance
-        HasCracks = Random.value < 0.05f; // 5% chance
-        BeltsAged = Random.value < 0.2f; // 20% chance
-        CoolantReservoirLow = Random.value < 0.15f; // 15% chance
-        VacuumTestFailed = Random.value < 0.1f; // 10% chance
+        // Start with a full/healthy oil level (80–100% of capacity)
+        OilLevel = (int)Math.Round(Random.Range(0.8f, 1.0f) * OilCapacity);
 
-        // Set serial number if not set
+        // All condition flags start clean — issues will set them
+        HasOilLeak = false;
+        HasCracks = false;
+        BeltsAged = false;
+        CoolantReservoirLow = false;
+        VacuumTestFailed = false;
+        isWorking = true;
+
         if (string.IsNullOrEmpty(SerialNumber))
-        {
             SerialNumber = GenerateSerialNumber();
+
+        GameLogger.Log($"[VehicleEngine] Initialized: OilLevel={OilLevel}/{OilCapacity}, Serial={SerialNumber}");
+    }
+
+    public override void AssignIssue(Issue issue)
+    {
+        base.AssignIssue(issue);
+
+        if (issue.FailureName == "Low_Oil_Level")
+        {
+            // Set oil level below the recommended threshold (< 50% of capacity)
+            OilLevel = (int)Math.Round(Random.Range(0.05f, 0.44f) * OilCapacity);
+            isWorking = OilLevel >= minAcceptableOilLevel * OilCapacity && !HasCracks;
+            GameLogger.Log($"[VehicleEngine] Low_Oil_Level assigned — OilLevel={OilLevel}/{OilCapacity} ({GetOilLevelPercentage() * 100f:F0}%)");
         }
-
-        // Engine is working if oil level is acceptable and no major damage
-        isWorking = OilLevel >= minAcceptableOilLevel * OilCapacity && !HasCracks;
-
-        GameLogger.Log($"[VehicleEngine] Initialized: {OilLevel}/{OilCapacity} oil, " +
-                       $"{(HasOilLeak ? "Oil Leak" : "No Leak")}, " +
-                       $"{(BeltsAged ? "Aged Belts" : "Good Belts")}");
     }
 
     private string GenerateSerialNumber()
@@ -95,6 +105,24 @@ public class VehicleEngine : VehiclePart, IInteractable, IVehicleEngine, IReadab
         string engineInfo = GetEngineInfoString();
         GameLogger.Log($"[VehicleEngine] Reading: {engineInfo}");
         DebugToScreen.ShowMessage(engineInfo, 5f);
+        DetectIssuesFromRead();
+    }
+
+    private void DetectIssuesFromRead()
+    {
+        VehicleManager vehicleManager = FindObjectOfType<VehicleManager>();
+        if (vehicleManager?.IssueDatabase == null) return;
+
+        if (IsOilLevelLow())
+        {
+            Issue issue = vehicleManager.IssueDatabase.GetByName("Low_Oil_Level");
+            if (issue != null && !predictedIssues.Contains(issue))
+            {
+                predictedIssues.Add(issue);
+                GameLogger.Log($"[VehicleEngine] 'Low_Oil_Level' added to predicted issues ({GetOilLevelPercentage() * 100f:F0}% oil)");
+                DebugToScreen.ShowMessage("Low Oil Level Detected!", 3f);
+            }
+        }
     }
 
     private string GetEngineInfoString()

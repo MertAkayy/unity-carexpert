@@ -94,37 +94,8 @@ namespace ToolScripts
             {
                 result.AddMeasurement("Tread Status", "Good");
             }
-
-            // Check tire age
-            float tireAge = _targetWheel.GetTireAge();
-            result.AddMeasurement("Tire Age", $"{tireAge:F1} years");
-
-            if (_targetWheel.IsExpired())
-            {
-                result.AddMeasurement("Age Status", "EXPIRED - Replace tire");
-                issues.Add("Expired_Tire");
-            }
-            else if (tireAge > 4f)
-            {
-                result.AddMeasurement("Age Status", "Aging - Check soon");
-            }
-            else
-            {
-                result.AddMeasurement("Age Status", "Good");
-            }
-
-            // Check season appropriateness
-            result.AddMeasurement("Tire Type", _targetWheel.SeasonType.ToString());
-
-            if (!_targetWheel.IsSeasonAppropriate())
-            {
-                result.AddMeasurement("Season Status", "Wrong season for current month");
-                issues.Add("Wrong_Season_Tire");
-            }
-            else
-            {
-                result.AddMeasurement("Season Status", "Appropriate");
-            }
+            
+            
 
             // Check pressure
             float pressure = _targetWheel.Pressure;
@@ -170,7 +141,7 @@ namespace ToolScripts
             result.AddMeasurement("Wheel Type", _targetWheel.IsAlloy ? "Alloy" : "Steel");
 
             // Build display message
-            string message = BuildInspectionMessage(treadDepth, tireAge, issues);
+            string message = BuildInspectionMessage(treadDepth, issues);
             result.DisplayMessage = message;
 
             // Add detected issues
@@ -179,14 +150,14 @@ namespace ToolScripts
                 result.AddDetectedIssue(issue);
             }
 
-            GameLogger.Log($"[TreadDepthGauge] Inspected {_targetWheel.Position}: {treadDepth:F2}mm tread, {tireAge:F1} years, {_targetWheel.SeasonType}");
+            GameLogger.Log($"[TreadDepthGauge] Inspected {_targetWheel.Position}: {treadDepth:F2}mm tread");
 
             return result;
         }
 
-        private string BuildInspectionMessage(double treadDepth, float tireAge, List<string> issues)
+        private string BuildInspectionMessage(double treadDepth, List<string> issues)
         {
-            string message = $"Tread Depth: {treadDepth:F2} mm | Age: {tireAge:F1} years\n";
+            string message = $"Tread Depth: {treadDepth:F2} mm \n";
 
             if (issues.Count > 0)
             {

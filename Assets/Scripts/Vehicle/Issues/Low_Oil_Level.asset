@@ -16,9 +16,10 @@ MonoBehaviour:
   Description: The engine oil level is below the recommended minimum.
   AvailableLevel: 1
   AffectedPartType: 5
-  PossibilityWeight: 1
+  PossibilityWeight: 90
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:
   - clueText: The engine oil level is below the recommended minimum.
+    isAcitve: 0
     isCollected: 0

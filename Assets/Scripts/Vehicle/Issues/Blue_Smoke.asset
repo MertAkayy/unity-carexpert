@@ -15,10 +15,11 @@ MonoBehaviour:
   FailureName: Blue_Smoke
   Description: There is blue smoke coming from the exhaust.
   AvailableLevel: 30
-  AffectedPartType: 5
+  AffectedPartType: 8
   PossibilityWeight: 1
   ObdCode: PXXXX
   RequiredTool: 5
   Clues:
   - clueText: There is blue smoke coming from the exhaust.
+    isAcitve: 0
     isCollected: 0

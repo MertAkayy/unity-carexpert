@@ -15,10 +15,11 @@ MonoBehaviour:
   FailureName: Emission_Failure
   Description: Fault in the vehicle's emission control system.
   AvailableLevel: 16
-  AffectedPartType: 5
+  AffectedPartType: 8
   PossibilityWeight: 1
   ObdCode: PXXXX
   RequiredTool: 5
   Clues:
   - clueText: High NOx points to a malfunctioning EGR or catalytic converter.
+    isAcitve: 0
     isCollected: 0

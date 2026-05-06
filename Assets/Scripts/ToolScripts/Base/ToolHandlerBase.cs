@@ -115,6 +115,7 @@ namespace ToolScripts.Base
 
         protected virtual VehiclePart GetTargetPart()
         {
+            Debug.Log("GET TARGET PART");
             if (player == null)
             {
                 player = FindObjectOfType<Player>();

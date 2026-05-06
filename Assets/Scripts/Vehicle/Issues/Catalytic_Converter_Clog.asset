@@ -15,7 +15,7 @@ MonoBehaviour:
   FailureName: Catalytic_Converter_Clog
   Description: Catalytic converter is clogged, reducing engine performance.
   AvailableLevel: 12
-  AffectedPartType: 5
+  AffectedPartType: 8
   PossibilityWeight: 1
   ObdCode: PXXXX
   RequiredTool: 5
@@ -23,4 +23,5 @@ MonoBehaviour:
   - clueText: An exhaust gas analyzer detects unusually high backpressure or restricted
       exhaust flow, with elevated carbon dioxide (CO2) and low oxygen (O2) levels,
       indicating a clogged catalytic converter.
+    isAcitve: 0
     isCollected: 0

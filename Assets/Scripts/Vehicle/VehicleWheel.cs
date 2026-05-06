@@ -121,17 +121,45 @@ public class VehicleWheel : VehiclePart, IInteractable, IVehicleWheel, IReadable
 
     public void Read()
     {
+        Debug.Log("read");
         string tireInfo = GetTireInfoString();
         GameLogger.Log($"[VehicleWheel] Reading: {tireInfo}");
         DebugToScreen.ShowMessage(tireInfo, 5f);
+        DetectTireIssuesFromLabel();
+    }
+
+    private void DetectTireIssuesFromLabel()
+    {
+        VehicleManager vehicleManager = FindObjectOfType<VehicleManager>();
+        if (vehicleManager?.IssueDatabase == null) return;
+
+        if (IsExpired())
+        {
+            Issue issue = vehicleManager.IssueDatabase.GetByName("Expired_Tire");
+            if (issue != null && !predictedIssues.Contains(issue))
+            {
+                predictedIssues.Add(issue);
+                GameLogger.Log($"[VehicleWheel] 'Expired_Tire' added to predicted issues on {name} (age: {GetTireAge():F1} years)");
+                DebugToScreen.ShowMessage("Expired Tire Detected!", 3f);
+            }
+        }
+
+        if (!IsSeasonAppropriate())
+        {
+            Issue issue = vehicleManager.IssueDatabase.GetByName("Wrong_Season_Tire");
+            if (issue != null && !predictedIssues.Contains(issue))
+            {
+                predictedIssues.Add(issue);
+                GameLogger.Log($"[VehicleWheel] 'Wrong_Season_Tire' added to predicted issues on {name} (type: {SeasonType})");
+                DebugToScreen.ShowMessage("Wrong Season Tire Detected!", 3f);
+            }
+        }
     }
 
     private string GetTireInfoString()
     {
         return $"Tire: {Position}\n" +
                $"Brand: {TireBrand}\n" +
-               $"Tread Depth: {TreadDepthMm:F2} mm\n" +
-               $"Pressure: {Pressure:F1} PSI\n" +
                $"Type: {SeasonType}\n" +
                $"Age: {GetTireAge():F1} years\n" +
                $"Produced: {ProductionDate:yyyy-MM}\n" +

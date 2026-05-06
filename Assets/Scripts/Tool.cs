@@ -12,7 +12,6 @@ public enum Tool
     Tablet,
     TireTreadDepthGauge,
     TirePumper,
-    PdrLight,
 }
 
 public enum ItemType
@@ -31,7 +30,6 @@ public enum ItemType
     MechanicPaintTicknessGauge,
     OBDScanner,
     Operator,
-    PdrLight,
     Shelf,
     SuspansionTestDevice,
     Tablet,

@@ -43,6 +43,7 @@ public enum VehiclePartUniqueType
     Engine,
     Radiator,
     Battery,
+    Exhaust,
     FrontRightLight,
     FrontLeftLight,
     RearRightLight,

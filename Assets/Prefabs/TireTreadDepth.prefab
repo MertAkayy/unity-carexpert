@@ -51,7 +51,7 @@ MonoBehaviour:
   toolName: Tool
   targetLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 832
   compatiblePartInterfaces: []
   inspectionStartSound: {fileID: 0}
   inspectionCompleteSound: {fileID: 0}

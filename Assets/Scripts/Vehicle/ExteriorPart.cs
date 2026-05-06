@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -9,7 +10,11 @@ public class ExteriorPart : VehiclePart ,IInteractable,IExteriorPart,IReadable
     public int paintThickness;
     [SerializeField] private string productionName;
     private DateTime _productionDateTime;
+    private VehicleRegistration _vehicleRegistration;
     public bool IsPartReplaced { get; set; } = false;
+
+    private static readonly string[] AftermarketBrands =
+        { "Valeo", "TRW", "Bosch", "Denso", "Monroe", "Brembo", "Hella", "SKF", "Febi", "Lemforder" };
     public bool IsPartPainted { get; set; } = false;
     public bool IsPartDentRepaired { get; set; } = false;
     public bool IsPartRepaired { get; set; } = false;
@@ -28,6 +33,13 @@ public class ExteriorPart : VehiclePart ,IInteractable,IExteriorPart,IReadable
         Left
         
     }
+    public void InitializePart(VehicleRegistration registration)
+    {
+        _vehicleRegistration = registration;
+        productionName = registration.Brand;
+        _productionDateTime = registration.ModelDateTime;
+    }
+
     public override void AssignIssue(Issue issue)
     {
         if (issue.IsValidFor(this) && !assignedIssues.Contains(issue))
@@ -39,6 +51,11 @@ public class ExteriorPart : VehiclePart ,IInteractable,IExteriorPart,IReadable
                 IsPartPainted = false;
                 IsPartDentRepaired = false;
                 IsPartRepaired = true;
+                if (_vehicleRegistration != null)
+                {
+                    productionName = GetAftermarketBrand(_vehicleRegistration.Brand);
+                    _productionDateTime = GetReplacedPartDate(_vehicleRegistration.ModelDateTime);
+                }
             }
             else if (String.Compare(issue.FailureName, "Painted_Part", StringComparison.Ordinal) == 0)
             {
@@ -108,8 +125,57 @@ public class ExteriorPart : VehiclePart ,IInteractable,IExteriorPart,IReadable
     public void Read()
     {
         GameLogger.Log("[ExteriorPart] Reading part");
-        GameLogger.Log(productionName+"\n"+_productionDateTime);
-        DebugToScreen.ShowMessage("Label: \n"+productionName+"\n"+_productionDateTime,5F);
+        GameLogger.Log(productionName + "\n" + _productionDateTime);
+        DebugToScreen.ShowMessage("Label: \n" + productionName + "\n" + _productionDateTime, 5F);
+        DetectReplacedPartFromLabel();
+    }
+
+    private void DetectReplacedPartFromLabel()
+    {
+        if (_vehicleRegistration == null) return;
+
+        bool brandMismatch = !string.Equals(productionName, _vehicleRegistration.Brand, StringComparison.OrdinalIgnoreCase);
+        bool dateMismatch = _productionDateTime.Year != _vehicleRegistration.ModelDateTime.Year;
+
+        if (!brandMismatch && !dateMismatch) return;
+
+        if (brandMismatch)
+            GameLogger.Log($"[ExteriorPart] Brand mismatch on {name}: label='{productionName}' registration='{_vehicleRegistration.Brand}'");
+        if (dateMismatch)
+            GameLogger.Log($"[ExteriorPart] Date mismatch on {name}: label='{_productionDateTime:yyyy}' registration='{_vehicleRegistration.ModelDateTime:yyyy}'");
+
+        VehicleManager vehicleManager = FindObjectOfType<VehicleManager>();
+        if (vehicleManager?.IssueDatabase == null) return;
+
+        Issue issue = vehicleManager.IssueDatabase.GetByName("Replaced_Part");
+        if (issue == null) return;
+
+        if (!predictedIssues.Contains(issue))
+        {
+            predictedIssues.Add(issue);
+            GameLogger.Log($"[ExteriorPart] 'Replaced_Part' added to predicted issues on {name}");
+            DebugToScreen.ShowMessage("Replaced Part Detected!", 3f);
+        }
+    }
+
+    private string GetAftermarketBrand(string originalBrand)
+    {
+        var options = AftermarketBrands
+            .Where(b => !b.Equals(originalBrand, StringComparison.OrdinalIgnoreCase))
+            .ToList();
+        return options[UnityEngine.Random.Range(0, options.Count)];
+    }
+
+    private DateTime GetReplacedPartDate(DateTime originalDate)
+    {
+        DateTime minDate = originalDate.AddYears(1);
+        DateTime maxDate = DateTime.Now.AddMonths(-1);
+        if (minDate >= maxDate)
+            minDate = originalDate.AddMonths(6);
+        int daysRange = (int)(maxDate - minDate).TotalDays;
+        if (daysRange <= 0)
+            return originalDate.AddYears(2);
+        return minDate.AddDays(UnityEngine.Random.Range(0, daysRange));
     }
 }
 

@@ -15,13 +15,15 @@ MonoBehaviour:
   FailureName: EGR_System_Failure
   Description: Exhaust gas recirculation system not functioning properly.
   AvailableLevel: 24
-  AffectedPartType: 5
+  AffectedPartType: 8
   PossibilityWeight: 1
   ObdCode: P0402
   RequiredTool: 5
   Clues:
   - clueText: Black and heavy smoke emitted from the exhaust.
+    isAcitve: 0
     isCollected: 0
   - clueText: "An error code related to the EGR System appears (e.g., \u201CEGR System
       Fault\u201D or P0402 code)."
+    isAcitve: 0
     isCollected: 0

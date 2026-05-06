@@ -1,7 +1,8 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
-public class VehicleExhaust : VehiclePart, IInteractable, IReadable
+public class VehicleExhaust : VehiclePart, IInteractable, IReadable, IVehicleExhaust
 {
     [Header("Exhaust Properties")]
     public bool HasSmoke { get; set; }
@@ -21,40 +22,134 @@ public class VehicleExhaust : VehiclePart, IInteractable, IReadable
     }
 
     /// <summary>
-    /// Initializes the exhaust system with random realistic values
+    /// Initializes the exhaust with normal baseline emission values.
+    /// Issues assigned later will push values into abnormal ranges.
     /// </summary>
     public void InitializeExhaust()
     {
-        // Generate random emission values
-        // Normal: CO < 0.5%, HC < 100 ppm, NOx < 1000 ppm
-        CO_Emission = UnityEngine.Random.Range(0.1f, 0.8f);
-        HC_Emission = UnityEngine.Random.Range(20f, 150f);
-        NOx_Emission = UnityEngine.Random.Range(100f, 1200f);
+        CO_Emission  = UnityEngine.Random.Range(0.05f, 0.35f);
+        HC_Emission  = UnityEngine.Random.Range(15f,   75f);
+        NOx_Emission = UnityEngine.Random.Range(80f,   700f);
+        IsBroken = false;
+        HasSmoke = false;
 
-        // 5% chance of being broken
-        IsBroken = UnityEngine.Random.value < 0.05f;
+        GameLogger.Log($"[VehicleExhaust] Initialized: CO={CO_Emission:F2}%, HC={HC_Emission:F0}ppm, NOx={NOx_Emission:F0}ppm");
+    }
 
-        // Smoke occurs when emissions are high or system is broken
-        HasSmoke = CO_Emission > maxCO || HC_Emission > maxHC || NOx_Emission > maxNOx || IsBroken;
+    public override void AssignIssue(Issue issue)
+    {
+        base.AssignIssue(issue);
 
-        // If broken, increase emissions significantly
-        if (IsBroken)
+        switch (issue.FailureName)
         {
-            CO_Emission *= 2f;
-            HC_Emission *= 2f;
-            NOx_Emission *= 1.5f;
+            case "Exhaust_Gasket_Leak":
+                CO_Emission  += UnityEngine.Random.Range(0.4f,  0.8f);
+                HC_Emission  += UnityEngine.Random.Range(50f,   100f);
+                break;
+
+            case "Exhaust_Leak":
+                CO_Emission  += UnityEngine.Random.Range(0.5f,  1.0f);
+                HC_Emission  += UnityEngine.Random.Range(60f,   120f);
+                NOx_Emission += UnityEngine.Random.Range(0f,    150f);
+                break;
+
+            case "Exhaust_Manifold_Crack":
+                CO_Emission  += UnityEngine.Random.Range(0.6f,  1.2f);
+                HC_Emission  += UnityEngine.Random.Range(80f,   150f);
+                NOx_Emission += UnityEngine.Random.Range(100f,  300f);
+                break;
+
+            case "EGR_System_Failure":
+                // EGR recirculates exhaust to reduce NOx — failure causes NOx spike
+                NOx_Emission += UnityEngine.Random.Range(500f,  1200f);
+                CO_Emission  += UnityEngine.Random.Range(0f,    0.1f);
+                break;
+
+            case "Emission_Failure":
+                CO_Emission  += UnityEngine.Random.Range(0.8f,  1.5f);
+                HC_Emission  += UnityEngine.Random.Range(100f,  200f);
+                NOx_Emission += UnityEngine.Random.Range(300f,  600f);
+                break;
+
+            case "Catalytic_Converter_Clog":
+                CO_Emission  += UnityEngine.Random.Range(1.0f,  2.0f);
+                HC_Emission  += UnityEngine.Random.Range(150f,  300f);
+                NOx_Emission += UnityEngine.Random.Range(400f,  800f);
+                break;
+
+            case "Catalyst_Efficiency_Below_Threshold":
+                CO_Emission  += UnityEngine.Random.Range(0.3f,  0.8f);
+                HC_Emission  += UnityEngine.Random.Range(60f,   150f);
+                NOx_Emission += UnityEngine.Random.Range(200f,  500f);
+                break;
+
+            case "Blue_Smoke":
+                // Burning oil produces high HC, visible blue smoke
+                HC_Emission  += UnityEngine.Random.Range(150f,  400f);
+                CO_Emission  += UnityEngine.Random.Range(0.1f,  0.3f);
+                HasSmoke = true;
+                break;
         }
 
-        GameLogger.Log($"[VehicleExhaust] Initialized: CO={CO_Emission:F2}%, HC={HC_Emission:F0}ppm, NOx={NOx_Emission:F0}ppm, " +
-                       $"{(HasSmoke ? "Smoke" : "No Smoke")}, {(IsBroken ? "Broken" : "Good")}");
+        HasSmoke = HasSmoke || CO_Emission > maxCO || HC_Emission > maxHC || NOx_Emission > maxNOx;
+
+        GameLogger.Log($"[VehicleExhaust] Issue '{issue.FailureName}' assigned — CO={CO_Emission:F2}%, HC={HC_Emission:F0}ppm, NOx={NOx_Emission:F0}ppm");
+    }
+
+    public bool HasEmissionFault()
+    {
+        return IsBroken || CO_Emission > maxCO || HC_Emission > maxHC || NOx_Emission > maxNOx;
     }
 
     /// <summary>
-    /// Checks if emissions exceed limits
+    /// Infers which issues are likely present based on the current emission signature.
+    /// Checks are ordered from most specific pattern to most general.
     /// </summary>
-    public bool HasEmissionFault()
+    public List<string> GetDetectedIssueNames()
     {
-        return CO_Emission > maxCO || HC_Emission > maxHC || NOx_Emission > maxNOx;
+        var detected = new List<string>();
+
+        if (!HasEmissionFault()) return detected;
+
+        // Blue Smoke: very high HC is the unique fingerprint of burning oil
+        if (HC_Emission > 200f)
+            detected.Add("Blue_Smoke");
+
+        // EGR System Failure: extreme NOx spike with CO and HC near normal
+        if (NOx_Emission > 1500f && CO_Emission < maxCO + 0.15f)
+            detected.Add("EGR_System_Failure");
+
+        // Catalytic Converter Clog: all three severely elevated
+        if (CO_Emission > 1.0f && HC_Emission > 150f && NOx_Emission > 500f)
+            detected.Add("Catalytic_Converter_Clog");
+
+        // Exhaust Manifold Crack: CO + HC + moderate NOx all elevated
+        if (CO_Emission > 0.6f && HC_Emission > 80f && NOx_Emission > 100f
+            && !detected.Contains("Catalytic_Converter_Clog"))
+            detected.Add("Exhaust_Manifold_Crack");
+
+        // Catalyst Efficiency Below Threshold: all three above limits, moderate
+        if (CO_Emission > maxCO && HC_Emission > maxHC && NOx_Emission > maxNOx
+            && !detected.Contains("Catalytic_Converter_Clog")
+            && !detected.Contains("Exhaust_Manifold_Crack"))
+            detected.Add("Catalyst_Efficiency_Below_Threshold");
+
+        // Exhaust Leak: CO + HC above limits, NOx still within range
+        if (CO_Emission > maxCO && HC_Emission > maxHC && NOx_Emission <= maxNOx
+            && !detected.Contains("Exhaust_Manifold_Crack"))
+            detected.Add("Exhaust_Leak");
+
+        // Exhaust Gasket Leak: CO elevated and some HC, no NOx
+        if (CO_Emission > maxCO && HC_Emission > 50f && NOx_Emission <= maxNOx
+            && !detected.Contains("Exhaust_Leak")
+            && !detected.Contains("Exhaust_Manifold_Crack"))
+            detected.Add("Exhaust_Gasket_Leak");
+
+        // General fallback: emission fault with no specific pattern matched
+        if (detected.Count == 0)
+            detected.Add("Emission_Failure");
+
+        return detected;
     }
 
     /// <summary>
