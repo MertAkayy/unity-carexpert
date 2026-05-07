@@ -96,13 +96,11 @@ namespace ToolScripts.Base
         #region Inspection Flow
         protected virtual void TryStartInspection()
         {
-            Debug.Log("TryStartInspection");
             if (isInspecting)
             {
                 CancelInspection();
                 return;
             }
-            Debug.Log("TryStartInspection is inspectinbg true");
             currentTargetPart = GetTargetPart();
             if (!ValidateTarget())
             {
@@ -115,7 +113,6 @@ namespace ToolScripts.Base
 
         protected virtual VehiclePart GetTargetPart()
         {
-            Debug.Log("GET TARGET PART");
             if (player == null)
             {
                 player = FindObjectOfType<Player>();

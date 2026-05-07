@@ -41,6 +41,8 @@ public class Issue : ScriptableObject
                 return vehiclePart is IExteriorPart;
             case AffectedPartType.Exhaust:
                 return vehiclePart is IVehicleExhaust;
+            case AffectedPartType.CoolantReservoir:
+                return vehiclePart is IVehicleCoolantReservoir;
             default:
                 return false;
         }
@@ -74,6 +76,7 @@ public enum AffectedPartType
     Battery,
     Radiator,
     Exhaust,
+    CoolantReservoir,
 }
 [Serializable]
 public class IssueDto

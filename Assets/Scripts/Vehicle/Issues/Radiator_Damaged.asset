@@ -16,9 +16,10 @@ MonoBehaviour:
   Description: There is damage to the radiator.
   AvailableLevel: 1
   AffectedPartType: 7
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:
   - clueText: There is damage to the radiator.
+    isAcitve: 0
     isCollected: 0

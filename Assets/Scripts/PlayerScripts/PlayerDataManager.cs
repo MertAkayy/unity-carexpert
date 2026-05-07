@@ -203,7 +203,7 @@ namespace PlayerScripts
             {
                 string json = File.ReadAllText(_saveFilePath);
                 playerData = JsonUtility.FromJson<PlayerData>(json);
-                Debug.Log("Player data loaded.");
+                Debug.Log("Player data loaded."+playerData.level);
             }
             else
             {

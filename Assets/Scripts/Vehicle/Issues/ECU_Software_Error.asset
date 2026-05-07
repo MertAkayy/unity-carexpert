@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FailureName: ECU_Software_Error
   Description: Engine control unit software has errors, causing performance issues.
-  AvailableLevel: 10
+  AvailableLevel: 11
   AffectedPartType: 5
-  PossibilityWeight: 1
+  PossibilityWeight: 600
   ObdCode: P0600
   RequiredTool: 6
   Clues:
   - clueText: "An error code related to the ECU software appears (e.g., \u201CECU
       Software Error\u201D or P0600 code)."
+    isAcitve: 0
     isCollected: 0

@@ -45,7 +45,6 @@ namespace ToolScripts
 
         protected override VehiclePart GetTargetPart()
         {
-            Debug.Log("GET TARGET PART");
             // OBD scanner finds the entire vehicle
             Player player = FindObjectOfType<Player>();
             if (player == null) return null;
@@ -128,6 +127,7 @@ namespace ToolScripts
                     {
                         obdCodes.Add(code);
                         codeToPartMap[code] = part.name;
+                        result.AddDetectedIssue(issue.FailureName);
                     }
                 }
             }
@@ -151,7 +151,7 @@ namespace ToolScripts
             string message = BuildOBDMessage(obdCodes);
             result.DisplayMessage = message;
 
-            GameLogger.Log($"[OBDScanner] Found {obdCodes.Count} trouble codes");
+            GameLogger.Log($"[OBDScanner] Found {obdCodes.Count} trouble code(s) — issues will be added to predictedIssues via AddDetectedIssuesToPart");
 
             return result;
         }
@@ -200,6 +200,55 @@ namespace ToolScripts
         protected override void OnTargetInvalid()
         {
             ToolUIManager.Instance?.ShowMessage("No vehicle in range for OBD scan", 2f);
+        }
+
+        protected override void AddDetectedIssuesToPart(ToolInspectionResult result)
+        {
+            if (_targetVehicle == null || result.DetectedIssues == null || result.DetectedIssues.Count == 0) return;
+
+            VehicleManager vehicleManager = FindObjectOfType<VehicleManager>();
+            IssueDataBase issueDatabase = vehicleManager != null ? vehicleManager.IssueDatabase : null;
+            if (issueDatabase == null)
+            {
+                GameLogger.LogWarning("[OBDScanner] IssueDataBase not found.");
+                return;
+            }
+
+            List<VehiclePart> allParts = new List<VehiclePart>();
+            if (_targetVehicle.exteriorParts != null) allParts.AddRange(_targetVehicle.exteriorParts);
+            if (_targetVehicle.wheels != null) allParts.AddRange(_targetVehicle.wheels);
+            if (_targetVehicle.glasses != null) allParts.AddRange(_targetVehicle.glasses);
+            if (_targetVehicle.lights != null) allParts.AddRange(_targetVehicle.lights);
+            if (_targetVehicle.battery != null) allParts.Add(_targetVehicle.battery);
+            if (_targetVehicle.engine != null) allParts.Add(_targetVehicle.engine);
+            if (_targetVehicle.radiator != null) allParts.Add(_targetVehicle.radiator);
+
+            int addedCount = 0;
+            foreach (string issueName in result.DetectedIssues)
+            {
+                Issue issue = issueDatabase.GetByName(issueName);
+                if (issue == null) continue;
+
+                // Find the part that has this issue assigned
+                foreach (var part in allParts)
+                {
+                    if (part == null) continue;
+                    if (!part.assignedIssues.Contains(issue)) continue;
+
+                    if (!part.predictedIssues.Contains(issue))
+                    {
+                        part.predictedIssues.Add(issue);
+                        addedCount++;
+                        GameLogger.Log($"[OBDScanner] '{issueName}' added to predictedIssues on '{part.name}'");
+                    }
+                    else
+                    {
+                        GameLogger.Log($"[OBDScanner] '{issueName}' already in predictedIssues on '{part.name}'");
+                    }
+                }
+            }
+
+            GameLogger.Log($"[OBDScanner] {addedCount} issue(s) added to predictedIssues across all parts.");
         }
     }
 }

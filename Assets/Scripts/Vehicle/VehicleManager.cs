@@ -16,6 +16,7 @@ public class VehicleManager : MonoBehaviour
     [SerializeField] private bool _debugMode = false;
 
     private VehicleFactory _vehicleFactory;
+    private FaultGenerator _faultGenerator;
 
     public VehicleFactory Factory => _vehicleFactory;
     public IssueDataBase IssueDatabase => _issueDatabase;
@@ -34,10 +35,12 @@ public class VehicleManager : MonoBehaviour
             Debug.LogWarning("[VehicleManager] No vehicle types assigned!");
         }
 
-        // Create the factory
-        _vehicleFactory = new VehicleFactory(_issueDatabase, _vehicleTypes);
+        // Create and register FaultGenerator
+        _faultGenerator = new FaultGenerator(_issueDatabase);
+        ServiceLocator.Register<IFaultGenerator>(_faultGenerator);
 
-        // Register with ServiceLocator
+        // Create and register VehicleFactory
+        _vehicleFactory = new VehicleFactory(_issueDatabase, _vehicleTypes);
         ServiceLocator.Register<IVehicleFactory>(_vehicleFactory);
 
         if (_debugMode)
@@ -48,11 +51,11 @@ public class VehicleManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        // Unregister from ServiceLocator
+        if (ServiceLocator.IsRegistered<IFaultGenerator>())
+            ServiceLocator.Unregister<IFaultGenerator>();
+
         if (ServiceLocator.IsRegistered<IVehicleFactory>())
-        {
             ServiceLocator.Unregister<IVehicleFactory>();
-        }
     }
 
     #region Debug

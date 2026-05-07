@@ -15,10 +15,11 @@ MonoBehaviour:
   FailureName: Low_Coolant_Level
   Description: Coolant level is low, risk of overheating.
   AvailableLevel: 8
-  AffectedPartType: 5
-  PossibilityWeight: 1
+  AffectedPartType: 9
+  PossibilityWeight: 0
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:
   - clueText: ' It is visible that there is not enough fluid in the coolant reservoir.'
+    isAcitve: 0
     isCollected: 0

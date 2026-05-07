@@ -19,6 +19,7 @@ public class Vehicle : MonoBehaviour
     [SerializeField] public VehicleEngine engine;
     [SerializeField] public VehicleRadiator radiator;
     [SerializeField] public VehicleExhaust exhaust;
+    [SerializeField] public VehicleCoolantReservoir coolantReservoir;
     public List<AccidentReport> AccidentReports = new();
     [SerializeField] private Transform liftPlatform;
     public readonly VehicleRegistration Registration=new VehicleRegistration();
@@ -79,6 +80,12 @@ public class Vehicle : MonoBehaviour
             exhaust.InitializeExhaust();
         }
 
+        // Initialize coolant reservoir (if exists)
+        if (coolantReservoir != null)
+        {
+            coolantReservoir.InitializeCoolantReservoir();
+        }
+
         // Initialize exterior parts with registration data for label-based detection
         foreach (var part in exteriorParts)
         {
@@ -108,7 +115,6 @@ public class Vehicle : MonoBehaviour
         // Try to get FaultGenerator from ServiceLocator
         if (ServiceLocator.TryGet(out _faultGenerator) && _faultGenerator != null)
         {
-            // Use the new FaultGenerator service
             int playerLevel = PlayerDataManager.Instance.playerData.level;
             _faultGenerator.GenerateFaultsForVehicle(this, playerLevel);
         }
@@ -150,6 +156,7 @@ public class Vehicle : MonoBehaviour
         if (engine != null) allParts.Add(engine);
         if (radiator != null) allParts.Add(radiator);
         if (exhaust != null) allParts.Add(exhaust);
+        if (coolantReservoir != null) allParts.Add(coolantReservoir);
 
         foreach (var carPart in allParts)
         {
@@ -261,6 +268,7 @@ public class Vehicle : MonoBehaviour
         if (engine != null) allParts.Add(engine);
         if (radiator != null) allParts.Add(radiator);
         if (exhaust != null) allParts.Add(exhaust);
+        if (coolantReservoir != null) allParts.Add(coolantReservoir);
         if (allParts.Count == 0)
         {
             GameLogger.LogWarning("No vehicle parts are defined.");
@@ -269,7 +277,7 @@ public class Vehicle : MonoBehaviour
         // Rastgele issueCount (orn. 5) adet ariza sec
         List<Issue> selectedIssues = new List<Issue>();
         List<Issue> availableIssues = new List<Issue>(issuePool.GetAvailableForLevel(PlayerDataManager.Instance.playerData.level));
-        int maxIssues = Mathf.Min(issueCount, availableIssues.Count); // Mevcut ariza sayisini asmmak icin
+        int maxIssues = Mathf.Min(issueCount, availableIssues.Count); // Mevcut ariza sayisini asmamak icin
         for (int i = 0; i < maxIssues; i++)
         {
             if (availableIssues.Count == 0)
@@ -285,6 +293,7 @@ public class Vehicle : MonoBehaviour
         // Secilen her arizayi uygun bir parcaya ata
         foreach (var issue in selectedIssues)
         {
+            Debug.Log("--------"+issue.name);
             // Arizaya uygun parcalari bul
             var validParts = allParts.Where(part => issue.IsValidFor(part)).ToList();
             if (validParts.Count > 0)

@@ -53,22 +53,20 @@ namespace Progression
 
         public int Priority => 10;
 
-        public int CurrentLevel { get; private set; } = 1;
+        public int CurrentLevel => PlayerDataManager.Instance.playerData.level;
+        public int CurrentXP => PlayerDataManager.Instance.playerData.experience;
+        public int XPToNextLevel => GetXPThresholdForLevel(CurrentLevel + 1) - GetXPThresholdForLevel(CurrentLevel);
+        public float LevelProgress => (float)(CurrentXP - GetXPThresholdForLevel(CurrentLevel)) / XPToNextLevel;
 
         private void Awake()
         {
-            // Self-register with ServiceLocator
             ServiceLocator.Register<IProgressionManager>(this);
         }
 
         private void OnDestroy()
         {
-            // Unregister when destroyed
             ServiceLocator.Unregister<IProgressionManager>();
         }
-        public int CurrentXP { get; private set; } = 0;
-        public int XPToNextLevel => GetXPThresholdForLevel(CurrentLevel + 1) - GetXPThresholdForLevel(CurrentLevel);
-        public float LevelProgress => (float)(CurrentXP - GetXPThresholdForLevel(CurrentLevel)) / XPToNextLevel;
 
         #endregion
 
@@ -98,14 +96,11 @@ namespace Progression
 
         public void Initialize()
         {
-            // Load saved progression data if available
-            LoadProgressionData();
             Debug.Log($"[ProgressionManager] Initialized. Level: {CurrentLevel}, XP: {CurrentXP}");
         }
 
         public void Shutdown()
         {
-            SaveProgressionData();
             Debug.Log("[ProgressionManager] Shutdown complete");
         }
 
@@ -120,8 +115,7 @@ namespace Progression
         {
             if (amount <= 0) return;
 
-            int oldXP = CurrentXP;
-            CurrentXP += amount;
+            PlayerDataManager.Instance.playerData.experience += amount;
 
             Debug.Log($"[ProgressionManager] Gained {amount} XP for: {reason}. Total: {CurrentXP}");
 
@@ -171,27 +165,20 @@ namespace Progression
         {
             int newLevel = CurrentLevel;
 
-            // Check if we've passed the threshold for next level
             while (CurrentXP >= GetXPThresholdForLevel(newLevel + 1))
-            {
                 newLevel++;
-            }
 
             if (newLevel > CurrentLevel)
             {
                 int oldLevel = CurrentLevel;
-                CurrentLevel = newLevel;
+                PlayerDataManager.Instance.playerData.level = newLevel;
+                PlayerDataManager.Instance.playerData.UpdateHighestLevel(newLevel);
 
-                // Apply unlocks for each level gained
                 for (int lvl = oldLevel + 1; lvl <= newLevel; lvl++)
-                {
                     ApplyLevelUnlocks(lvl);
-                }
 
                 Debug.Log($"[ProgressionManager] LEVEL UP! {oldLevel} -> {CurrentLevel}");
                 OnLevelUp?.Invoke(CurrentLevel);
-
-                // Fire global event
                 EventManager.TriggerEvent("OnPlayerLevelUp");
             }
         }
@@ -288,45 +275,6 @@ namespace Progression
 
         #endregion
 
-        #region Save/Load
-
-        private void LoadProgressionData()
-        {
-            // Try to load from PlayerDataManager singleton if available
-            if (PlayerDataManager.Instance != null)
-            {
-                var playerData = PlayerDataManager.Instance.playerData;
-                if (playerData != null)
-                {
-                    CurrentLevel = playerData.level;
-                    CurrentXP = playerData.experience;
-                }
-            }
-
-            // Load unlocks from PlayerPrefs as backup
-            CurrentLevel = Mathf.Max(CurrentLevel, PlayerPrefs.GetInt("Progression_Level", 1));
-            CurrentXP = Mathf.Max(CurrentXP, PlayerPrefs.GetInt("Progression_XP", 0));
-        }
-
-        private void SaveProgressionData()
-        {
-            PlayerPrefs.SetInt("Progression_Level", CurrentLevel);
-            PlayerPrefs.SetInt("Progression_XP", CurrentXP);
-            PlayerPrefs.Save();
-
-            // Update PlayerDataManager singleton if available
-            if (PlayerDataManager.Instance != null)
-            {
-                var playerData = PlayerDataManager.Instance.playerData;
-                if (playerData != null)
-                {
-                    playerData.level = CurrentLevel;
-                    playerData.experience = CurrentXP;
-                }
-            }
-        }
-
-        #endregion
 
         #region Debug
 

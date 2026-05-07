@@ -136,6 +136,8 @@ public class FaultGenerator : IFaultGenerator
         // Get available issues for the player's level
         List<Issue> availableIssues = new List<Issue>(_issueDatabase.GetAvailableForLevel(playerLevel));
 
+        string issueNames = string.Join(", ", availableIssues.ConvertAll(i => $"{i.FailureName}(w:{i.PossibilityWeight})"));
+        GameLogger.Log($"[FaultGenerator] Available issues ({availableIssues.Count}): {issueNames}");
         // Limit issue count to available issues
         int maxIssues = Mathf.Min(issueCount, availableIssues.Count);
         List<Issue> selectedIssues = new List<Issue>();
@@ -241,7 +243,7 @@ public class FaultGenerator : IFaultGenerator
 
         foreach (var issue in availableIssues)
         {
-            issue.PossibilityWeight = 0;
+            // issue.PossibilityWeight = 0;
 
             // Boost newly unlocked issues
             if (issue.AvailableLevel == playerLevel)
@@ -341,6 +343,7 @@ public class FaultGenerator : IFaultGenerator
         if (vehicle.engine != null) allParts.Add(vehicle.engine);
         if (vehicle.radiator != null) allParts.Add(vehicle.radiator);
         if (vehicle.exhaust != null) allParts.Add(vehicle.exhaust);
+        if (vehicle.coolantReservoir != null) allParts.Add(vehicle.coolantReservoir);
 
         return allParts;
     }

@@ -15,10 +15,11 @@ MonoBehaviour:
   FailureName: Coolant_Reservoir_Crack
   Description: Coolant reservoir is cracked, causing coolant leakage.
   AvailableLevel: 7
-  AffectedPartType: 7
-  PossibilityWeight: 1
+  AffectedPartType: 9
+  PossibilityWeight: 90
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:
   - clueText: The coolant reservoir has visible cracks or white residue around it.
+    isAcitve: 0
     isCollected: 0
