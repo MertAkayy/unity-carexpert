@@ -12,19 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5a27e23cf93c4c46b8ba00ba4c586ce, type: 3}
   m_Name: Windshield_Wiper_Motor_Failure 1
   m_EditorClassIdentifier: 
-  FailureName: Odometer_Rolled_Back
-  Description: "Odometer tampered means the vehicle\u2019s mileage counter has been
-    illegally altered to display less mileage than it has actually traveled, usually
-    to make the car seem newer or more valuable."
+  FailureName: Windshield Wiper Motor Failure
+  Description: The electric motor that drives the wiper arms has stopped working
+    properly, so the wipers move slowly, only on one speed, or not at all.
   AvailableLevel: 7
   AffectedPartType: 5
-  PossibilityWeight: 1
+  PossibilityWeight: 0
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:
-  - clueText: Maintenance records or service documents report a higher mileage than
-      what the odometer currently displays.
+  - clueText: Wipers don't move when switched on, but you can hear a faint humming
+      or clicking sound from under the dashboard.
+    isAcitve: 0
     isCollected: 0
-  - clueText: "The vehicle\u2019s ECU records a higher mileage than what is displayed
-      on the odometer."
+  - clueText: Wipers only work on one speed setting (e.g., high works but low doesn't),
+      or they stop in the wrong position on the windshield.
+    isAcitve: 0
     isCollected: 0

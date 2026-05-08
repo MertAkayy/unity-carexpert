@@ -62,6 +62,11 @@ namespace PlayerScripts
 
         private void PerformInteract(InputAction.CallbackContext obj)
         {
+            if (playerCharacter.IsSeated)
+            {
+                playerCharacter.ExitSeat();
+                return;
+            }
             playerDataManager.CanInteract();
         }
 

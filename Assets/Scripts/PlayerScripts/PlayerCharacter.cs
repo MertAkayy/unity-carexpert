@@ -45,14 +45,43 @@ namespace PlayerScripts
         private Vector3 _requestedMovement;
         private bool _requestedJump;
         private bool _requestedCrouch;
+
+        public bool IsSeated { get; private set; }
+        private Transform _exitPoint;
+
         public void Initialize()
         {
             _stance=Stance.Stand;
             motor.CharacterController = this;
         }
 
+        public void Sit(Transform seatPoint, Transform exitPoint)
+        {
+            IsSeated = true;
+            _exitPoint = exitPoint;
+            _requestedMovement = Vector3.zero;
+            _requestedJump = false;
+            motor.enabled = false;
+            motor.Capsule.enabled = false;
+            float eyeOffset = standHeight * standCameraTargetHeight;
+            motor.transform.position = seatPoint.position - Vector3.up * eyeOffset;
+            motor.transform.rotation = seatPoint.rotation;
+        }
+
+        public void ExitSeat()
+        {
+            IsSeated = false;
+            motor.Capsule.enabled = true;
+            motor.enabled = true;
+            if (_exitPoint != null)
+                motor.SetPosition(_exitPoint.position);
+            _exitPoint = null;
+        }
+
         public void UpdateInput(CharacterInput input)
         {
+            if (IsSeated) return;
+
             _requestedRotation = input.Rotation;
             _requestedMovement=new Vector3(input.Move.x, 0, input.Move.y);
             _requestedMovement=Vector3.ClampMagnitude(_requestedMovement, 1f);
@@ -83,6 +112,8 @@ namespace PlayerScripts
 
         public void UpdateRotation(ref Quaternion currentRotation, float deltaTime)
         {
+            if (IsSeated) return;
+
             var forward = Vector3.ProjectOnPlane
             (
                 _requestedRotation*Vector3.forward,
@@ -94,6 +125,8 @@ namespace PlayerScripts
 
         public void UpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
         {
+            if (IsSeated) { currentVelocity = Vector3.zero; return; }
+
             if (motor.GroundingStatus.IsStableOnGround)
             {
                 var groundedMovement = motor.GetDirectionTangentToSurface
