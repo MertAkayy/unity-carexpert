@@ -16,9 +16,10 @@ MonoBehaviour:
   Description: Window regulator is broken, preventing window movement.
   AvailableLevel: 1
   AffectedPartType: 2
-  PossibilityWeight: 1
+  PossibilityWeight: 50
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:
   - clueText: Window regulator is broken, preventing window movement.
+    isAcitve: 0
     isCollected: 0

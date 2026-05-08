@@ -6,6 +6,7 @@ public class VehicleDoorHandler : MonoBehaviour,IInteractable
 {
     
     [SerializeField] private Transform windowTransform;
+    [SerializeField] private VehicleGlass linkedGlass;
     private bool _isWindowOpen=false;
     private Vector3 _windowPosition;
     private Vector3 _windowRotation;
@@ -24,12 +25,41 @@ public class VehicleDoorHandler : MonoBehaviour,IInteractable
         _windowRotation = windowTransform.localRotation.eulerAngles;
     }
 
+    private bool HasRegulatorFailure()
+    {
+        if (linkedGlass == null) return false;
+
+        VehicleManager vehicleManager = FindObjectOfType<VehicleManager>();
+        if (vehicleManager?.IssueDatabase == null) return false;
+
+        Issue issue = vehicleManager.IssueDatabase.GetByName("Window_Regulator_Failure");
+        if (issue == null || !linkedGlass.assignedIssues.Contains(issue)) return false;
+
+        if (!linkedGlass.predictedIssues.Contains(issue))
+        {
+            linkedGlass.predictedIssues.Add(issue);
+            GameLogger.Log($"[VehicleDoorHandler] 'Window_Regulator_Failure' detected on '{linkedGlass.name}' — added to predictedIssues");
+        }
+
+        return true;
+    }
+
     private void OpenWindow()
     {
+        if (HasRegulatorFailure())
+        {
+            GameLogger.Log($"[VehicleDoorHandler] Window cannot open — regulator failure.");
+            return;
+        }
+        else
+        {
+            GameLogger.Log($"[VehicleDoorHandler] Window opened");
+        }
+
         windowTransform.DOLocalMove(windowEndPosition.localPosition, 1.5f);
         windowTransform.DOLocalRotate(windowEndPosition.localEulerAngles, 1.5f);
 
-        _isWindowOpen=true; 
+        _isWindowOpen=true;
     }
     private void CloseWindow()
     {
