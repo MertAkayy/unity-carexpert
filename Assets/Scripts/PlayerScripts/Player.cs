@@ -64,7 +64,10 @@ namespace PlayerScripts
         {
             if (playerCharacter.IsSeated)
             {
-                playerCharacter.ExitSeat();
+                if (playerDataManager.HasActiveInteractable())
+                    playerDataManager.CanInteract();
+                else
+                    playerCharacter.ExitSeat();
                 return;
             }
             playerDataManager.CanInteract();

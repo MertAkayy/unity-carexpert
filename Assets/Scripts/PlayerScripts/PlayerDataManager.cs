@@ -158,6 +158,11 @@ namespace PlayerScripts
             }
 
         }
+        public bool HasActiveInteractable()
+        {
+            return _activeObject != null && _activeObject.GetComponent<IInteractable>() != null;
+        }
+
         //interactive functions
         public void CanInteract()
         {
