@@ -16,10 +16,11 @@ MonoBehaviour:
   Description: The tire has worn down and may affect grip.
   AvailableLevel: 6
   AffectedPartType: 4
-  PossibilityWeight: 1
+  PossibilityWeight: 50
   ObdCode: PXXXX
   RequiredTool: 8
   Clues:
   - clueText: A tire tread depth gauge measures the tread depth below 2 mm, indicating
       the tire is worn and needs replacement.
+    isAcitve: 0
     isCollected: 0

@@ -16,9 +16,10 @@ MonoBehaviour:
   Description: The tire has reached the end of its service life.
   AvailableLevel: 6
   AffectedPartType: 4
-  PossibilityWeight: 1
+  PossibilityWeight: 50
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:
   - clueText: The tire has reached the end of its service life.(2 years)
+    isAcitve: 0
     isCollected: 0

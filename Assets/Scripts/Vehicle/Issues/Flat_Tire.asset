@@ -16,11 +16,13 @@ MonoBehaviour:
   Description: The tire is flat.
   AvailableLevel: 3
   AffectedPartType: 4
-  PossibilityWeight: 1
+  PossibilityWeight: 30
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:
   - clueText: Tire is completely or partially deflated.
+    isAcitve: 0
     isCollected: 0
   - clueText: Tire pressure warning light may illuminate if equipped.
+    isAcitve: 0
     isCollected: 0

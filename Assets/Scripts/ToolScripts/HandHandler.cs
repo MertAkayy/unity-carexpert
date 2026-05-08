@@ -23,7 +23,6 @@ namespace ToolScripts
     public class HandHandler : ToolHandlerBase
     {
         [Header("Inspection Settings")]
-        [SerializeField] private float zoomDistance = 1.5f; // Distance to zoom to
         [SerializeField] private float zoomSpeed = 3f; // Speed of zoom transition
         [SerializeField] private float fieldOfView = 30f; // Zoomed FOV
 

@@ -8,7 +8,6 @@ public class VehicleWheel : VehiclePart, IInteractable, IVehicleWheel, IReadable
     public WheelPosition Position { get; set; }
     public double TreadDepthMm { get; set; }
     public bool IsAlloy { get; set; }
-    public bool IsDamaged { get; set; }
     public bool IsPunctured { get; set; }
     public WheelSeasonType SeasonType { get; set; }
     public DateTime ProductionDate { get; set; }
@@ -40,22 +39,26 @@ public class VehicleWheel : VehiclePart, IInteractable, IVehicleWheel, IReadable
     /// </summary>
     public void InitializeWheel()
     {
-        // Tread depth: New tires are ~8mm, legal minimum is 1.6mm
-        TreadDepthMm = Math.Round(Random.Range(1.5f, 8.0f), 2);
+        // Tread depth: Normal range above legal minimum of 1.6mm
+        TreadDepthMm = Math.Round(Random.Range(1.7f, 8.0f), 2);
 
         // Pressure: Normal range is 28-35 PSI
         Pressure =(float) Math.Round(Random.Range(28f, 35f), 1);
 
-        // Season type: Random selection
-        SeasonType = (WheelSeasonType)Random.Range(0, 3);
+        // Season type: Default to an appropriate season for the current month
+        int month = DateTime.Now.Month;
+        bool isWinterMonth = month >= 11 || month <= 3;
+        float allSeasonChance = 0.3f;
+        if (Random.value < allSeasonChance)
+            SeasonType = WheelSeasonType.AllSeason;
+        else
+            SeasonType = isWinterMonth ? WheelSeasonType.Winter : WheelSeasonType.Summer;
 
-        // Production date: Within last 10 years
-        int yearsAgo = Random.Range(0, 11);
-        ProductionDate = DateTime.Now.AddYears(-yearsAgo).AddDays(Random.Range(0, 365));
+        // Production date: Default to within 5 years (not expired)
+        int yearsAgo = Random.Range(0, 5);
+        ProductionDate = DateTime.Now.AddYears(-yearsAgo).AddDays(-Random.Range(0, 365));
 
-        // Damage and puncture chances
-        IsPunctured = Random.value < 0.1f; // 10% chance
-        IsDamaged = Random.value < 0.15f; // 15% chance
+        IsPunctured = false;
         IsAlloy = Random.value < 0.3f; // 30% chance of alloy wheels
 
         // Select random tire brand
@@ -113,6 +116,38 @@ public class VehicleWheel : VehiclePart, IInteractable, IVehicleWheel, IReadable
         }
     }
 
+    public override void AssignIssue(Issue issue)
+    {
+        base.AssignIssue(issue);
+
+        if (issue == null) return;
+
+        if (issue.FailureName == "Flat_Tire")
+        {
+            Pressure = 0f;
+            IsPunctured = true;
+            GameLogger.Log($"[VehicleWheel] Flat_Tire assigned to {Position} — pressure 0 PSI, won't hold air");
+        }
+        else if (issue.FailureName == "Expired_Tire")
+        {
+            int extraYears = Random.Range(6, 12);
+            ProductionDate = DateTime.Now.AddYears(-extraYears).AddDays(-Random.Range(0, 365));
+            GameLogger.Log($"[VehicleWheel] Expired_Tire assigned to {Position} — ProductionDate set to {ProductionDate:yyyy-MM} ({extraYears} years ago)");
+        }
+        else if (issue.FailureName == "Tire_Worn")
+        {
+            TreadDepthMm = Math.Round(Random.Range(0.5f, 1.5f), 2);
+            GameLogger.Log($"[VehicleWheel] Tire_Worn assigned to {Position} — tread depth set to {TreadDepthMm}mm (below 1.6mm legal minimum)");
+        }
+        else if (issue.FailureName == "Wrong_Season_Tire" || issue.FailureName == "Different_Season")
+        {
+            int month = DateTime.Now.Month;
+            bool isWinterMonth = month >= 11 || month <= 3;
+            SeasonType = isWinterMonth ? WheelSeasonType.Summer : WheelSeasonType.Winter;
+            GameLogger.Log($"[VehicleWheel] {issue.FailureName} assigned to {Position} — SeasonType set to {SeasonType}");
+        }
+    }
+
     public void Interact()
     {
         // Interact functionality - could be used to remove wheel for closer inspection
@@ -164,8 +199,7 @@ public class VehicleWheel : VehiclePart, IInteractable, IVehicleWheel, IReadable
                $"Age: {GetTireAge():F1} years\n" +
                $"Produced: {ProductionDate:yyyy-MM}\n" +
                $"Wheel: {(IsAlloy ? "Alloy" : "Steel")}\n" +
-               $"{(IsPunctured ? "[PUNCTURED]" : "")}\n" +
-               $"{(IsDamaged ? "[DAMAGED]" : "")}";
+               $"{(IsPunctured ? "[PUNCTURED]" : "")}\n";
     }
 
     /// <summary>

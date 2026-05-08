@@ -74,8 +74,6 @@ namespace Progression
         private readonly Dictionary<string, Achievement> _achievementLookup = new Dictionary<string, Achievement>();
         private readonly List<Achievement> _unlockedCache = new List<Achievement>();
         private float _lastCheckTime;
-        private bool _isDirty = false;
-
         #endregion
 
         #region ISystem Implementation
@@ -272,7 +270,6 @@ namespace Progression
             if (newlyUnlocked > 0)
             {
                 OnAchievementProgressChanged?.Invoke(UnlockedCount, TotalAchievements);
-                _isDirty = true;
             }
         }
 

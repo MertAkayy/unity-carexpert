@@ -278,7 +278,6 @@ namespace Task
 
                 // Check for requirement type variety (prefer different types)
                 TaskRequirementType primaryType = template.requirements[0].requirementType;
-                bool hasSameType = false;
 
                 // Allow some overlap but prefer variety
                 int sameTypeCount = 0;

@@ -83,12 +83,7 @@ namespace ToolScripts
             if (treadDepth < minimumLegalTreadDepth)
             {
                 result.AddMeasurement("Tread Status", "ILLEGAL - Below legal minimum!");
-                issues.Add("Low_Tread_Depth");
-            }
-            else if (treadDepth < recommendedTreadDepth)
-            {
-                result.AddMeasurement("Tread Status", "Low - Replace soon");
-                issues.Add("Low_Tread_Depth");
+                issues.Add("Tire_Worn");
             }
             else
             {
@@ -113,23 +108,13 @@ namespace ToolScripts
             {
                 result.AddMeasurement("Pressure Status", "Normal");
             }
-
-            // Check for damage
-            if (_targetWheel.IsDamaged)
-            {
-                result.AddMeasurement("Wheel Status", "DAMAGED");
-                issues.Add("Rim_Damaged");
-            }
-            else
-            {
-                result.AddMeasurement("Wheel Status", "Good");
-            }
+            
 
             // Check for puncture
             if (_targetWheel.IsPunctured)
             {
-                result.AddMeasurement("Tire Status", "PUNCTURED");
-                issues.Add("Punctured_Tire");
+                result.AddMeasurement("Tire Status", "Flat_Tire");
+                issues.Add("Flat_Tire");
             }
             else
             {

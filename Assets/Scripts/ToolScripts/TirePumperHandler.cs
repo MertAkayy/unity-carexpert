@@ -146,8 +146,16 @@ namespace ToolScripts
             result.AddMeasurement("Pressure Added", $"{_pressureIncrease:F1} PSI");
             result.AddMeasurement("Position", _targetWheel.Position.ToString());
 
+            // Check for flat tire (started at 0 PSI and still can't hold air)
+            if (_startPressure <= 0f && _pressureIncrease < punctureDetectThreshold)
+            {
+                _isPuncturedDetected = true;
+                result.AddMeasurement("Status", "FLAT TIRE - Completely deflated!");
+                result.AddDetectedIssue("Flat_Tire");
+                result.DisplayMessage = $"FLAT TIRE! Tire started at 0 PSI and won't hold air. Tire needs replacement.";
+            }
             // Check for puncture
-            if (_targetWheel.IsPunctured || _pressureIncrease < punctureDetectThreshold)
+            else if (_pressureIncrease < punctureDetectThreshold)
             {
                 _isPuncturedDetected = true;
                 result.AddMeasurement("Status", "PUNCTURED - Tire won't hold air!");

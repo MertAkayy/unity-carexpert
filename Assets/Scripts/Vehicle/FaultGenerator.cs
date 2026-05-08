@@ -243,7 +243,7 @@ public class FaultGenerator : IFaultGenerator
 
         foreach (var issue in availableIssues)
         {
-            // issue.PossibilityWeight = 0;
+            issue.PossibilityWeight = 0;
 
             // Boost newly unlocked issues
             if (issue.AvailableLevel == playerLevel)
