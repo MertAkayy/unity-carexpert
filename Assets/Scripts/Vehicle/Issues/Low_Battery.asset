@@ -16,9 +16,10 @@ MonoBehaviour:
   Description: The battery level is low.
   AvailableLevel: 15
   AffectedPartType: 6
-  PossibilityWeight: 1
+  PossibilityWeight: 0
   ObdCode: PXXXX
   RequiredTool: 4
   Clues:
   - clueText: Battery tester show low voltage level.
+    isAcitve: 0
     isCollected: 0

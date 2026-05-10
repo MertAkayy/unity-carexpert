@@ -49,7 +49,7 @@ namespace PlayerScripts
         {
             LoadAllItems();
             
-             SelectTool(playerData.inventory[6]);
+             SelectTool(playerData.inventory[0]);
         }
 
         private void LoadAllItems()

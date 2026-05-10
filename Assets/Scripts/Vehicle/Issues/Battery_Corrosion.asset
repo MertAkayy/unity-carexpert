@@ -16,10 +16,11 @@ MonoBehaviour:
   Description: There is corrosion at the battery terminal.
   AvailableLevel: 4
   AffectedPartType: 6
-  PossibilityWeight: 1
+  PossibilityWeight: 40
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:
   - clueText: Visible corrosion or loose connections are observed at the battery
       terminals when inspected.
+    isAcitve: 0
     isCollected: 0

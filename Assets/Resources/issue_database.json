@@ -8,25 +8,25 @@
             "possibilityWeight": 1,
             "obdCode": "C1201",
             "requiredTool": 6,
-            "issueId": "251101e2-1ca6-4be5-b1dd-7084cfafd38d",
+            "issueId": "2603ddbc-5c15-4e6d-b34f-932f812f25a8",
             "clues": [
                 {
                     "clueText": "ABS warning light stays on.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "576206ae-f9c2-43e5-8ca3-10236bbe95bc"
+                    "clueGuid": "01ef8e30-d3b8-45eb-bc48-20defe7f17cf"
                 },
                 {
                     "clueText": "No vibration felt on the pedal (normally ABS causes a pulsing sensation).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "24bf8b2a-4a91-4ef0-ba69-94fd0e26e5a9"
+                    "clueGuid": "0a22f1ac-7c7f-4d58-8513-64fab7ba686e"
                 },
                 {
                     "clueText": "Error codes related to the ABS module appear(C1201).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "bac9593b-632a-49da-a884-bfed01edd53e"
+                    "clueGuid": "e393d76e-70e9-498d-97f6-0d4390bdea8c"
                 }
             ]
         },
@@ -38,13 +38,13 @@
             "possibilityWeight": 0,
             "obdCode": "C1246",
             "requiredTool": 6,
-            "issueId": "2902c319-7dcd-4383-ae2f-1fd5ba8595be",
+            "issueId": "6d6f9099-0913-41ef-93e3-f69dead487f8",
             "clues": [
                 {
                     "clueText": "Error codes for specific wheel sensors appear (e.g., C1246).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "22f08a14-1776-47b0-928b-1437506a1093"
+                    "clueGuid": "322ba66a-237b-4883-af84-33734c5ea81e"
                 }
             ]
         },
@@ -56,13 +56,13 @@
             "possibilityWeight": 0,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "3483f2af-c4a2-4c64-a11e-3583f012dfda",
+            "issueId": "fd9f8526-50dc-4168-a937-1c314b73bcf7",
             "clues": [
                 {
                     "clueText": "AC seems on but no cold air comes out.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "2969997b-5e41-4cf7-b247-00d16da28e59"
+                    "clueGuid": "e4ff1938-e1a0-48f1-ac6c-6047ab179d24"
                 }
             ]
         },
@@ -74,13 +74,13 @@
             "possibilityWeight": 1,
             "obdCode": "B0001",
             "requiredTool": 6,
-            "issueId": "d9b514ba-5aa6-4f61-b810-512592132219",
+            "issueId": "7f3bd2f1-7ad7-44be-b2d9-33cc12acfaee",
             "clues": [
                 {
                     "clueText": "Error codes for specific airbag sensors appear (e.g., B0001).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "6cac36f3-93d5-4b31-add2-93c0e172862d"
+                    "clueGuid": "a53e77a8-a178-4195-8444-b81754d730b3"
                 }
             ]
         },
@@ -92,13 +92,13 @@
             "possibilityWeight": 1,
             "obdCode": "P0620",
             "requiredTool": 6,
-            "issueId": "a3848f72-ad7d-45f8-bbb0-c522f53a26cb",
+            "issueId": "8b4f0e71-5026-4968-b869-02c159646697",
             "clues": [
                 {
                     "clueText": "The headlights are dimmer than usual, but the battery is brand new.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "5da4a7db-8c33-40c3-afb5-51aa6ba869fc"
+                    "clueGuid": "b326a340-3d3d-4c7f-b299-ac194c8f4a90"
                 }
             ]
         },
@@ -110,19 +110,19 @@
             "possibilityWeight": 1,
             "obdCode": "P0070",
             "requiredTool": 6,
-            "issueId": "37d2524d-269e-4f65-8b78-f63cb646b0bf",
+            "issueId": "c3e4a590-14cd-4a11-8cf0-da48681534ff",
             "clues": [
                 {
                     "clueText": "Error codes for specific ambient tempreture sensors appear (e.g., P0070).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "7557022e-342d-4488-81ed-aba73866033b"
+                    "clueGuid": "d62498c0-4b6e-4204-8dbf-b768d8b77234"
                 },
                 {
                     "clueText": "The outside air temperature gauge is displaying an incorrect or fixed value.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "3c42a6b3-259b-4741-a3db-f3573557d298"
+                    "clueGuid": "5437ead1-056a-404a-b271-f59dd93c05ab"
                 }
             ]
         },
@@ -134,19 +134,19 @@
             "possibilityWeight": 0,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "bb7b2da2-e44e-48d4-84cc-de031d5f665a",
+            "issueId": "3fee89b1-cea9-4680-8a7b-14373aac8e84",
             "clues": [
                 {
                     "clueText": "The axle shaft shows visible signs of bending, cracking, or excessive play when inspected.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "311e1be9-7cbe-463b-b066-f7e9aeccb709"
+                    "clueGuid": "15016975-eb52-45f9-a28a-d1a45b3ea380"
                 },
                 {
                     "clueText": "The vehicle produces a loud clunking or grinding noise from the axle area during acceleration or turning.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "9713b413-688d-4f96-8a60-6ab32374a2e0"
+                    "clueGuid": "cd4125f5-7628-4821-94d9-712b6ce1a76b"
                 }
             ]
         },
@@ -158,31 +158,13 @@
             "possibilityWeight": 0,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "0cf0b09a-5135-4614-affb-149b930f1566",
+            "issueId": "6817ce8e-6313-45c5-aa0b-2fcee798a04f",
             "clues": [
                 {
                     "clueText": "Grease is leaking from the ball joint boot, or the boot appears torn or damaged.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "cf911b43-4e2f-4c38-9f34-b1788411937d"
-                }
-            ]
-        },
-        {
-            "failureName": "Battery_Cable_Loose",
-            "description": "Battery cables are loose or corroded, causing poor electrical connection.",
-            "availableLevel": 15,
-            "affectedPartType": 6,
-            "possibilityWeight": 1,
-            "obdCode": "PXXXX",
-            "requiredTool": 1,
-            "issueId": "273b302a-0147-4151-bc6b-902bb0b43250",
-            "clues": [
-                {
-                    "clueText": "The battery cable shows signs of fraying or poor contact, causing inconsistent power delivery.",
-                    "isActive": false,
-                    "isCollected": false,
-                    "clueGuid": "d01c8318-be97-4ded-a5f2-c8af0ab5b8c2"
+                    "clueGuid": "c612bba3-63bf-434b-bd5a-cefb2b8b3f4c"
                 }
             ]
         },
@@ -194,13 +176,13 @@
             "possibilityWeight": 0,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "7e0890bc-0b33-4dbf-ba22-1e846bef1bdf",
+            "issueId": "fe7ebb4d-bc00-4b16-b72d-da0476274071",
             "clues": [
                 {
                     "clueText": "Visible corrosion or loose connections are observed at the battery terminals when inspected.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "92ae5865-d582-42e1-ad38-95c03ddc89a4"
+                    "clueGuid": "4f0f0a9b-e810-4c6b-9ea6-234e6271a6af"
                 }
             ]
         },
@@ -212,13 +194,13 @@
             "possibilityWeight": 0,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "bf55414f-012f-4116-995b-e0ab89a356a1",
+            "issueId": "0bd76c5b-a403-4985-96ab-15a4004596d8",
             "clues": [
                 {
                     "clueText": "Visible wear, cracks, or fraying are observed on the belt, indicating improper tension or alignment.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "274ad9b3-c9f8-49c9-9363-da90b399293d"
+                    "clueGuid": "5fbdfc45-4dea-44b8-8d88-e2f5d52f4b84"
                 }
             ]
         },
@@ -230,13 +212,13 @@
             "possibilityWeight": 1,
             "obdCode": "PXXXX",
             "requiredTool": 5,
-            "issueId": "bf2045bc-59f2-413e-98fa-540f8962655a",
+            "issueId": "f99c5d6d-f88e-4295-8229-80a60603a2d7",
             "clues": [
                 {
                     "clueText": "There is blue smoke coming from the exhaust.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "d79f7466-e1b5-40cc-b4f6-46985c8d8c44"
+                    "clueGuid": "bc258063-110d-42fb-9b35-d56195f0d64f"
                 }
             ]
         },
@@ -248,13 +230,13 @@
             "possibilityWeight": 30,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "5161fc05-7fd0-47b0-aafe-394604235d29",
+            "issueId": "74348bb4-d719-4c30-b7d9-1063d91f3bf8",
             "clues": [
                 {
                     "clueText": "The brake pedal feels unusually hard or requires excessive force to press, indicating a loss of brake assist.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "4372d20f-39cf-499e-bee4-ca3ecdadfb0d"
+                    "clueGuid": "9947bd88-3370-4283-9696-77283ff2d93b"
                 }
             ]
         },
@@ -266,13 +248,13 @@
             "possibilityWeight": 0,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "912d1095-dba7-487c-abaa-1251d5a6e2b5",
+            "issueId": "4b81db7e-d9cb-4c34-8bb4-5a09de81eda3",
             "clues": [
                 {
                     "clueText": "Brake fluid is visibly pooling under the vehicle, particularly near the wheels or brake master cylinder.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "60c405d0-e27b-46d6-81ea-102c282de9c2"
+                    "clueGuid": "ec511d36-b190-4067-90cd-fdcb971d97e2"
                 }
             ]
         },
@@ -284,13 +266,13 @@
             "possibilityWeight": 10,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "db7de7e3-5d05-43ce-a67a-db06d74eb4fc",
+            "issueId": "6b4b3e59-6250-42dc-9d22-c47aff25a1ef",
             "clues": [
                 {
                     "clueText": "The brake lights fail to illuminate when the brake pedal is pressed.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "a04dc4f6-3f39-4027-9dd9-d74d9607836e"
+                    "clueGuid": "22c84270-1dfc-4509-aec5-c3c1cb6c03b6"
                 }
             ]
         },
@@ -302,13 +284,13 @@
             "possibilityWeight": 10,
             "obdCode": "C1231",
             "requiredTool": 6,
-            "issueId": "0d63da4c-bff4-4333-b1a0-a10daf2ffc16",
+            "issueId": "16b15120-ce25-4614-83bb-7c93ab7b4559",
             "clues": [
                 {
                     "clueText": "The vehicle takes longer to stop, or braking performance feels weaker than usual.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "3537be8d-20ca-413f-96fd-be08fe09a98c"
+                    "clueGuid": "024b8990-0dc1-42d2-8022-8403b7520c10"
                 }
             ]
         },
@@ -320,13 +302,13 @@
             "possibilityWeight": 1,
             "obdCode": "P0340",
             "requiredTool": 6,
-            "issueId": "675fe320-179a-499b-9cf3-50ce1f4c6e7c",
+            "issueId": "acf87414-5f5d-4565-82db-bd2ab979d596",
             "clues": [
                 {
                     "clueText": "Error codes for specific camshaft position sensors appear (e.g., P0340).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "1f5144ae-31e4-4a4d-91bd-fc6ecc3b5ea2"
+                    "clueGuid": "7189811c-1a79-43c7-8d74-3a86efcb949e"
                 }
             ]
         },
@@ -338,13 +320,13 @@
             "possibilityWeight": 1,
             "obdCode": "PXXXX",
             "requiredTool": 5,
-            "issueId": "7193b106-251a-4f98-9689-97906f98d660",
+            "issueId": "7bfe0486-b68b-4ad4-9f3a-221accba6b9a",
             "clues": [
                 {
                     "clueText": "An exhaust gas analyzer shows elevated levels of hydrocarbons (HC) and carbon monoxide (CO) in the exhaust, indicating the catalytic converter is not effectively converting harmful gases.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "b9e2ad22-0843-4253-9980-0a1af94b9f1b"
+                    "clueGuid": "934639e0-32aa-4447-bc9c-6d527a1aedf9"
                 }
             ]
         },
@@ -356,13 +338,13 @@
             "possibilityWeight": 1,
             "obdCode": "PXXXX",
             "requiredTool": 5,
-            "issueId": "9a52f07f-0bc6-475f-a5fa-a135d6eab489",
+            "issueId": "7d05be3b-2ee0-419c-b430-8c0470e8509b",
             "clues": [
                 {
                     "clueText": "An exhaust gas analyzer detects unusually high backpressure or restricted exhaust flow, with elevated carbon dioxide (CO2) and low oxygen (O2) levels, indicating a clogged catalytic converter.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "35bcc9e2-89e6-43bd-907e-c53888509e0f"
+                    "clueGuid": "a4c41a89-df8a-4776-aefe-1756b6b2d80a"
                 }
             ]
         },
@@ -374,13 +356,13 @@
             "possibilityWeight": 1,
             "obdCode": "PXXXX",
             "requiredTool": 4,
-            "issueId": "f6c5a229-9a58-472d-a68d-e4eaff5b4d6c",
+            "issueId": "e9ccb8c1-9d76-40a4-87e1-3f4d4bde336b",
             "clues": [
                 {
                     "clueText": "A voltmeter shows the charging system output is below 13.5 volts at idle, suggesting alternator or regulator issues.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "7a64f4b6-067b-4491-b900-113854ce1b94"
+                    "clueGuid": "c191d08e-0344-41f4-bdd0-7372e6ec76a5"
                 }
             ]
         },
@@ -392,43 +374,19 @@
             "possibilityWeight": 1,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "654582bf-fdfc-490e-821f-39d28a5e531e",
+            "issueId": "6f607edc-db0e-4a48-b498-da801785ed20",
             "clues": [
                 {
                     "clueText": "When pressing the gas pedal, the RPM rises quickly but speed doesn’t match.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "56b5ee48-cfe6-484e-87f3-e93cba643af7"
+                    "clueGuid": "e16f2e7e-ba0b-4178-9855-11d348d827a1"
                 },
                 {
                     "clueText": "The clutch engagement point feels unusually high.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "4cc668a8-553e-427a-a429-bc991c195217"
-                }
-            ]
-        },
-        {
-            "failureName": "Coolant_Hose_Leak",
-            "description": "Coolant hose is cracked or leaking, leading to coolant loss.",
-            "availableLevel": 12,
-            "affectedPartType": 7,
-            "possibilityWeight": 1,
-            "obdCode": "PXXXX",
-            "requiredTool": 1,
-            "issueId": "dc516abc-2ec3-46ca-a9df-f733f4293838",
-            "clues": [
-                {
-                    "clueText": "Puddle of green/orange fluid under the car after parking.",
-                    "isActive": false,
-                    "isCollected": false,
-                    "clueGuid": "d4829145-8737-499c-9c26-6519952e29e6"
-                },
-                {
-                    "clueText": "Low coolant warning light appears on the dashboard.",
-                    "isActive": false,
-                    "isCollected": false,
-                    "clueGuid": "444eeb66-d49a-4f14-bc02-18e409cd5ec4"
+                    "clueGuid": "f30fa107-20f1-4198-8c61-7a2cf3b249d5"
                 }
             ]
         },
@@ -440,13 +398,13 @@
             "possibilityWeight": 0,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "ba652b8b-3345-467f-8223-5ef2d101eafe",
+            "issueId": "55f78ed5-e858-4516-9a65-7d435be61903",
             "clues": [
                 {
                     "clueText": "The coolant reservoir has visible cracks or white residue around it.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "194a51bb-30ea-409c-a6db-37f04c224074"
+                    "clueGuid": "2313b997-586b-4f03-a01a-c912bc62d1d7"
                 }
             ]
         },
@@ -458,19 +416,19 @@
             "possibilityWeight": 1,
             "obdCode": "P0335",
             "requiredTool": 6,
-            "issueId": "a3ee2b94-386b-4368-a277-b102bc268936",
+            "issueId": "e21814ad-1b73-4105-af47-3af586f9ccd9",
             "clues": [
                 {
                     "clueText": "Check Engine Light is on with related fault code(P0335).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "cfcb7b9f-123d-44ed-a6a8-68cba03fa75d"
+                    "clueGuid": "8ccc18cc-f120-441d-9f5b-424decdc5791"
                 },
                 {
                     "clueText": "Sudden stalling while driving, especially at low speeds.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "2bdff60c-4c6a-47e4-9c37-bb3c8b3d6ebf"
+                    "clueGuid": "35e0c232-93a7-4340-8ebd-71c93831a246"
                 }
             ]
         },
@@ -482,13 +440,13 @@
             "possibilityWeight": 0,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "9bf445de-f726-4a1b-96c8-dfe04072fb6f",
+            "issueId": "09021f90-056e-463d-9faa-caea069f97ea",
             "clues": [
                 {
                     "clueText": "The wheel's available season is different from its current season.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "82c8df0c-48f7-4551-8576-c48f1eebbe70"
+                    "clueGuid": "6f52518c-bb9d-4984-8c2c-0fde4153848f"
                 }
             ]
         },
@@ -500,13 +458,13 @@
             "possibilityWeight": 0,
             "obdCode": "P0600",
             "requiredTool": 6,
-            "issueId": "a6a14ebe-ac29-4ffd-b8fc-0a6379940875",
+            "issueId": "3ff3841f-fe66-48f4-8d6e-998f4746c585",
             "clues": [
                 {
                     "clueText": "An error code related to the ECU software appears (e.g., “ECU Software Error” or P0600 code).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "2140b100-bc70-4436-8eb9-2b6a90b091e5"
+                    "clueGuid": "164d48a3-c674-4d61-a1b2-de08b1bda4ff"
                 }
             ]
         },
@@ -518,19 +476,19 @@
             "possibilityWeight": 1,
             "obdCode": "P0402",
             "requiredTool": 5,
-            "issueId": "0914cf25-4507-433a-8504-792e0bf57e9f",
+            "issueId": "00559003-726f-4b9b-971c-eb31290a39d6",
             "clues": [
                 {
                     "clueText": "Black and heavy smoke emitted from the exhaust.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "b1ef159b-002c-4325-b4ed-e9763f0941c6"
+                    "clueGuid": "d0d8ca28-41a1-445a-be89-2fe4a9e7948d"
                 },
                 {
                     "clueText": "An error code related to the EGR System appears (e.g., “EGR System Fault” or P0402 code).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "4e690701-7ea6-451c-9f9a-196e3e919392"
+                    "clueGuid": "cfc6d357-23f2-454d-9f75-768865900d85"
                 }
             ]
         },
@@ -542,13 +500,13 @@
             "possibilityWeight": 1,
             "obdCode": "P0401",
             "requiredTool": 6,
-            "issueId": "31e799f4-9752-469d-9b7b-b7bb39d40a6e",
+            "issueId": "8a02f584-b810-4be1-942e-f2c0eb21b34b",
             "clues": [
                 {
                     "clueText": "An error code related to the EGR Valve appears (e.g., “EGR Valve Fault” or P0401 code).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "4473808b-5c0c-4651-8112-6a6baaa7b6a3"
+                    "clueGuid": "7daa1577-aebf-4ba3-8b01-bc69496e6eaf"
                 }
             ]
         },
@@ -560,13 +518,13 @@
             "possibilityWeight": 1,
             "obdCode": "PXXXX",
             "requiredTool": 5,
-            "issueId": "ea30675c-5a45-41d6-8954-849ba9a9cd43",
+            "issueId": "e48d1a9e-5887-4c48-ab59-b6c728ddc625",
             "clues": [
                 {
                     "clueText": "High NOx points to a malfunctioning EGR or catalytic converter.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "f0323f78-5749-4dc7-9e24-cd17931de901"
+                    "clueGuid": "9ce57e48-11c9-4ace-a516-195ec06b9af8"
                 }
             ]
         },
@@ -578,19 +536,19 @@
             "possibilityWeight": 1,
             "obdCode": "P0302",
             "requiredTool": 6,
-            "issueId": "efc12f53-896d-4d00-b157-0fe4d0856cfb",
+            "issueId": "12846ad2-9d2d-4649-bca3-777bd9c2658e",
             "clues": [
                 {
                     "clueText": "Vehicle shakes or loses power during acceleration.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "fb7ded3b-069a-46b7-bf35-dea9cc42d731"
+                    "clueGuid": "7667f790-c364-4243-b0b1-1f102436cb59"
                 },
                 {
                     "clueText": "Cylinder-related error codes appear (e.g., P0302).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "9bd40e85-d7da-4508-9210-055f2ca4c8db"
+                    "clueGuid": "afd15bba-553d-4725-a92f-d5af63fcae22"
                 }
             ]
         },
@@ -602,13 +560,13 @@
             "possibilityWeight": 1,
             "obdCode": "C1282",
             "requiredTool": 6,
-            "issueId": "b7bc80e8-a096-46a1-85c4-81610e360466",
+            "issueId": "d31c71f8-b89f-4af1-b330-0d6a8086a917",
             "clues": [
                 {
                     "clueText": "Error codes related to ESP sensors appear (e.g., C1282).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "3e03974d-3231-4cec-a982-0383abc9f0c3"
+                    "clueGuid": "41215383-85f0-441e-9e12-da4c1ab66547"
                 }
             ]
         },
@@ -620,13 +578,13 @@
             "possibilityWeight": 1,
             "obdCode": "PXXXX",
             "requiredTool": 5,
-            "issueId": "3cc2a5e9-66ef-4cdd-ac06-dca618f93286",
+            "issueId": "59230d1e-3898-48e9-8a03-93b288e20d30",
             "clues": [
                 {
                     "clueText": "Louder than normal engine sound or hissing/whistling noise.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "8d5e11e7-7cde-45b2-8ab2-b0515f53c9ad"
+                    "clueGuid": "3855ba14-2be2-42b5-9db0-b94e492b2903"
                 }
             ]
         },
@@ -638,13 +596,13 @@
             "possibilityWeight": 1,
             "obdCode": "PXXXX",
             "requiredTool": 5,
-            "issueId": "9b57040d-86f5-40ad-b849-0ef149497d97",
+            "issueId": "2cc5271c-c697-4c17-8e4b-31e5a4a22484",
             "clues": [
                 {
                     "clueText": "Visible soot or burn marks are observed around the exhaust manifold, pipes, or muffler joints.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "83a84abc-8c34-4f34-ae28-655cfd79e022"
+                    "clueGuid": "1dd984a1-d0f2-4058-90cc-2d686e74d7ec"
                 }
             ]
         },
@@ -656,19 +614,19 @@
             "possibilityWeight": 1,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "edd7b1f3-064d-4d16-8d21-b95832c8a059",
+            "issueId": "dc810883-4cb3-4f55-9edf-262e80667e10",
             "clues": [
                 {
                     "clueText": "Cracking or ticking noises heard when engine is running.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "21f50bdc-e8a5-4302-917c-122715edd471"
+                    "clueGuid": "347f21de-da82-4011-ac13-e79aca395056"
                 },
                 {
                     "clueText": "Cracks or deformation observed on the exhaust manifold.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "9d00f1db-19b5-49f6-85df-44bb6f0236c4"
+                    "clueGuid": "57243d9a-27ad-496c-b765-e9f878ca9bfa"
                 }
             ]
         },
@@ -680,37 +638,19 @@
             "possibilityWeight": 0,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "cd5dc108-7fe7-470a-829e-db965620f122",
+            "issueId": "8bb6d366-bd96-49e3-b4cf-a929206634e9",
             "clues": [
                 {
                     "clueText": "Tire is completely or partially deflated.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "da3898a3-41d9-41bd-8391-cf36bb0d2554"
+                    "clueGuid": "cd1a5b72-ee54-49aa-b867-f1a4d095e337"
                 },
                 {
                     "clueText": "Tire pressure warning light may illuminate if equipped.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "f6b8b8e6-f5e6-4e35-b5f2-b557ad484f1b"
-                }
-            ]
-        },
-        {
-            "failureName": "Fog_Light_Failure",
-            "description": "Fog lights are not working, reducing visibility in fog.",
-            "availableLevel": 8,
-            "affectedPartType": 3,
-            "possibilityWeight": 10,
-            "obdCode": "PXXXX",
-            "requiredTool": 1,
-            "issueId": "98d8725a-9d7a-4500-bb2e-0ab6f5c69106",
-            "clues": [
-                {
-                    "clueText": "Fog light does not turn on or is very dim when switched on.",
-                    "isActive": false,
-                    "isCollected": false,
-                    "clueGuid": "7fda4dc1-5862-4cea-93e6-2cc8bdcc3d06"
+                    "clueGuid": "5f65a4b1-5ec6-4526-9302-a2bfcc38f3f3"
                 }
             ]
         },
@@ -722,13 +662,13 @@
             "possibilityWeight": 1,
             "obdCode": "P0460",
             "requiredTool": 6,
-            "issueId": "24513577-b7ec-4f4a-a84e-799ac6115365",
+            "issueId": "740f351d-b971-45a7-a826-4cbafc66564f",
             "clues": [
                 {
                     "clueText": "Gauge reads low when tank is full or full when tank is low.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "31ec86f2-7374-4db0-9a01-ee31adadc0da"
+                    "clueGuid": "7664d4c4-a3f6-4fd3-9b78-2eb24c2a9dc8"
                 }
             ]
         },
@@ -740,13 +680,13 @@
             "possibilityWeight": 1,
             "obdCode": "P0171",
             "requiredTool": 6,
-            "issueId": "f1ae6b70-fa0b-49b2-bf78-cfa9b246d295",
+            "issueId": "add9fddc-83a5-4b03-87d5-7107d94224d9",
             "clues": [
                 {
                     "clueText": "Error codes related to Fuel Trim appear (e.g., C0171).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "9b912dde-4eb6-445b-908b-dc1c264ad7c2"
+                    "clueGuid": "a1335082-ff7e-4724-8d9f-a1e1a06fcfee"
                 }
             ]
         },
@@ -758,13 +698,13 @@
             "possibilityWeight": 10,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "23a88b7e-efae-4801-a291-cc51d68ac388",
+            "issueId": "ab679880-3c7e-4de9-ac76-9e5645a16d0f",
             "clues": [
                 {
                     "clueText": "Visible glass crack on the car glasses.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "7cf267ee-696a-45e6-98b5-844eee41e1da"
+                    "clueGuid": "e3e37bc7-a2c5-439f-9568-acec47c49f55"
                 }
             ]
         },
@@ -776,13 +716,13 @@
             "possibilityWeight": 10,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "e8440097-f48c-4d4f-96b5-a6ba54e72e76",
+            "issueId": "ad2e70f1-7aa2-414d-9809-4bac3c9ac254",
             "clues": [
                 {
                     "clueText": "Visible glass scratches on the car glasses.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "5c778f56-cddb-45e2-a225-a822cf3a1c86"
+                    "clueGuid": "5290ec68-175d-4d1c-a2fd-52950c108a62"
                 }
             ]
         },
@@ -794,13 +734,13 @@
             "possibilityWeight": 10,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "35a76115-886e-44ef-bd68-5094f306b038",
+            "issueId": "4d0ad6c0-d334-48f2-aacf-26bb9158c386",
             "clues": [
                 {
                     "clueText": "Visible glass tint peel off on the car glasses.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "fbb62ef8-0088-48a4-b9c5-555c35d6cf9b"
+                    "clueGuid": "3b0082a4-ee15-4416-ac26-c19321ddf701"
                 }
             ]
         },
@@ -812,25 +752,49 @@
             "possibilityWeight": 1,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "d0791a87-d0e8-412b-88e3-777041ef08d5",
+            "issueId": "af7bf5ff-d98a-4eac-891a-064141d46239",
             "clues": [
                 {
                     "clueText": "White smoke or steam is visible from the exhaust, indicating coolant leaking into the combustion chamber.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "d2d8c8bd-3c37-43c1-b714-08d03c3db46e"
+                    "clueGuid": "3a66bcb4-ab10-4a42-b50d-a505914c9ad7"
                 },
                 {
                     "clueText": "Coolant in the reservoir appears thick, viscous, or sludge-like, suggesting contamination from oil or combustion byproducts.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "a963fa29-1b05-4248-820d-13ba2ffaf1bf"
+                    "clueGuid": "98ba51c1-1d84-4183-917a-e2268d5cd114"
                 },
                 {
                     "clueText": "Oil in the engine appears milky or frothy when checked on the dipstick, indicating coolant mixing with oil.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "1704587a-f08d-480b-9034-09f9ad134613"
+                    "clueGuid": "9c85ebf8-cd93-402d-8a64-db6f9385730d"
+                }
+            ]
+        },
+        {
+            "failureName": "Horn_Failure",
+            "description": "Vehicle horn is not working or producing weak/inconsistent sound.",
+            "availableLevel": 4,
+            "affectedPartType": 3,
+            "possibilityWeight": 10,
+            "obdCode": "PXXXX",
+            "requiredTool": 1,
+            "issueId": "699ff1c5-8114-4305-b648-7cc140f4b25f",
+            "clues": [
+                {
+                    "clueText": "The horn does not produce any sound when the horn button is pressed.",
+                    "isActive": false,
+                    "isCollected": false,
+                    "clueGuid": "3e8ee045-720b-4020-a8a5-a408849425c4"
+                },
+                {
+                    "clueText": "The horn sound is weak, distorted, or intermittent during operation.",
+                    "isActive": false,
+                    "isCollected": false,
+                    "clueGuid": "f7273bfb-0ff5-4a8b-9cca-424dbedce97a"
                 }
             ]
         },
@@ -842,13 +806,13 @@
             "possibilityWeight": 1,
             "obdCode": "P0170",
             "requiredTool": 6,
-            "issueId": "7fa4df8e-11dd-41c7-bf61-cef84a918bd4",
+            "issueId": "7a9f717c-5f83-478e-8c82-6476d6ddeba9",
             "clues": [
                 {
                     "clueText": "Error codes related to intake air appear (e.g., P0170).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "f94d8744-aaa9-4519-97d5-7b46f2148449"
+                    "clueGuid": "e575f348-8a2b-4548-bf14-5e51b55dac92"
                 }
             ]
         },
@@ -860,13 +824,13 @@
             "possibilityWeight": 1,
             "obdCode": "P0110",
             "requiredTool": 6,
-            "issueId": "0a525842-960d-4496-bbe4-5ec3fc08e40a",
+            "issueId": "11e010d8-a213-4de6-bb77-4630555dc186",
             "clues": [
                 {
                     "clueText": "Error codes related to intake air tempreture sensor appear (e.g., P0110).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "be5ba280-8e30-4860-b75d-2d34b74d94cd"
+                    "clueGuid": "128ba1e2-0014-4206-b1e5-7bf43013256c"
                 }
             ]
         },
@@ -878,13 +842,13 @@
             "possibilityWeight": 0,
             "obdCode": "P0325",
             "requiredTool": 6,
-            "issueId": "c221de5d-4748-488a-ba73-3d42ae3a0c5e",
+            "issueId": "d5257a74-da14-4a56-895a-4c6e2bcfc71c",
             "clues": [
                 {
                     "clueText": "Error codes related to  knock sensor appear (e.g., P00325).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "ede196fa-2e5e-4f53-bbe7-6c0e22becd3e"
+                    "clueGuid": "15b1980d-7b19-4dde-9f7c-d2b15331050c"
                 }
             ]
         },
@@ -896,13 +860,13 @@
             "possibilityWeight": 10,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "bdbf4ea0-db6b-4af9-bbc6-d711982f111f",
+            "issueId": "c67e28c1-3536-4acc-832c-badf74c3a501",
             "clues": [
                 {
                     "clueText": "The headlights or taillights appear significantly dimmer than normal, reducing visibility in low-light conditions.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "7a43c181-47c2-4b54-b55e-1dac93986737"
+                    "clueGuid": "09ade5b0-66eb-4094-a157-4136285d39bc"
                 }
             ]
         },
@@ -914,13 +878,13 @@
             "possibilityWeight": 10,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "a2558f81-f024-49c2-b039-fb4f9b6c52f5",
+            "issueId": "e2046e1f-2501-49cd-97fb-a482b7cd9043",
             "clues": [
                 {
                     "clueText": "The car's light is not working.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "8c973206-042b-4ccd-b7be-c7d71a7e5f44"
+                    "clueGuid": "054c3e25-8529-41db-af60-64c6b89afbd5"
                 }
             ]
         },
@@ -929,16 +893,16 @@
             "description": "Door lock actuator is not working, preventing door locking/unlocking.",
             "availableLevel": 5,
             "affectedPartType": 1,
-            "possibilityWeight": 35,
+            "possibilityWeight": 10,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "c74d00dc-4efd-410e-8b16-8d303544d031",
+            "issueId": "da328f32-ba0e-439f-88cb-001954b6ce19",
             "clues": [
                 {
                     "clueText": "Releated exterior part lock actuator  is not workşng.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "8c64b7d9-72c6-4351-bfd0-e02730504bd7"
+                    "clueGuid": "cc4e0536-f914-4c19-ace6-089a391d78fa"
                 }
             ]
         },
@@ -950,13 +914,13 @@
             "possibilityWeight": 1,
             "obdCode": "PXXXX",
             "requiredTool": 4,
-            "issueId": "fa85bd66-0224-4e71-a757-102837476a90",
+            "issueId": "f04066f3-d7f2-4b41-aa4d-1c0fc4d146db",
             "clues": [
                 {
                     "clueText": "Battery tester show low voltage level.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "280c87b0-9fca-43e2-b6d9-0ca425235c83"
+                    "clueGuid": "31e8310e-29f3-4ec5-a740-2441da9f0ac7"
                 }
             ]
         },
@@ -968,13 +932,13 @@
             "possibilityWeight": 0,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "ed903cbf-8bde-4bb9-94d9-3e91cc6ecdb8",
+            "issueId": "681598bf-b016-42bb-ba73-e8b93fd04e4d",
             "clues": [
                 {
                     "clueText": " It is visible that there is not enough fluid in the coolant reservoir.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "268e5884-a3bc-4bb7-a180-96adcfdc08c1"
+                    "clueGuid": "958da1ee-300b-4f7a-93a6-37a310b65a16"
                 }
             ]
         },
@@ -986,13 +950,13 @@
             "possibilityWeight": 0,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "5f8af790-b59e-4392-a6fb-eeaa0fff0eea",
+            "issueId": "f141d3d0-72ff-4f08-b6a5-a143b7d43968",
             "clues": [
                 {
                     "clueText": "The engine oil level is below the recommended minimum.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "7957cc05-92b9-403d-bce9-7197b423fd4d"
+                    "clueGuid": "948cc425-b8de-4950-a8f2-f649ebd5b13b"
                 }
             ]
         },
@@ -1004,13 +968,13 @@
             "possibilityWeight": 1,
             "obdCode": "P0101",
             "requiredTool": 6,
-            "issueId": "3be6ce0c-ff2a-4a1f-9f58-04c9c34822a5",
+            "issueId": "b94c040f-497e-4447-9a12-3728f4ad54fc",
             "clues": [
                 {
                     "clueText": "Error codes related to mass airflow sensor appear.(e.g., P0101).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "69c2a81e-ee7f-47d4-99be-b563568f7566"
+                    "clueGuid": "e41f5c5c-25f7-4ff6-83e5-21fbabf033fe"
                 }
             ]
         },
@@ -1022,19 +986,19 @@
             "possibilityWeight": 1,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "fd209e76-ba60-4c67-8adf-60cad1fd31a9",
+            "issueId": "96e2ae4b-31e3-4e20-99e9-bff3f6896a1c",
             "clues": [
                 {
                     "clueText": "The brand of the part does not match the brand of the vehicle.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "1f1005d4-5363-4dec-bbe3-4d8c033f34fa"
+                    "clueGuid": "1d523b52-a672-4cf1-a6cf-f0d4cb44c10d"
                 },
                 {
                     "clueText": "The screws that hold the part to the vehicle are worn out.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "c33c405c-f23d-48e1-9ff0-d8848739ef79"
+                    "clueGuid": "f8ccc769-7912-4b58-8fa6-18654b9eec1b"
                 }
             ]
         },
@@ -1046,13 +1010,13 @@
             "possibilityWeight": 1,
             "obdCode": "P0130",
             "requiredTool": 6,
-            "issueId": "798ea534-0ee6-4b2f-80c9-6f7a9aff0af2",
+            "issueId": "d8ee5870-55c0-4ec5-81a9-f43d89799d4f",
             "clues": [
                 {
                     "clueText": "Error codes related to O2 sensor appear.(e.g., P0130).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "db61dc70-85a1-4d4c-825f-960dc11346de"
+                    "clueGuid": "765b1d59-8a3d-43d2-87ac-b87435f5306e"
                 }
             ]
         },
@@ -1064,13 +1028,13 @@
             "possibilityWeight": 0,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "d7cf5523-fd2b-4f7d-b96e-8ce9f698b2eb",
+            "issueId": "f5c38d8d-7d2a-4a27-8dd1-bd4cc1119cdc",
             "clues": [
                 {
                     "clueText": "There is a visible oil leak under the engine.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "3eba32d1-6285-448e-aeac-8536bd6ade6a"
+                    "clueGuid": "fe052bb5-c108-43fb-939b-7e818d6fad51"
                 }
             ]
         },
@@ -1082,13 +1046,13 @@
             "possibilityWeight": 1,
             "obdCode": "P0521",
             "requiredTool": 6,
-            "issueId": "1e14bb0d-b263-40a5-bc6f-75b3e78e7bab",
+            "issueId": "0108448f-03af-44e5-a15f-09dc998a8f27",
             "clues": [
                 {
                     "clueText": "Error codes related to oil pump error appear.(e.g., P0521).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "6ef63745-b56d-4c79-bc4d-b1722b16dee4"
+                    "clueGuid": "be214838-7165-4324-a25e-1bef85c67f22"
                 }
             ]
         },
@@ -1097,16 +1061,16 @@
             "description": "This is a repainted part of the vehicle.",
             "availableLevel": 1,
             "affectedPartType": 1,
-            "possibilityWeight": 35,
+            "possibilityWeight": 10,
             "obdCode": "PXXXX",
             "requiredTool": 2,
-            "issueId": "59ea2065-e5da-456d-b10e-ae35ff53c00b",
+            "issueId": "04105578-6879-4c8e-98c2-2cb728ba67a0",
             "clues": [
                 {
                     "clueText": "The paint thickness gauge is measuring paint thickness greater than the threshold value.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "3794d179-674f-4ecb-bed1-5a2ef0920215"
+                    "clueGuid": "c264c524-f3f4-4011-8d1e-673b2c1e45f7"
                 }
             ]
         },
@@ -1118,13 +1082,13 @@
             "possibilityWeight": 1,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "352b6f10-d8d4-427f-b7a4-adb266e1e0eb",
+            "issueId": "6def147c-d1ea-4e1d-aeca-c6de02b6acfb",
             "clues": [
                 {
                     "clueText": "Smoke from the oil cap and lack of vacuum may indicate a faulty PCV valve.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "4fdb2dac-38b5-4a5c-b0d3-adc752d32e7e"
+                    "clueGuid": "25d60ee9-2535-47ab-9c27-9900cad49fd6"
                 }
             ]
         },
@@ -1136,31 +1100,13 @@
             "possibilityWeight": 1,
             "obdCode": "C1511",
             "requiredTool": 6,
-            "issueId": "ef53c5f0-84d4-408c-889d-4e4df8003c6c",
+            "issueId": "268a85ef-3840-4216-8dcb-73a258d8d3cb",
             "clues": [
                 {
                     "clueText": "Error codes related to power steering pump error appear.(e.g., C1511).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "caa247dc-ed11-4ecd-91a5-3b92d76faf43"
-                }
-            ]
-        },
-        {
-            "failureName": "Power_Window_Switch_Failure",
-            "description": "Power window switch is faulty, preventing window operation.",
-            "availableLevel": 7,
-            "affectedPartType": 2,
-            "possibilityWeight": 10,
-            "obdCode": "PXXXX",
-            "requiredTool": 1,
-            "issueId": "43a4fc96-7c95-4f57-ae7a-77cbcea46adf",
-            "clues": [
-                {
-                    "clueText": "Power window switch is faulty, preventing window operation.",
-                    "isActive": false,
-                    "isCollected": false,
-                    "clueGuid": "de4e290c-d7bf-48ea-8388-8b60aad94af8"
+                    "clueGuid": "dbe57862-87ae-4297-8ef9-9259ce0d121d"
                 }
             ]
         },
@@ -1172,13 +1118,13 @@
             "possibilityWeight": 0,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "6332ef15-2944-4923-bbe2-5982e0c246a3",
+            "issueId": "50c7fb44-2d9f-4627-bccf-7ef86c937fb9",
             "clues": [
                 {
                     "clueText": "There is damage to the radiator.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "f9f1eb78-e314-42c4-bb48-3af2be049833"
+                    "clueGuid": "4de9985f-e9be-4125-92f4-e4cc8a651c8c"
                 }
             ]
         },
@@ -1190,19 +1136,43 @@
             "possibilityWeight": 0,
             "obdCode": "P0480",
             "requiredTool": 6,
-            "issueId": "a0c093da-f1c9-42c6-af5d-aad6076a484e",
+            "issueId": "5e9e53a2-e027-45e2-9152-7bede4774107",
             "clues": [
                 {
                     "clueText": "Radiator fan is not operating, causing engine overheating.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "db1db9d1-056f-404a-a40a-6693edd51d6e"
+                    "clueGuid": "6b6cf61e-bcad-4117-b19b-a3e42e27e4cb"
                 },
                 {
                     "clueText": "Error codes related to radiator fan error appear.(e.g., P0480).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "6935798f-8be7-4a02-8b72-f9ea238d287c"
+                    "clueGuid": "b6e25c05-3008-4294-b1af-79eabe922720"
+                }
+            ]
+        },
+        {
+            "failureName": "Radio_Failure",
+            "description": "Vehicle radio is not working or producing no sound.",
+            "availableLevel": 5,
+            "affectedPartType": 5,
+            "possibilityWeight": 0,
+            "obdCode": "PXXXX",
+            "requiredTool": 1,
+            "issueId": "944e86d9-071a-4a5f-8980-910a45f4b80b",
+            "clues": [
+                {
+                    "clueText": "The radio does not turn on or there is no sound output from the speakers.",
+                    "isActive": false,
+                    "isCollected": false,
+                    "clueGuid": "c9780b3b-e547-41ea-876e-75c8de6eff64"
+                },
+                {
+                    "clueText": "The radio resets, freezes, or loses audio intermittently during operation.",
+                    "isActive": false,
+                    "isCollected": false,
+                    "clueGuid": "6ef21bf9-792c-4919-b567-2efb72e8b34b"
                 }
             ]
         },
@@ -1211,28 +1181,28 @@
             "description": "This part has been replaced.",
             "availableLevel": 1,
             "affectedPartType": 1,
-            "possibilityWeight": 35,
+            "possibilityWeight": 10,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "d61c5678-4151-4922-9387-cf18ede3b961",
+            "issueId": "b915ba50-6761-4edc-a90d-f9ee355582bb",
             "clues": [
                 {
                     "clueText": "The screws that hold the part to the vehicle are worn out.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "41cb27b4-8652-4422-8a85-d19f8eac6631"
+                    "clueGuid": "f1232363-83dd-48f8-9097-9ea16418cecf"
                 },
                 {
                     "clueText": "The brand of the vehicle and the brand of the part are the same, but the production date is different.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "45f479cc-5436-4ec8-91bf-ef77819180d5"
+                    "clueGuid": "46863950-3c71-4f46-8bfa-3bfa916e1144"
                 },
                 {
                     "clueText": "The brand of the vehicle and the brand of the part are the different.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "6d6f09e8-bae1-4264-9c90-7fc9d6ebdb20"
+                    "clueGuid": "d62fdf94-ffb4-4b30-8821-944a482a4c9d"
                 }
             ]
         },
@@ -1244,13 +1214,13 @@
             "possibilityWeight": 0,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "f854f6d7-8e8f-43fd-9155-d3adde841d73",
+            "issueId": "e6e5e5d5-dfea-4f7b-b4c7-f495983e2927",
             "clues": [
                 {
                     "clueText": "Seat belts are not locking, retracting, or functioning properly.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "1983d192-f27e-4912-8ff5-cd8c55b34908"
+                    "clueGuid": "28a6522e-6c1c-4604-a038-dda01e937d4b"
                 }
             ]
         },
@@ -1262,13 +1232,13 @@
             "possibilityWeight": 0,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "20618de1-0a1f-49fe-ba73-a21ca62810de",
+            "issueId": "df7420d5-bb4a-4be2-bf22-e91cb34d5ac6",
             "clues": [
                 {
                     "clueText": "Serpentine belt is worn or cracked, risking accessory drive failure.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "1a8223e8-4de6-4609-9ace-18aed5632b8e"
+                    "clueGuid": "deaa9960-bf05-4025-a7cd-a7b72474d87a"
                 }
             ]
         },
@@ -1280,13 +1250,13 @@
             "possibilityWeight": 0,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "eada4bca-1e47-47a4-bf25-a1b53b15b0b6",
+            "issueId": "077c63c3-828d-4890-a747-b60a799f47b7",
             "clues": [
                 {
                     "clueText": "Shock absorber is leaking oil, reducing suspension performance.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "37e0a5c0-0344-4e35-be90-c68ad1980811"
+                    "clueGuid": "44846b34-945b-4d5d-ab59-5479b0878b47"
                 }
             ]
         },
@@ -1298,13 +1268,13 @@
             "possibilityWeight": 0,
             "obdCode": "P0300",
             "requiredTool": 6,
-            "issueId": "ea125209-5d14-4a37-aa02-5b37a3ff6935",
+            "issueId": "b506cc79-05e8-4999-a3a9-8528ac07ed80",
             "clues": [
                 {
                     "clueText": "Error codes related to spark plug error appear.(e.g., P0300).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "e862e1bb-0618-4c2e-8fd9-0572896301db"
+                    "clueGuid": "79252a0c-2a38-4a64-b3cc-e4622157eb1f"
                 }
             ]
         },
@@ -1316,13 +1286,13 @@
             "possibilityWeight": 1,
             "obdCode": "P0500",
             "requiredTool": 6,
-            "issueId": "8098b739-0639-4e2d-8319-0336a4f767f2",
+            "issueId": "2b1402d1-3545-4be5-b977-ae58de4ae798",
             "clues": [
                 {
                     "clueText": "Error codes related to speedometer sensor error appear.(e.g., P0480).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "81aa0a0d-1e5a-46d2-bc3f-b911ab2a3012"
+                    "clueGuid": "c2f291a7-8c7d-4a4b-b88a-f6b8a769fb0a"
                 }
             ]
         },
@@ -1334,13 +1304,13 @@
             "possibilityWeight": 0,
             "obdCode": "C1513",
             "requiredTool": 6,
-            "issueId": "b78794e9-9411-495f-9b07-d0cffd990399",
+            "issueId": "4e251801-8c99-456e-8ff4-91f536e1e58a",
             "clues": [
                 {
                     "clueText": "Error codes related to spark plug error appear.(e.g., C1513).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "dd840ced-2eaf-49a6-b292-2517afa9f2d6"
+                    "clueGuid": "9e3ebb24-ca35-423e-80c3-b6dfa885ffc4"
                 }
             ]
         },
@@ -1352,13 +1322,13 @@
             "possibilityWeight": 0,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "2f842073-e76d-470f-bfcd-26116ba70135",
+            "issueId": "e3d648c4-bf0a-412c-8a0a-3a62847a2562",
             "clues": [
                 {
                     "clueText": "Visible cracks, tears, or excessive wear are observed on the rubber component of the strut mount during inspection.    ",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "5c9a675a-737a-40e7-abb5-05289d4bb27a"
+                    "clueGuid": "59714e30-6f2c-4a64-bba6-c2b0dd8bf108"
                 }
             ]
         },
@@ -1367,16 +1337,16 @@
             "description": "Visible corrosion detected on the metal parts.",
             "availableLevel": 4,
             "affectedPartType": 1,
-            "possibilityWeight": 35,
+            "possibilityWeight": 10,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "e0bd0f3f-b8c0-459b-9dab-0acb935ef791",
+            "issueId": "52923735-f4d9-4728-b0f4-566a845b448a",
             "clues": [
                 {
                     "clueText": "Visible corrosion detected on the exterior parts.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "fa1fe533-18e7-4078-b650-4ad4623b9bf2"
+                    "clueGuid": "8c6e6b34-8c59-4608-94a5-f06cc2cad3eb"
                 }
             ]
         },
@@ -1385,16 +1355,16 @@
             "description": "Visible surface scratches on the car body.",
             "availableLevel": 2,
             "affectedPartType": 1,
-            "possibilityWeight": 35,
+            "possibilityWeight": 10,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "8b761487-5899-408a-af77-9b4f1452202c",
+            "issueId": "c27fd0ec-ac55-45a6-b04d-a9de7531679a",
             "clues": [
                 {
                     "clueText": "Visible surface scratches on the exterior parts.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "84a36743-3fc7-4591-a8d2-aaba4aab5c8e"
+                    "clueGuid": "99abd969-46ef-4796-a1f1-f14243af8723"
                 }
             ]
         },
@@ -1403,16 +1373,16 @@
             "description": "Fading and spots were observed from prolonged sunlight exposure.",
             "availableLevel": 6,
             "affectedPartType": 1,
-            "possibilityWeight": 35,
+            "possibilityWeight": 10,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "80d3d77b-5419-410d-8dd1-ef15e098ceaa",
+            "issueId": "78f8a5a8-bf3d-435a-b409-24950e95871d",
             "clues": [
                 {
                     "clueText": "Visible sun damages on the exterior parts.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "8be41bf9-ccee-4a28-a9b5-958af03867b1"
+                    "clueGuid": "e5868bf5-7204-4ea4-84b4-788faa6f97bd"
                 }
             ]
         },
@@ -1424,13 +1394,13 @@
             "possibilityWeight": 1,
             "obdCode": "P0128",
             "requiredTool": 6,
-            "issueId": "43f21cae-d812-4fa8-852d-f0488f4eb56c",
+            "issueId": "ffda9e17-543a-424c-8800-6f7a8418b43e",
             "clues": [
                 {
                     "clueText": "Error codes related to thermostat stuck error appear.(e.g., P0128).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "7c2a341b-2d99-46c1-92c6-ef503fb942af"
+                    "clueGuid": "e85315fd-6612-4759-a436-f1e8209b387d"
                 }
             ]
         },
@@ -1442,13 +1412,13 @@
             "possibilityWeight": 1,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "67ef3082-d1ab-4188-995c-63e78acf9028",
+            "issueId": "a178aba9-d421-4447-b000-79ff33879ecb",
             "clues": [
                 {
                     "clueText": "The vehicle pulls to one side while driving straight, indicating compromised steering control from worn tie rod ends.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "850b1c4d-fed6-4662-82ac-d8eda9826f6c"
+                    "clueGuid": "c53d7519-07c1-43ee-9c46-23cad534515c"
                 }
             ]
         },
@@ -1460,13 +1430,13 @@
             "possibilityWeight": 0,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "a0ccacd1-041a-450b-864f-553dc0d4d8d2",
+            "issueId": "a12f5b73-37a6-4000-b605-555737304920",
             "clues": [
                 {
                     "clueText": "The tire has reached the end of its service life.(2 years)",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "0a4f3fb8-5b4b-4d49-a71f-e33bf179d6b0"
+                    "clueGuid": "db5d718e-7531-4655-b12d-1efeb68596c3"
                 }
             ]
         },
@@ -1478,13 +1448,13 @@
             "possibilityWeight": 0,
             "obdCode": "C0050",
             "requiredTool": 9,
-            "issueId": "abe4b84d-fd8a-4f9e-9bf5-92a6ebe1ff92",
+            "issueId": "4069ec82-b8e9-41bf-bf7b-de63af5dd249",
             "clues": [
                 {
                     "clueText": "Tire pressure monitoring sensor is faulty, giving incorrect readings.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "81913ed6-0834-4d2d-9aaf-87a58e3ca886"
+                    "clueGuid": "276432fc-4308-460f-acda-f527c462468d"
                 }
             ]
         },
@@ -1496,13 +1466,13 @@
             "possibilityWeight": 0,
             "obdCode": "PXXXX",
             "requiredTool": 8,
-            "issueId": "db356a4a-7935-4a3c-aa55-892cbd8e5896",
+            "issueId": "6a789a04-9880-4754-bd62-e3cd26bb7478",
             "clues": [
                 {
                     "clueText": "A tire tread depth gauge measures the tread depth below 2 mm, indicating the tire is worn and needs replacement.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "bc884a4e-c27d-420d-95e8-bcef2c47f2db"
+                    "clueGuid": "3c049f0f-ee63-48d6-8370-f1056ff8f420"
                 }
             ]
         },
@@ -1514,13 +1484,13 @@
             "possibilityWeight": 0,
             "obdCode": "P0740",
             "requiredTool": 6,
-            "issueId": "c3ac1f0b-37b5-4654-8954-4a32c98fef3e",
+            "issueId": "1c779277-fbbd-406f-a268-d2c9ad5d3a78",
             "clues": [
                 {
                     "clueText": "Error codes related to torque converter clutch circuit error appear.(e.g., P0740).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "e5496313-be19-4a55-8b2a-e25dc3bf1c6b"
+                    "clueGuid": "a1f82285-6910-49c0-9f44-d01f683e22e6"
                 }
             ]
         },
@@ -1532,19 +1502,19 @@
             "possibilityWeight": 30,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "d25cb6bb-22cd-47af-ad4e-03ce6e5bc476",
+            "issueId": "296bc8c0-98d2-4684-8043-3d8e4644c9b6",
             "clues": [
                 {
                     "clueText": "Red or brownish fluid puddles are visible under the vehicle, particularly near the transmission area.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "4591a7f0-7b27-4abd-8d5f-ecb9b3817cfc"
+                    "clueGuid": "7635679b-7895-42d4-b73f-654fd9923e82"
                 },
                 {
                     "clueText": "The transmission fluid level is noticeably below the recommended mark when checked at the reservoir.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "8f9f9da7-9684-4e8e-8a62-7d5af53987ca"
+                    "clueGuid": "726c1d6d-e74d-4b89-a17a-f612ac81aec1"
                 }
             ]
         },
@@ -1556,13 +1526,13 @@
             "possibilityWeight": 0,
             "obdCode": "P0234",
             "requiredTool": 6,
-            "issueId": "171fac99-41f6-48b2-b0dc-64f32d6a1998",
+            "issueId": "89c9d715-3b97-46a1-95a5-fbd9c37b4af4",
             "clues": [
                 {
                     "clueText": "Error codes related to turbo boost pressure control error appear.(e.g., P0234).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "7dff2ff9-1eeb-4173-a8ea-a3699292458e"
+                    "clueGuid": "8c0e21f0-5b02-41c9-9cef-1ece692e68ac"
                 }
             ]
         },
@@ -1574,13 +1544,13 @@
             "possibilityWeight": 10,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "45de867b-8cba-48ab-87c5-0ff451ea50e6",
+            "issueId": "563c6bbb-4acf-406b-8ccf-4e0d96b17983",
             "clues": [
                 {
                     "clueText": "The turn signals fail to illuminate or remain constantly on, indicating a malfunctioning relay.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "4edf4082-9f22-46c5-bb79-8e0bd2cb9ce0"
+                    "clueGuid": "459b5020-9467-445d-a397-06210508f2b2"
                 }
             ]
         },
@@ -1592,19 +1562,19 @@
             "possibilityWeight": 0,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "24a34c3c-8620-4fd5-ac02-661372ac6a83",
+            "issueId": "8010a5aa-3736-4cbf-8935-2027e5121225",
             "clues": [
                 {
                     "clueText": "The vehicle pulls to one side while driving on a straight road, indicating a wheel alignment issue.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "a9c2a79b-4c48-4024-b905-9b746b646db9"
+                    "clueGuid": "be6779ed-d223-4720-8453-581e63a7968e"
                 },
                 {
                     "clueText": "The steering wheel vibrates or feels unsteady, especially at higher speeds, suggesting wheel imbalance.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "a90c09eb-1cd3-4273-b383-9a49f8924ad5"
+                    "clueGuid": "5e30da5f-b337-4e74-aeda-7c722e6cf09b"
                 }
             ]
         },
@@ -1616,13 +1586,13 @@
             "possibilityWeight": 0,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "73632773-b6cd-409a-b0e9-2081e21d094a",
+            "issueId": "414dcc89-73bd-4d7d-bc2c-f1b0e1485921",
             "clues": [
                 {
                     "clueText": "Wheel hub is damaged, causing wheel instability.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "867fc1b0-5261-4926-a365-2d1e2951df44"
+                    "clueGuid": "ddc8a4a1-1a20-41d7-aa20-ca73f6573aea"
                 }
             ]
         },
@@ -1634,13 +1604,13 @@
             "possibilityWeight": 1,
             "obdCode": "C0040",
             "requiredTool": 6,
-            "issueId": "20c4f7fd-a6b4-4fc2-a79b-07496da5dd7e",
+            "issueId": "06a2d9bc-cda5-4c14-a7f5-e998fd421939",
             "clues": [
                 {
                     "clueText": "Error codes related to torque wheel speed sensor error appear.(e.g., C0040).",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "d2d6f5d4-460f-49a9-9d2a-0c289961dc5e"
+                    "clueGuid": "78d142cd-50ed-41eb-870c-343f10116f47"
                 }
             ]
         },
@@ -1652,13 +1622,13 @@
             "possibilityWeight": 10,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "940870da-344f-47d2-a545-ca60412e6568",
+            "issueId": "0b7697a5-09e1-4432-89d2-7a435d0a5736",
             "clues": [
                 {
                     "clueText": "Window regulator is broken, preventing window movement.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "50b0dd27-70a5-4af7-a66f-a6ad2a1fdc53"
+                    "clueGuid": "0e705a7d-a25f-4b02-a489-fcda69d3c846"
                 }
             ]
         },
@@ -1670,19 +1640,19 @@
             "possibilityWeight": 0,
             "obdCode": "PXXXX",
             "requiredTool": 1,
-            "issueId": "8099a1c0-27dd-4484-aec1-c203f18dd628",
+            "issueId": "440b0788-0009-436e-9f99-a058cbd67181",
             "clues": [
                 {
                     "clueText": "Wipers don't move when switched on, but you can hear a faint humming or clicking sound from under the dashboard.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "fbd80767-2625-4733-99de-1882e8d27461"
+                    "clueGuid": "8e3a5018-0426-4bb9-a79b-912fedbf4b22"
                 },
                 {
                     "clueText": "Wipers only work on one speed setting (e.g., high works but low doesn't), or they stop in the wrong position on the windshield.",
                     "isActive": false,
                     "isCollected": false,
-                    "clueGuid": "9ddb3fe1-b8b3-4b91-b638-ee53df974d6c"
+                    "clueGuid": "a0024784-f64f-4ad1-b690-8bfc0193da6f"
                 }
             ]
         }

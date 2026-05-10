@@ -28,24 +28,41 @@ public class VehicleBattery : VehiclePart, IInteractable, IVehicleBattery, IRead
     /// </summary>
     public void InitializeBattery()
     {
-        // Charge level: 10-100% (most batteries should be reasonably charged)
-        chargeLevel = Math.Round(Random.Range(10f, 100f), 1);
-
-        // Voltage varies with charge level (rough approximation)
-        // 12.6V = 100%, 12.0V = 50%, 11.5V = 20%
+        // Healthy defaults — faults are applied only via AssignIssue
+        chargeLevel = Math.Round(Random.Range(60f, 100f), 1);
         voltage = CalculateVoltage(chargeLevel);
+        HasCorrosion = false;
 
-        // Corrosion: 15% chance
-        HasCorrosion = Random.value < 0.15f;
+        int yearsAgo = Random.Range(0, 4);
+        InstallationDate = DateTime.Now.AddYears(-yearsAgo).AddDays(-Random.Range(0, 365));
 
-        // Installation date: Within last 5 years
-        int yearsAgo = Random.Range(0, 6);
-        InstallationDate = DateTime.Now.AddYears(-yearsAgo).AddDays(Random.Range(0, 365));
+        isWorking = true;
 
-        // Battery is working if charge is above minimum
-        isWorking = chargeLevel >= minWorkingCharge;
+        GameLogger.Log($"[VehicleBattery] Initialized: {chargeLevel}% charge, {voltage}V, Clean");
+    }
 
-        GameLogger.Log($"[VehicleBattery] Initialized: {chargeLevel}% charge, {voltage}V, {(HasCorrosion ? "Has corrosion" : "Clean")}");
+    public override void AssignIssue(Issue issue)
+    {
+        base.AssignIssue(issue);
+        if (issue == null) return;
+
+        if (issue.FailureName == "Low_Battery")
+        {
+            chargeLevel = Math.Round(Random.Range(2f, 18f), 1);
+            voltage = CalculateVoltage(chargeLevel);
+            isWorking = false;
+            GameLogger.Log($"[VehicleBattery] Low_Battery assigned — charge set to {chargeLevel}%");
+        }
+        else if (issue.FailureName == "Charging_System_Low_Voltage")
+        {
+            voltage = Mathf.RoundToInt(Random.Range(10.5f, 11.8f) * 10) / 10;
+            GameLogger.Log($"[VehicleBattery] Charging_System_Low_Voltage assigned — voltage set to {voltage}V");
+        }
+        else if (issue.FailureName == "Battery_Corrosion")
+        {
+            HasCorrosion = true;
+            GameLogger.Log($"[VehicleBattery] Battery_Corrosion assigned — corrosion enabled");
+        }
     }
 
     /// <summary>
@@ -99,13 +116,27 @@ public class VehicleBattery : VehiclePart, IInteractable, IVehicleBattery, IRead
         string batteryInfo = GetBatteryInfoString();
         GameLogger.Log($"[VehicleBattery] Reading: {batteryInfo}");
         DebugToScreen.ShowMessage(batteryInfo, 5f);
+        DetectIssuesFromRead();
+    }
+
+    private void DetectIssuesFromRead()
+    {
+        if (!HasCorrosion) return;
+
+        VehicleManager vehicleManager = FindObjectOfType<VehicleManager>();
+        if (vehicleManager?.IssueDatabase == null) return;
+
+        Issue issue = vehicleManager.IssueDatabase.GetByName("Battery_Corrosion");
+        if (issue != null && assignedIssues.Contains(issue) && !predictedIssues.Contains(issue))
+        {
+            predictedIssues.Add(issue);
+            GameLogger.Log($"[VehicleBattery] 'Battery_Corrosion' detected via Read — added to predictedIssues");
+        }
     }
 
     private string GetBatteryInfoString()
     {
         return $"Battery\n" +
-               $"Charge: {chargeLevel:F1}%\n" +
-               $"Voltage: {voltage}V\n" +
                $"Status: {(isWorking ? "Good" : "Low Charge")}\n" +
                $"Age: {GetBatteryAge():F1} years\n" +
                $"Installed: {InstallationDate:yyyy-MM}\n" +

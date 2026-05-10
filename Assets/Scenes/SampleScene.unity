@@ -22379,6 +22379,28 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 28}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &1748410323364092319 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3781329817749783527, guid: 8ef1f82c306062546bc24499121f4b9e, type: 3}
+  m_PrefabInstance: {fileID: 7711529691486430234}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06b87116b92100b4ab548eeeb91169b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2823595659302731084 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3620970645009066253, guid: 8ef1f82c306062546bc24499121f4b9e, type: 3}
+  m_PrefabInstance: {fileID: 7711529691486430234}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06b87116b92100b4ab548eeeb91169b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3940003656027092362 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4618718238728783163, guid: 8ef1f82c306062546bc24499121f4b9e, type: 3}
@@ -22389,6 +22411,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6747172133431539476, guid: 8ef1f82c306062546bc24499121f4b9e, type: 3}
   m_PrefabInstance: {fileID: 7711529691486430234}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6506130625109653504 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6245711755171875439, guid: 8ef1f82c306062546bc24499121f4b9e, type: 3}
+  m_PrefabInstance: {fileID: 7711529691486430234}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06b87116b92100b4ab548eeeb91169b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7711529691486430234
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22409,10 +22442,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Veh_Sedan_Preset_05
       objectReference: {fileID: 0}
+    - target: {fileID: 972696263161334188, guid: 8ef1f82c306062546bc24499121f4b9e, type: 3}
+      propertyPath: linkedGlass
+      value: 
+      objectReference: {fileID: 8258211272640954189}
     - target: {fileID: 1423090742131838122, guid: 8ef1f82c306062546bc24499121f4b9e, type: 3}
       propertyPath: liftPlatform
       value: 
       objectReference: {fileID: 667255293}
+    - target: {fileID: 3883262273667481342, guid: 8ef1f82c306062546bc24499121f4b9e, type: 3}
+      propertyPath: linkedGlass
+      value: 
+      objectReference: {fileID: 6506130625109653504}
+    - target: {fileID: 5744456377451045756, guid: 8ef1f82c306062546bc24499121f4b9e, type: 3}
+      propertyPath: linkedGlass
+      value: 
+      objectReference: {fileID: 2823595659302731084}
     - target: {fileID: 6747172133431539476, guid: 8ef1f82c306062546bc24499121f4b9e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.155
@@ -22453,6 +22498,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7095771137543173734, guid: 8ef1f82c306062546bc24499121f4b9e, type: 3}
+      propertyPath: linkedGlass
+      value: 
+      objectReference: {fileID: 1748410323364092319}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -22540,6 +22589,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlType: 3
+--- !u!114 &8258211272640954189 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5443946646191833534, guid: 8ef1f82c306062546bc24499121f4b9e, type: 3}
+  m_PrefabInstance: {fileID: 7711529691486430234}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06b87116b92100b4ab548eeeb91169b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8357778598610135694 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7147569340142438102, guid: 8ef1f82c306062546bc24499121f4b9e, type: 3}

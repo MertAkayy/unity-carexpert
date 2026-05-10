@@ -16,10 +16,11 @@ MonoBehaviour:
   Description: Battery not charging properly; low voltage detected.
   AvailableLevel: 25
   AffectedPartType: 6
-  PossibilityWeight: 1
+  PossibilityWeight: 0
   ObdCode: PXXXX
   RequiredTool: 4
   Clues:
   - clueText: A voltmeter shows the charging system output is below 13.5 volts at
       idle, suggesting alternator or regulator issues.
+    isAcitve: 0
     isCollected: 0

@@ -89,7 +89,8 @@ namespace ToolScripts
             if (chargeLevel < minChargeThreshold)
             {
                 result.AddMeasurement("Charge Status", "CRITICAL - Low charge");
-                result.AddDetectedIssue("Low_Battery_Charge");
+                if (HasAssignedIssue("Low_Battery"))
+                    result.AddDetectedIssue("Low_Battery");
             }
             else if (chargeLevel < goodChargeThreshold)
             {
@@ -104,22 +105,16 @@ namespace ToolScripts
             if (voltage < minGoodVoltage)
             {
                 result.AddMeasurement("Voltage Status", "Low - May need charging or replacement");
+                if (HasAssignedIssue("Charging_System_Low_Voltage"))
+                    result.AddDetectedIssue("Charging_System_Low_Voltage");
             }
             else
             {
                 result.AddMeasurement("Voltage Status", "Good");
             }
 
-            // Check corrosion
-            if (hasCorrosion)
-            {
-                result.AddMeasurement("Terminals", "CORRODED");
-                result.AddDetectedIssue("Battery_Corrosion");
-            }
-            else
-            {
-                result.AddMeasurement("Terminals", "Clean");
-            }
+            // Check corrosion (visual — detected via Read action, not battery tester)
+            result.AddMeasurement("Terminals", hasCorrosion ? "CORRODED" : "Clean");
 
             // Check age
             if (batteryAge > oldBatteryAge)
@@ -168,6 +163,14 @@ namespace ToolScripts
             }
 
             return message;
+        }
+
+        private bool HasAssignedIssue(string issueName)
+        {
+            if (_targetBattery == null) return false;
+            foreach (var issue in _targetBattery.assignedIssues)
+                if (issue != null && issue.FailureName == issueName) return true;
+            return false;
         }
 
         protected override void OnInspectionStarted()

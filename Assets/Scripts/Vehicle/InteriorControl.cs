@@ -21,7 +21,7 @@ public class InteriorControl : MonoBehaviour, IInteractable
         new Dictionary<InteriorControlType, string[]>
         {
             { InteriorControlType.Horn,               new[] { "Horn_Failure" } },
-            {InteriorControlType.LightSwitch1,        new [] {"Light_Aged", "Light_Fail",}},
+            {InteriorControlType.LightSwitch1,        new [] {"Light_Aged", "Light_Fail","Brake_Light_Failure"}},
             { InteriorControlType.LightSwitch2,       new[] {  "Turn_Signal_Relay_Failure" } },
             { InteriorControlType.FlashorSwitch,      new[] { "Turn_Signal_Relay_Failure" } },
             { InteriorControlType.WindshieldWiper,    new[] { "Windshield_Wiper_Motor_Failure" } },
