@@ -10,7 +10,8 @@ public enum InteriorControlType
     WindshieldWiper,
     AirConditionSwitch,
     FlashorSwitch,
-    RadioSwitch
+    RadioSwitch,
+    SteeringWheel
 }
 
 public class InteriorControl : MonoBehaviour, IInteractable
@@ -27,6 +28,7 @@ public class InteriorControl : MonoBehaviour, IInteractable
             { InteriorControlType.WindshieldWiper,    new[] { "Windshield_Wiper_Motor_Failure" } },
             { InteriorControlType.AirConditionSwitch, new[] { "Air_Condition_Failure" } },
             { InteriorControlType.RadioSwitch,        new[] { "Radio_Failure" } },
+            { InteriorControlType.SteeringWheel,      new[] { "Wheel_Alignment_Balancing" } },
         };
 
     public void Interact()

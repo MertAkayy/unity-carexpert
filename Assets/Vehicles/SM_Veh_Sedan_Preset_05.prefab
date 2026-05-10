@@ -499,6 +499,7 @@ MonoBehaviour:
   hingedPart: 1
   partPosition: 0
   openingDirection: 1
+  holdToOpenDuration: 2
 --- !u!1 &312529467911522042
 GameObject:
   m_ObjectHideFlags: 0
@@ -22555,6 +22556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   windowTransform: {fileID: 5629605315865654865}
+  linkedGlass: {fileID: 0}
   windowLocation: 2
   windowEndPosition: {fileID: 4758763427104092286}
 --- !u!1 &1864432750946944383
@@ -95632,6 +95634,7 @@ MonoBehaviour:
   hingedPart: 0
   partPosition: 12
   openingDirection: 0
+  holdToOpenDuration: 2
 --- !u!1 &2081888033056517641
 GameObject:
   m_ObjectHideFlags: 0
@@ -97191,6 +97194,7 @@ MonoBehaviour:
   hingedPart: 0
   partPosition: 9
   openingDirection: 0
+  holdToOpenDuration: 2
 --- !u!1 &2463421446831314119
 GameObject:
   m_ObjectHideFlags: 0
@@ -98550,6 +98554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   windowTransform: {fileID: 296576430201646850}
+  linkedGlass: {fileID: 0}
   windowLocation: 1
   windowEndPosition: {fileID: 304076600989117323}
 --- !u!1 &2724118621559929808
@@ -99897,6 +99902,7 @@ MonoBehaviour:
   hingedPart: 0
   partPosition: 8
   openingDirection: 0
+  holdToOpenDuration: 2
 --- !u!1 &2751309386189776289
 GameObject:
   m_ObjectHideFlags: 0
@@ -101032,6 +101038,7 @@ MonoBehaviour:
   hingedPart: 0
   partPosition: 11
   openingDirection: 0
+  holdToOpenDuration: 2
 --- !u!1 &2937005173426710240
 GameObject:
   m_ObjectHideFlags: 0
@@ -104227,6 +104234,7 @@ MonoBehaviour:
   hingedPart: 0
   partPosition: 0
   openingDirection: 0
+  holdToOpenDuration: 2
 --- !u!1 &3199517195753168218
 GameObject:
   m_ObjectHideFlags: 0
@@ -108407,6 +108415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   windowTransform: {fileID: 278223342285834275}
+  linkedGlass: {fileID: 0}
   windowLocation: 0
   windowEndPosition: {fileID: 6983586460681747274}
 --- !u!1 &4273784894257261770
@@ -117614,6 +117623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   windowTransform: {fileID: 4502891640943975389}
+  linkedGlass: {fileID: 0}
   windowLocation: 3
   windowEndPosition: {fileID: 7163749027804401164}
 --- !u!1 &5692479482749528794
@@ -117746,6 +117756,7 @@ MonoBehaviour:
   hingedPart: 1
   partPosition: 6
   openingDirection: 2
+  holdToOpenDuration: 2
 --- !u!1 &5764826605352847080
 GameObject:
   m_ObjectHideFlags: 0
@@ -129084,6 +129095,7 @@ MonoBehaviour:
   hingedPart: 1
   partPosition: 3
   openingDirection: 3
+  holdToOpenDuration: 2
 --- !u!64 &8912409000142809501
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -130103,6 +130115,7 @@ MonoBehaviour:
   hingedPart: 0
   partPosition: 10
   openingDirection: 0
+  holdToOpenDuration: 2
 --- !u!1 &5889018960745943824
 GameObject:
   m_ObjectHideFlags: 0
@@ -139931,6 +139944,7 @@ MonoBehaviour:
   hingedPart: 1
   partPosition: 5
   openingDirection: 3
+  holdToOpenDuration: 2
 --- !u!64 &83981441761591086
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -149281,6 +149295,7 @@ MonoBehaviour:
   hingedPart: 0
   partPosition: 1
   openingDirection: 0
+  holdToOpenDuration: 2
 --- !u!1 &6796074784099653155
 GameObject:
   m_ObjectHideFlags: 0
@@ -160244,6 +160259,7 @@ MonoBehaviour:
   hingedPart: 1
   partPosition: 4
   openingDirection: 4
+  holdToOpenDuration: 2
 --- !u!64 &601289941075549884
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -171678,6 +171694,7 @@ MonoBehaviour:
   hingedPart: 0
   partPosition: 2
   openingDirection: 4
+  holdToOpenDuration: 2
 --- !u!64 &6093700065360769597
 MeshCollider:
   m_ObjectHideFlags: 0

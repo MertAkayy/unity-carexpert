@@ -16,9 +16,10 @@ MonoBehaviour:
   Description: Tire pressure monitoring sensor is faulty, giving incorrect readings.
   AvailableLevel: 6
   AffectedPartType: 4
-  PossibilityWeight: 1
+  PossibilityWeight: 0
   ObdCode: C0050
-  RequiredTool: 9
+  RequiredTool: 6
   Clues:
   - clueText: Tire pressure monitoring sensor is faulty, giving incorrect readings.
+    isAcitve: 0
     isCollected: 0

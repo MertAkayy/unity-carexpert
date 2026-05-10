@@ -16,14 +16,16 @@ MonoBehaviour:
   Description: Improper alignment or unbalanced wheels causing vibration or uneven
     tire wear.
   AvailableLevel: 6
-  AffectedPartType: 4
-  PossibilityWeight: 1
+  AffectedPartType: 5
+  PossibilityWeight: 750
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:
   - clueText: The vehicle pulls to one side while driving on a straight road, indicating
       a wheel alignment issue.
+    isAcitve: 0
     isCollected: 0
   - clueText: The steering wheel vibrates or feels unsteady, especially at higher
       speeds, suggesting wheel imbalance.
+    isAcitve: 0
     isCollected: 0

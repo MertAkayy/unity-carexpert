@@ -69,10 +69,7 @@ public class ExteriorPart : VehiclePart ,IInteractable,IExteriorPart,IReadable
                 IsPartDentRepaired = true;
                 IsPartRepaired = true; 
             }
-
-            if (String.Compare(issue.FailureName, "Lock_Actuator_Failure", StringComparison.Ordinal) == 0 &&
-                this.hingedPart == false) 
-                return;
+            
             assignedIssues.Add(issue);
         }
     }
