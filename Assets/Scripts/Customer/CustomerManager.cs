@@ -129,6 +129,8 @@ namespace Customer
         [SerializeField] private Transform _waitingArea;
         [SerializeField] private Transform _serviceArea;
         [SerializeField] private Transform _exitPoint;
+        [SerializeField] private Transform _mechanicLift;
+        [SerializeField] private Transform _customerWaitPoint;
 
         [Header("Auto-Spawn")]
         [SerializeField] private bool _autoSpawnCustomers = true;
@@ -561,14 +563,17 @@ namespace Customer
         private Customer CreateCustomerInstance()
         {
             GameObject customerObj;
+            Vector3 spawnPos = _spawnPoint != null ? _spawnPoint.position : Vector3.zero;
+            Quaternion spawnRot = _spawnPoint != null ? _spawnPoint.rotation : Quaternion.identity;
 
             if (_customerPrefab != null)
             {
-                customerObj = Instantiate(_customerPrefab);
+                customerObj = Instantiate(_customerPrefab, spawnPos, spawnRot);
             }
             else
             {
                 customerObj = new GameObject("Customer");
+                customerObj.transform.SetPositionAndRotation(spawnPos, spawnRot);
             }
 
             Customer customer = customerObj.GetComponent<Customer>();
@@ -601,7 +606,7 @@ namespace Customer
             Transform targetTransform = state switch
             {
                 CustomerState.Waiting => _waitingArea,
-                CustomerState.BeingServed => _serviceArea,
+                CustomerState.BeingServed => _customerWaitPoint != null ? _customerWaitPoint : _serviceArea,
                 CustomerState.Leaving => _exitPoint,
                 _ => _spawnPoint
             };
@@ -618,13 +623,14 @@ namespace Customer
             if (_vehicleFactory == null || customer?.Request == null) return;
 
             int playerLevel = _progressionManager?.CurrentLevel ?? 1;
-            Vector3 spawnPosition = _serviceArea != null ? _serviceArea.position + Vector3.right * 3f : Vector3.zero;
+            Vector3 spawnPosition = _mechanicLift != null ? _mechanicLift.position : (_serviceArea != null ? _serviceArea.position + Vector3.right * 3f : Vector3.zero);
+            Quaternion spawnRotation = _mechanicLift != null ? _mechanicLift.rotation : Quaternion.Euler(0f, 90f, 0f);
 
             Vehicle vehicle = _vehicleFactory.SpawnVehicleForCustomer(
                 customer.Request.RequestedVehicleType,
                 playerLevel,
                 spawnPosition,
-                Quaternion.identity
+                spawnRotation
             );
 
             customer.Request.AssignedVehicle = vehicle;

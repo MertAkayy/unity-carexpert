@@ -29,11 +29,11 @@ namespace Customer
     /// </summary>
     public enum PatienceLevel
     {
-        VeryLow = 1,    // 60 seconds
-        Low = 2,        // 120 seconds
-        Medium = 3,     // 180 seconds
-        High = 4,       // 240 seconds
-        VeryHigh = 5    // 300 seconds
+        VeryLow = 5,    // 300 seconds  (5 min)
+        Low = 7,        // 420 seconds  (7 min)
+        Medium = 10,    // 600 seconds  (10 min)
+        High = 13,      // 780 seconds  (13 min)
+        VeryHigh = 15   // 900 seconds  (15 min)
     }
 
     /// <summary>

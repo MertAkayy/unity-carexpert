@@ -5,10 +5,11 @@ using UnityEngine;
 namespace PlayerScripts
 {
     public class PlayerDataManager : MonoBehaviour
-    { 
+    {
         public static PlayerDataManager Instance;
         public PlayerData playerData;
         public MarketItemDatabase itemDatabase;
+        public System.Action<IUsableTool> OnToolChanged;
         [SerializeField] private Transform holdArea;
         private List<MarketItem> AllItems => itemDatabase.items;
         [Header("Ray Settings")]
@@ -193,8 +194,14 @@ namespace PlayerScripts
                 _selectedObject = null;
             }
            
+            IUsableTool newTool = null;
             if(item.itemObject != null )
-                _selectedObject=Instantiate(item.itemObject,holdArea);
+            {
+                _selectedObject = Instantiate(item.itemObject, holdArea);
+                newTool = _selectedObject.GetComponentInChildren<IUsableTool>();
+            }
+            GameLogger.Log($"[PlayerDataManager] Tool changed to {item.name} (handler: {(newTool != null ? newTool.GetType().Name : "none")})");
+            OnToolChanged?.Invoke(newTool);
         }
         public void SaveData()
         {

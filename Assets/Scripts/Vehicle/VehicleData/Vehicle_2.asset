@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vehicleName: v2
   description: wqeqwewqe
-  prefab: {fileID: 6753224463825002029, guid: 060fe3c2c3e409c4395f5b6423809573, type: 3}
+  prefab: {fileID: 4554835381477966218, guid: 8fab7e00d5781c74092b30ff53134135, type: 3}
   thumbnail: {fileID: 0}
   baseValue: 10000
   minimumLevel: 1

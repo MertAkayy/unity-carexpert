@@ -32,12 +32,17 @@ namespace PlayerScripts
             _playerInputActions.Gameplay.PointerPosition.performed += ResumeJob;
             _playerInputActions.Gameplay.Job.canceled += CancelJob;
             _playerInputActions.Gameplay.Read.performed += PerformRead;
-             RefreshCurrentTool();
+
+            if (playerDataManager != null)
+                playerDataManager.OnToolChanged += OnToolChanged;
+
+            // Initial tool will be set when PlayerDataManager.Start() calls SelectTool
+            _tool = GetComponentInChildren<IUsableTool>();
         }
 
-        private void RefreshCurrentTool()
+        private void OnToolChanged(IUsableTool newTool)
         {
-            _tool = this.GetComponentInChildren<IUsableTool>();
+            _tool = newTool;
         }
 
         private void PerformRead(InputAction.CallbackContext obj)
@@ -47,16 +52,18 @@ namespace PlayerScripts
 
         private void DoJob(InputAction.CallbackContext context)
         {
-            
+            if (_tool == null) return;
             _tool.StartJob(context);
         }
         private void ResumeJob(InputAction.CallbackContext obj)
         {
+            if (_tool == null) return;
             _tool.ResumeJob(obj);
         }
 
         private void CancelJob(InputAction.CallbackContext obj)
         {
+            if (_tool == null) return;
             _tool.FinishJob(obj);
         }
 
@@ -80,6 +87,8 @@ namespace PlayerScripts
         }
         void OnDestroy()
         {
+            if (playerDataManager != null)
+                playerDataManager.OnToolChanged -= OnToolChanged;
             _playerInputActions.Dispose();
         }
 
@@ -102,10 +111,10 @@ namespace PlayerScripts
             playerCharacter.UpdateInput(characterInput);
             playerCharacter.UpdateBody(deltaTime);
 
-            // Refresh tool reference in case it was added/removed
+            // Fallback: if tool is null (e.g. Start order issue), try finding it
             if (_tool == null)
             {
-                RefreshCurrentTool();
+                _tool = GetComponentInChildren<IUsableTool>();
             }
 
             UpdateTargetHighlight();
