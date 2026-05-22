@@ -21,7 +21,6 @@ public class Vehicle : MonoBehaviour
     [SerializeField] public VehicleExhaust exhaust;
     [SerializeField] public VehicleCoolantReservoir coolantReservoir;
     public List<AccidentReport> AccidentReports = new();
-    [SerializeField] private Transform liftPlatform;
     public readonly VehicleRegistration Registration=new VehicleRegistration();
     public int milage=250;
     public Guid VehicleId = Guid.NewGuid();
@@ -98,8 +97,6 @@ public class Vehicle : MonoBehaviour
 
     private void Start()
     {
-        transform.SetParent(liftPlatform);
-
         // Initialize all vehicle parts first
         InitializeAllParts();
 

@@ -388,9 +388,14 @@ namespace Customer
 
             // Generate final report
             InspectionReport report = null;
+            Debug.Log($"[CustomerManager] ReportService: {(_reportService != null ? "OK" : "NULL")}, Vehicle: {(_currentCustomer.Request?.AssignedVehicle != null ? _currentCustomer.Request.AssignedVehicle.name : "NULL")}");
             if (_reportService != null && _currentCustomer.Request?.AssignedVehicle != null)
             {
                 report = _reportService.GenerateReportFromVehicle(_currentCustomer.Request.AssignedVehicle);
+            }
+            else
+            {
+                Debug.LogWarning("[CustomerManager] Skipped report generation - missing service or vehicle!");
             }
 
             // Complete service
@@ -623,7 +628,7 @@ namespace Customer
             if (_vehicleFactory == null || customer?.Request == null) return;
 
             int playerLevel = _progressionManager?.CurrentLevel ?? 1;
-            Vector3 spawnPosition = _mechanicLift != null ? _mechanicLift.position : (_serviceArea != null ? _serviceArea.position + Vector3.right * 3f : Vector3.zero);
+            Vector3 spawnPosition = _mechanicLift != null ? _mechanicLift.position + Vector3.up * 0.15f : (_serviceArea != null ? _serviceArea.position + Vector3.right * 3f : Vector3.zero);
             Quaternion spawnRotation = _mechanicLift != null ? _mechanicLift.rotation : Quaternion.Euler(0f, 90f, 0f);
 
             Vehicle vehicle = _vehicleFactory.SpawnVehicleForCustomer(
@@ -634,6 +639,26 @@ namespace Customer
             );
 
             customer.Request.AssignedVehicle = vehicle;
+
+            GameLogger.Log("Before if/else");
+            if (vehicle != null && _mechanicLift != null)
+            {
+                GameLogger.Log("after null if/else");
+                Lift lift = _mechanicLift.GetComponentInChildren<Lift>();
+                if (lift != null && lift.LiftPlatform != null)
+                {
+                    GameLogger.Log("after lift if/else");
+                    GameLogger.Log($"Vehicle parent BEFORE SetParent: {vehicle.transform.parent?.name ?? "NULL"}");
+                    GameLogger.Log($"LiftPlatform name: {lift.LiftPlatform.name}, instanceID: {lift.LiftPlatform.GetInstanceID()}");
+                    vehicle.transform.SetParent(lift.LiftPlatform);
+                    GameLogger.Log($"Vehicle parent AFTER SetParent: {vehicle.transform.parent?.name ?? "NULL"}, parentID: {vehicle.transform.parent?.GetInstanceID()}");
+                }
+                else
+                {
+                    GameLogger.Log("after lift if/else else");
+                    vehicle.transform.SetParent(_mechanicLift);
+                }
+            }
 
             // Start inspection
             if (_inspectionService != null && vehicle != null)
@@ -688,9 +713,10 @@ namespace Customer
             // Fire event with satisfaction
             OnCustomerLeft?.Invoke(customer, customer.Satisfaction);
 
-            // Return vehicle to factory
+            // Unparent vehicle from lift and return to factory
             if (_vehicleFactory != null && customer.Request?.AssignedVehicle != null)
             {
+                customer.Request.AssignedVehicle.transform.SetParent(null);
                 _vehicleFactory.ReturnVehicle(customer.Request.AssignedVehicle);
             }
 

@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using Core;
+using Inspection;
+using Report;
 using UnityEngine;
 
 /// <summary>
@@ -17,6 +19,8 @@ public class VehicleManager : MonoBehaviour
 
     private VehicleFactory _vehicleFactory;
     private FaultGenerator _faultGenerator;
+    private InspectionService _inspectionService;
+    private ReportService _reportService;
 
     public VehicleFactory Factory => _vehicleFactory;
     public IssueDataBase IssueDatabase => _issueDatabase;
@@ -43,6 +47,14 @@ public class VehicleManager : MonoBehaviour
         _vehicleFactory = new VehicleFactory(_issueDatabase, _vehicleTypes);
         ServiceLocator.Register<IVehicleFactory>(_vehicleFactory);
 
+        // Create and register InspectionService
+        _inspectionService = new InspectionService();
+        ServiceLocator.Register<IInspectionService>(_inspectionService);
+
+        // Create and register ReportService
+        _reportService = new ReportService();
+        ServiceLocator.Register<IReportService>(_reportService);
+
         if (_debugMode)
         {
             Debug.Log($"[VehicleManager] Created and registered VehicleFactory with {_vehicleTypes.Count} vehicle types");
@@ -51,6 +63,12 @@ public class VehicleManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (ServiceLocator.IsRegistered<IReportService>())
+            ServiceLocator.Unregister<IReportService>();
+
+        if (ServiceLocator.IsRegistered<IInspectionService>())
+            ServiceLocator.Unregister<IInspectionService>();
+
         if (ServiceLocator.IsRegistered<IFaultGenerator>())
             ServiceLocator.Unregister<IFaultGenerator>();
 

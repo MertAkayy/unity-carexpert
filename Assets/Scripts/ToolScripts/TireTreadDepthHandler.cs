@@ -33,7 +33,7 @@ namespace ToolScripts
             base.Awake();
             toolType = Tool.TireTreadDepthGauge;
             toolName = "Tread Depth Gauge";
-            inspectionDuration = 2f;
+            inspectionDuration = 0.75f;
             compatiblePartInterfaces = new string[] { "IVehicleWheel" };
         }
 

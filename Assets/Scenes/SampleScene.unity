@@ -7814,6 +7814,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!4 &751133275 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4139576227317132, guid: 578556e158e9cd24cbc9089b39cd8202, type: 3}
+  m_PrefabInstance: {fileID: 1159379487}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &763522034
 GameObject:
   m_ObjectHideFlags: 0
@@ -9145,6 +9150,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 0.1
+--- !u!1 &883107769
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 883107770}
+  m_Layer: 0
+  m_Name: CustomerWaitPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &883107770
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883107769}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.43, y: 1.668, z: 35.04}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &908814750
 GameObject:
   m_ObjectHideFlags: 0
@@ -17933,7 +17969,6 @@ MonoBehaviour:
   radiator: {fileID: 163296998}
   exhaust: {fileID: 0}
   coolantReservoir: {fileID: 0}
-  liftPlatform: {fileID: 0}
   milage: 250
 --- !u!4 &1719739564
 Transform:
@@ -20266,8 +20301,8 @@ MonoBehaviour:
   currentDay: 1
   currentHour: 8
   currentMinute: 0
-  timeScale: 1
   realSecondsPerGameMinute: 1
+  timeScale: 1
 --- !u!4 &1910453857
 Transform:
   m_ObjectHideFlags: 0
@@ -20326,6 +20361,8 @@ MonoBehaviour:
   _waitingArea: {fileID: 856920941}
   _serviceArea: {fileID: 961430211}
   _exitPoint: {fileID: 793054863}
+  _mechanicLift: {fileID: 751133275}
+  _customerWaitPoint: {fileID: 883107770}
   _autoSpawnCustomers: 1
   _minCustomersInQueue: 1
   _debugMode: 0
@@ -22009,6 +22046,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Veh_Sedan_Preset_05
       objectReference: {fileID: 0}
+    - target: {fileID: 4554835381477966218, guid: 8fab7e00d5781c74092b30ff53134135, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7701676168932035920, guid: 8fab7e00d5781c74092b30ff53134135, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.155
@@ -22104,3 +22145,4 @@ SceneRoots:
   - {fileID: 856920941}
   - {fileID: 961430211}
   - {fileID: 793054863}
+  - {fileID: 883107770}

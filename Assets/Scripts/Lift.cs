@@ -9,6 +9,9 @@ public class Lift : MonoBehaviour,IInteractable
    [SerializeField] BoxCollider liftCollider;
    [SerializeField] private Transform liftChild;
    private bool _playerOnButton=false;
+
+   /// <summary>The moving platform of the lift. Parent objects here to move with the lift.</summary>
+   public Transform LiftPlatform => liftChild;
    private enum LiftAnimationState
    {
      Up,

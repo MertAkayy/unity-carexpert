@@ -31,7 +31,7 @@ namespace ToolScripts
             base.Awake();
             toolType = Tool.DigitalPaintThicknessGauge;
             toolName = "Digital Paint Gauge";
-            inspectionDuration = 2f;
+            inspectionDuration = 0.75f;
             compatiblePartInterfaces = new string[] { "IExteriorPart" };
         }
 

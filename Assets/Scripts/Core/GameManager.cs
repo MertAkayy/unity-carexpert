@@ -115,6 +115,10 @@ namespace Core
             {
                 PauseGame();
             }
+            else if (!pauseStatus && CurrentState == GameState.Paused)
+            {
+                ResumeGame();
+            }
         }
 
         private void OnApplicationQuit()

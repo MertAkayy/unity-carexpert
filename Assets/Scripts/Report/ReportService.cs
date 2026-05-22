@@ -207,6 +207,43 @@ namespace Report
         /// </summary>
         private void ProcessIssues(InspectionReport report, List<VehiclePart> allParts)
         {
+            int totalAssigned = 0;
+            int totalPredicted = 0;
+
+            GameLogger.Log("========== INSPECTION REPORT DEBUG ==========");
+            GameLogger.Log($"Total parts found: {allParts.Count}");
+            int nullCount = allParts.Count(p => p == null);
+            if (nullCount > 0) GameLogger.Log($"  WARNING: {nullCount} null parts!");
+
+            GameLogger.Log("--- ASSIGNED ISSUES (Ground Truth) ---");
+            foreach (var part in allParts)
+            {
+                if (part == null) continue;
+                int count = part.assignedIssues?.Count ?? 0;
+                totalAssigned += count;
+                if (count > 0)
+                {
+                    foreach (var issue in part.assignedIssues)
+                        GameLogger.Log($"  [ASSIGNED] {part.name} -> {issue.FailureName} (Level: {issue.AvailableLevel}, Tool: {issue.RequiredTool})");
+                }
+            }
+            if (totalAssigned == 0) GameLogger.Log("  (NONE - no issues assigned to any part!)");
+
+            GameLogger.Log("--- PREDICTED ISSUES (Player Detected) ---");
+            foreach (var part in allParts)
+            {
+                if (part == null) continue;
+                int count = part.predictedIssues?.Count ?? 0;
+                totalPredicted += count;
+                if (count > 0)
+                {
+                    foreach (var issue in part.predictedIssues)
+                        GameLogger.Log($"  [PREDICTED] {part.name} -> {issue.FailureName}");
+                }
+            }
+            if (totalPredicted == 0) GameLogger.Log("  (NONE - no issues detected by player)");
+            GameLogger.Log("=============================================");
+
             foreach (var part in allParts)
             {
                 if (part == null) continue;
@@ -242,6 +279,16 @@ namespace Report
                     }
                 }
             }
+
+            GameLogger.Log("========== REPORT RESULTS ==========");
+            GameLogger.Log($"  Total Assigned:     {totalAssigned}");
+            GameLogger.Log($"  Total Predicted:    {totalPredicted}");
+            GameLogger.Log($"  Found (correct):    {report.FoundIssues.Count}");
+            GameLogger.Log($"  Missed:             {report.MissedIssues.Count}");
+            GameLogger.Log($"  False Positives:    {report.FalsePositives.Count}");
+            float accuracy = totalAssigned > 0 ? (float)report.FoundIssues.Count / totalAssigned * 100f : 100f;
+            GameLogger.Log($"  Accuracy:           {accuracy:F1}%");
+            GameLogger.Log("=====================================");
         }
 
         /// <inheritdoc/>
