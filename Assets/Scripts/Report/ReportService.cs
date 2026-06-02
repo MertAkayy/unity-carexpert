@@ -198,6 +198,8 @@ namespace Report
 
             GameLogger.Log($"[ReportService] Generated report from vehicle: {report}");
 
+            GameLogger.Log($"[ReportService] Report ready - waiting for CustomerManager to show with rewards");
+
             OnReportGenerated?.Invoke(report);
             return report;
         }

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using PlayerScripts;
 using UnityEngine;
@@ -45,6 +46,9 @@ public class InteriorControl : MonoBehaviour, IInteractable
 
         List<VehiclePart> allParts = GetAllVehicleParts(vehicle);
 
+        bool foundAnyIssue = false;
+        string resultMessage = $"{controlType}\n\n";
+
         foreach (string issueName in issueNames)
         {
             Issue issue = vehicleManager.IssueDatabase.GetByName(issueName);
@@ -59,7 +63,21 @@ public class InteriorControl : MonoBehaviour, IInteractable
                     part.predictedIssues.Add(issue);
                     GameLogger.Log($"[InteriorControl] '{issueName}' detected via {controlType} — added to predictedIssues on '{part.name}'");
                 }
+                resultMessage += $"Issue: {issueName}\nPart: {part.name}\n\n";
+                foundAnyIssue = true;
             }
+        }
+
+        if (!foundAnyIssue)
+        {
+            resultMessage += "No issues detected.";
+        }
+
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.ShowInfo(resultMessage);
+            // Auto-hide after 4 seconds
+            StartCoroutine(HideInfoAfterDelay(4f));
         }
     }
 
@@ -80,6 +98,12 @@ public class InteriorControl : MonoBehaviour, IInteractable
         }
 
         return true;
+    }
+
+    private IEnumerator HideInfoAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        UIManager.Instance?.HideInfo();
     }
 
     private List<VehiclePart> GetAllVehicleParts(Vehicle vehicle)

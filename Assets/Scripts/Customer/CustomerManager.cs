@@ -416,7 +416,22 @@ namespace Customer
             _totalEarningsToday += payment;
 
             // Award XP
-            AwardXPForService(_currentCustomer, report);
+            int earnedXP = AwardXPForService(_currentCustomer, report);
+
+            // Show full report on screen
+            string screenMessage = "INSPECTION REPORT\n\n";
+            if (report != null)
+            {
+                screenMessage += $"Vehicle: {report.Registration?.PlateNumber ?? "Unknown"}\n";
+                screenMessage += $"Accuracy: {report.Summary.AccuracyPercentage:F1}%\n";
+                screenMessage += $"Found: {report.Summary.TotalIssuesFound} / {report.Summary.TotalIssuesAssigned}\n";
+                screenMessage += $"False Positives: {report.Summary.FalsePositives}\n";
+                screenMessage += $"Condition: {report.Summary.ConditionRating}\n";
+                screenMessage += $"Duration: {report.InspectionDurationSeconds:F0}s\n\n";
+            }
+            screenMessage += $"Earned: ${payment:F2}\n";
+            screenMessage += $"XP: +{earnedXP}";
+            DebugToScreen.ShowMessage(screenMessage, 10f);
 
             if (_debugMode)
             {
@@ -738,9 +753,9 @@ namespace Customer
             }
         }
 
-        private void AwardXPForService(Customer customer, InspectionReport report)
+        private int AwardXPForService(Customer customer, InspectionReport report)
         {
-            if (_progressionManager == null) return;
+            if (_progressionManager == null) return 0;
 
             float accuracy = report?.AccuracyPercentage / 100f ?? 0f;
             int issuesFound = report?.FoundIssuesCount ?? 0;
@@ -764,6 +779,7 @@ namespace Customer
             totalXP = Mathf.RoundToInt(totalXP * (customer.Data?.XPModifier ?? 1f));
 
             _progressionManager.AddXP(totalXP, $"Customer service: {customer.Data?.CustomerName}");
+            return totalXP;
         }
 
         private IEnumerator MakeCustomerLeaveAfterDelay(Customer customer, float delay)

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using PlayerScripts;
 using UnityEngine;
@@ -36,6 +37,7 @@ namespace ToolScripts.Base
         protected Player player;
 
         protected AudioSource _audioSource;
+        private Coroutine _hideInfoCoroutine;
 
         #region Properties
         public Tool ToolType => toolType;
@@ -180,7 +182,19 @@ namespace ToolScripts.Base
                 }
 
                 AddDetectedIssuesToPart(lastResult);
-                ToolUIManager.Instance?.ShowResult(lastResult);
+
+                // Show result on UI
+                if (ToolUIManager.Instance != null)
+                {
+                    ToolUIManager.Instance.ShowResult(lastResult);
+                }
+                else if (UIManager.Instance != null)
+                {
+                    UIManager.Instance.ShowInfo(lastResult.DisplayMessage);
+                    // Auto-hide after 5 seconds
+                    if (_hideInfoCoroutine != null) StopCoroutine(_hideInfoCoroutine);
+                    _hideInfoCoroutine = StartCoroutine(HideInfoAfterDelay(5f));
+                }
             }
             else
             {
@@ -189,7 +203,16 @@ namespace ToolScripts.Base
                     _audioSource.PlayOneShot(inspectionFailSound);
                 }
 
-                ToolUIManager.Instance?.ShowMessage(lastResult.DisplayMessage);
+                if (ToolUIManager.Instance != null)
+                {
+                    ToolUIManager.Instance.ShowMessage(lastResult.DisplayMessage);
+                }
+                else if (UIManager.Instance != null)
+                {
+                    UIManager.Instance.ShowInfo(lastResult.DisplayMessage);
+                    if (_hideInfoCoroutine != null) StopCoroutine(_hideInfoCoroutine);
+                    _hideInfoCoroutine = StartCoroutine(HideInfoAfterDelay(3f));
+                }
             }
 
             currentTargetPart = null;
@@ -282,6 +305,12 @@ namespace ToolScripts.Base
         {
             if (part == null) return null;
             return part.GetComponent<T>();
+        }
+
+        private IEnumerator HideInfoAfterDelay(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            UIManager.Instance?.HideInfo();
         }
         #endregion
     }

@@ -2,18 +2,19 @@ using UnityEngine;
 
 public class DebugToScreen : MonoBehaviour
 {
-    public static string message = "Merhaba, bu bir debug mesajıdır!";
-    private static float messageEndTime = 0f;
-    void OnGUI()
+    public static void ShowMessage(string newMessage, float duration = 5f)
     {
-        if (!string.IsNullOrEmpty(message) && Time.time < messageEndTime)
+        if (UIManager.Instance != null)
         {
-            GUI.Label(new Rect(10, 10, 500, 20), message);
+            UIManager.Instance.ShowInfo(newMessage);
+            // Use coroutine on UIManager to auto-hide
+            UIManager.Instance.StartCoroutine(HideAfterDelay(duration));
         }
     }
-    public static void ShowMessage(string newMessage, float duration = 10f)
+
+    private static System.Collections.IEnumerator HideAfterDelay(float delay)
     {
-        message = newMessage;
-        messageEndTime = Time.time + duration;
+        yield return new WaitForSeconds(delay);
+        UIManager.Instance?.HideInfo();
     }
 }
