@@ -16,7 +16,7 @@ MonoBehaviour:
   description: 
   portrait: {fileID: 0}
   personality: 0
-  patienceLevel: 4
+  patienceLevel: 5
   tipTendency: 0.774
   satisfactionThreshold: 0.5
   preferredInspectionTypes: 01000000

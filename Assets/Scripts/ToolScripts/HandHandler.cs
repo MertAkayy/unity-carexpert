@@ -90,9 +90,20 @@ namespace ToolScripts
 
         protected override void UpdateInspection()
         {
-            // No timer for hand inspection - continues until released
             // Update zoom transition
             UpdateZoom();
+        }
+
+        /// <summary>
+        /// Override FinishJob so releasing the button completes the inspection
+        /// instead of cancelling it.
+        /// </summary>
+        public override void FinishJob(InputAction.CallbackContext context)
+        {
+            if (context.canceled && isInspecting)
+            {
+                CompleteInspection();
+            }
         }
 
         protected override ToolInspectionResult PerformInspection()
@@ -113,24 +124,42 @@ namespace ToolScripts
                 result.AddMeasurement("Part Location", currentTargetPart.partUniqueType.ToString());
             }
 
-            // Check for existing issues
-            int assignedCount = currentTargetPart.assignedIssues.Count;
-            int predictedCount = currentTargetPart.predictedIssues.Count;
-
-            result.AddMeasurement("Assigned Issues", assignedCount.ToString());
-            result.AddMeasurement("Predicted Issues", predictedCount.ToString());
+            // Detect issues that require Hand tool
+            int detectedCount = 0;
+            if (currentTargetPart.assignedIssues != null)
+            {
+                foreach (var issue in currentTargetPart.assignedIssues)
+                {
+                    if (issue.RequiredTool == Tool.Handle)
+                    {
+                        result.AddDetectedIssue(issue.FailureName);
+                        detectedCount++;
+                        GameLogger.Log($"[HandHandler] Detected issue: {issue.FailureName} on {currentTargetPart.name}");
+                    }
+                }
+            }
 
             // Build display message
             string message = $"CLOSE-UP INSPECTION\n\n";
             message += $"Part: {currentTargetPart.name}\n";
-            message += $"Type: {partType}\n";
-            message += $"Assigned Issues: {assignedCount}\n";
-            message += $"Predicted Issues: {predictedCount}\n\n";
-            message += "Manual observation mode.\nUse Add Note to record findings.";
+            message += $"Type: {partType}\n\n";
+
+            if (detectedCount > 0)
+            {
+                message += $"Issues Found: {detectedCount}\n";
+                foreach (string issueName in result.DetectedIssues)
+                {
+                    message += $"  - {issueName}\n";
+                }
+            }
+            else
+            {
+                message += "No visible issues detected.";
+            }
 
             result.DisplayMessage = message;
 
-            GameLogger.Log($"[HandHandler] Inspected {currentTargetPart.name}");
+            GameLogger.Log($"[HandHandler] Inspected {currentTargetPart.name} - Found {detectedCount} issue(s)");
 
             return result;
         }

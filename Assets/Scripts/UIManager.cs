@@ -1,4 +1,5 @@
 using Core;
+using Customer;
 using Economy;
 using PlayerScripts;
 using Progression;
@@ -18,6 +19,8 @@ public class UIManager : MonoBehaviour
     private TextMeshProUGUI currentClock;
     [SerializeField]
     private TextMeshProUGUI currentDay;
+    [SerializeField]
+    private TextMeshProUGUI customerTimerText;
     private void Awake()
     {
         if (Instance == null)
@@ -28,10 +31,14 @@ public class UIManager : MonoBehaviour
 
     }
 
+    private ICustomerManager _customerManager;
+
     void Start()
     {
         EventManager.StartListening("OnTimeChanged",UpdateClockUI);
         infoText.enabled = false;
+        if (customerTimerText != null)
+            customerTimerText.enabled = false;
 
         // Subscribe to system events (these persist even if systems aren't initialized yet)
         ServiceLocator.OnAllSystemsInitialized += OnSystemsReady;
@@ -61,6 +68,55 @@ public class UIManager : MonoBehaviour
         {
             currentMoney.text = PlayerDataManager.Instance.playerData.money + " $ ";
         }
+
+        if (ServiceLocator.TryGet(out _customerManager))
+        {
+            _customerManager.OnCustomerServiceStarted += OnServiceStarted;
+            _customerManager.OnCustomerLeft += OnCustomerLeft;
+        }
+    }
+
+    private void OnServiceStarted(Customer.Customer customer)
+    {
+        if (customerTimerText != null)
+            customerTimerText.enabled = true;
+    }
+
+    private void OnCustomerLeft(Customer.Customer customer, float satisfaction)
+    {
+        if (customerTimerText != null)
+            customerTimerText.enabled = false;
+    }
+
+    private void Update()
+    {
+        UpdateCustomerTimer();
+    }
+
+    private void UpdateCustomerTimer()
+    {
+        if (customerTimerText == null || !customerTimerText.enabled) return;
+        if (_customerManager == null || _customerManager.CurrentCustomer == null)
+        {
+            customerTimerText.enabled = false;
+            return;
+        }
+
+        var customer = _customerManager.CurrentCustomer;
+        float remaining = customer.PatienceRemaining;
+        int minutes = Mathf.FloorToInt(remaining / 60f);
+        int seconds = Mathf.FloorToInt(remaining % 60f);
+        float patiencePercent = customer.PatiencePercent;
+
+        // Change color based on urgency
+        if (patiencePercent > 0.5f)
+            customerTimerText.color = Color.white;
+        else if (patiencePercent > 0.25f)
+            customerTimerText.color = Color.yellow;
+        else
+            customerTimerText.color = Color.red;
+
+        customerTimerText.text = $"Inspection Time: {minutes:D2}:{seconds:D2}";
     }
 
     void OnDestroy()
@@ -76,6 +132,12 @@ public class UIManager : MonoBehaviour
         if (ServiceLocator.TryGet(out IEconomySystem economy))
         {
             economy.OnBalanceChanged -= UpdateMoneyUI;
+        }
+
+        if (_customerManager != null)
+        {
+            _customerManager.OnCustomerServiceStarted -= OnServiceStarted;
+            _customerManager.OnCustomerLeft -= OnCustomerLeft;
         }
     }
 

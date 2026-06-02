@@ -28,7 +28,7 @@ namespace Customer
     /// Represents a customer instance in the game.
     /// Tracks state, satisfaction, patience, and handles interactions.
     /// </summary>
-    public class Customer : MonoBehaviour
+    public class Customer : MonoBehaviour, IInteractable
     {
         #region Events
 
@@ -300,6 +300,36 @@ namespace Customer
         #endregion
 
         #region Public Methods
+
+        /// <summary>
+        /// Called when the player presses E on this customer.
+        /// Waiting → Start Service, BeingServed → Complete Service.
+        /// </summary>
+        public void Interact()
+        {
+            if (!ServiceLocator.TryGet<ICustomerManager>(out var customerManager))
+            {
+                Debug.LogWarning("[Customer] Cannot interact - CustomerManager not found");
+                return;
+            }
+
+            switch (State)
+            {
+                case CustomerState.Waiting:
+                    customerManager.StartServingNextCustomer();
+                    Debug.Log($"[Customer] Player started serving {Data?.CustomerName}");
+                    break;
+
+                case CustomerState.BeingServed:
+                    customerManager.CompleteCurrentCustomerService();
+                    Debug.Log($"[Customer] Player completed service for {Data?.CustomerName}");
+                    break;
+
+                default:
+                    Debug.Log($"[Customer] Cannot interact - customer is {State}");
+                    break;
+            }
+        }
 
         /// <summary>
         /// Starts serving this customer.
