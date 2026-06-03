@@ -22,4 +22,5 @@ MonoBehaviour:
   Clues:
   - clueText: The vehicle takes longer to stop, or braking performance feels weaker
       than usual.
+    isAcitve: 0
     isCollected: 0

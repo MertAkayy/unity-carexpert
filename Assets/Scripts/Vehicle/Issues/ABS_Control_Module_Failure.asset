@@ -17,13 +17,16 @@ MonoBehaviour:
     system.
   AvailableLevel: 32
   AffectedPartType: 4
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: C1201
   RequiredTool: 6
   Clues:
   - clueText: ABS warning light stays on.
+    isAcitve: 0
     isCollected: 0
   - clueText: No vibration felt on the pedal (normally ABS causes a pulsing sensation).
+    isAcitve: 0
     isCollected: 0
   - clueText: Error codes related to the ABS module appear(C1201).
+    isAcitve: 0
     isCollected: 0

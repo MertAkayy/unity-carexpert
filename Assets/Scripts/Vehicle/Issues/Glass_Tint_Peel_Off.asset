@@ -16,9 +16,10 @@ MonoBehaviour:
   Description: The window film is peeled off.
   AvailableLevel: 9
   AffectedPartType: 2
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:
   - clueText: Visible glass tint peel off on the car glasses.
+    isAcitve: 0
     isCollected: 0

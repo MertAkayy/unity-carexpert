@@ -16,12 +16,14 @@ MonoBehaviour:
   Description: Clutch is slipping, causing poor power transfer in manual transmissions.
   AvailableLevel: 20
   AffectedPartType: 5
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:
   - clueText: "When pressing the gas pedal, the RPM rises quickly but speed doesn\u2019t
       match."
+    isAcitve: 0
     isCollected: 0
   - clueText: The clutch engagement point feels unusually high.
+    isAcitve: 0
     isCollected: 0

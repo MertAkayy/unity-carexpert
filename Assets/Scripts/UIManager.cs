@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
     private TextMeshProUGUI currentDay;
     [SerializeField]
     private TextMeshProUGUI customerTimerText;
+    [SerializeField]
+    private TextMeshProUGUI actionHintsText;
     private void Awake()
     {
         if (Instance == null)
@@ -39,6 +41,8 @@ public class UIManager : MonoBehaviour
         infoText.enabled = false;
         if (customerTimerText != null)
             customerTimerText.enabled = false;
+        if (actionHintsText != null)
+            actionHintsText.enabled = false;
 
         // Subscribe to system events (these persist even if systems aren't initialized yet)
         ServiceLocator.OnAllSystemsInitialized += OnSystemsReady;
@@ -170,6 +174,113 @@ public class UIManager : MonoBehaviour
     public void HideInfo()
     {
         infoText.enabled=false;
+    }
+
+    /// <summary>
+    /// Updates the action hints UI based on the highlighted object and current tool.
+    /// </summary>
+    public void UpdateActionHints(GameObject activeObject, Tool currentTool)
+    {
+        if (actionHintsText == null) return;
+
+        if (activeObject == null)
+        {
+            actionHintsText.enabled = false;
+            return;
+        }
+
+        var lines = new System.Collections.Generic.List<string>();
+
+        // [E] Interact — if object has IInteractable
+        if (activeObject.GetComponent<IInteractable>() != null)
+        {
+            lines.Add("[E] Interact");
+        }
+
+        // [R] Read — if object has IReadable
+        if (activeObject.GetComponent<IReadable>() != null)
+        {
+            lines.Add("[R] Read");
+        }
+
+        // [LMB] Tool action — check if current tool is compatible with this object
+        if (currentTool != Tool.Null && currentTool != Tool.Handle)
+        {
+            VehiclePart part = activeObject.GetComponent<VehiclePart>();
+            if (part == null)
+                part = activeObject.GetComponentInParent<VehiclePart>();
+
+            if (part != null && IsToolCompatible(currentTool, part))
+            {
+                lines.Add("[LMB] Use Tool");
+            }
+        }
+
+        // Hand tool actions
+        if (currentTool == Tool.Handle)
+        {
+            VehiclePart part = activeObject.GetComponent<VehiclePart>();
+            if (part == null)
+                part = activeObject.GetComponentInParent<VehiclePart>();
+
+            if (part != null)
+            {
+                lines.Add("[LMB] Inspect");
+            }
+
+            if (activeObject.GetComponent<IGrabbable>() != null)
+            {
+                lines.Add("[E] Grab");
+            }
+        }
+
+        if (lines.Count == 0)
+        {
+            actionHintsText.enabled = false;
+        }
+        else
+        {
+            actionHintsText.text = string.Join("\n", lines);
+            actionHintsText.enabled = true;
+        }
+    }
+
+    /// <summary>
+    /// Clears the action hints display.
+    /// </summary>
+    public void ClearActionHints()
+    {
+        if (actionHintsText != null)
+            actionHintsText.enabled = false;
+    }
+
+    /// <summary>
+    /// Checks if a tool is compatible with a given vehicle part based on the part's interfaces.
+    /// </summary>
+    private bool IsToolCompatible(Tool tool, VehiclePart part)
+    {
+        switch (tool)
+        {
+            case Tool.DigitalPaintThicknessGauge:
+            case Tool.MechanicPaintThicknessGauge:
+                return part is IExteriorPart;
+
+            case Tool.BatteryTester:
+                return part is IVehicleBattery;
+
+            case Tool.TireTreadDepthGauge:
+            case Tool.TirePumper:
+                return part is IVehicleWheel;
+
+            case Tool.ExhaustGasAnalyser:
+                return part is IVehicleExhaust;
+
+            case Tool.ObdScanner:
+                return true; // OBD scanner works on any part (scans whole vehicle)
+
+            default:
+                return false;
+        }
     }
 
     public void ShowCursor()

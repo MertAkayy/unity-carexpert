@@ -16,9 +16,10 @@ MonoBehaviour:
   Description: Fuel level sensor is faulty, causing inaccurate fuel gauge readings.
   AvailableLevel: 19
   AffectedPartType: 5
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: P0460
   RequiredTool: 6
   Clues:
   - clueText: Gauge reads low when tank is full or full when tank is low.
+    isAcitve: 0
     isCollected: 0

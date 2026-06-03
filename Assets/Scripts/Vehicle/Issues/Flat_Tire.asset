@@ -16,7 +16,7 @@ MonoBehaviour:
   Description: The tire is flat.
   AvailableLevel: 3
   AffectedPartType: 4
-  PossibilityWeight: 30
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:

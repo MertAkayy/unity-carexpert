@@ -16,11 +16,13 @@ MonoBehaviour:
   Description: Radiator fan is not operating, causing engine overheating.
   AvailableLevel: 10
   AffectedPartType: 7
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: P0480
   RequiredTool: 6
   Clues:
   - clueText: Radiator fan is not operating, causing engine overheating.
+    isAcitve: 0
     isCollected: 0
   - clueText: Error codes related to radiator fan error appear.(e.g., P0480).
+    isAcitve: 0
     isCollected: 0

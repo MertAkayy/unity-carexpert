@@ -81,31 +81,37 @@ namespace PlayerScripts
                 if (_activeObject == null)
                 {
                     _activeObject = hitObj;
-                    _originalLayer = _activeObject.layer; // Önceki katmanı kaydet
+                    _originalLayer = _activeObject.layer;
                     _activeObject.layer = LayerMask.NameToLayer("Highlight");
-               
+                    UpdateActionHintsForActiveObject();
                 }
-           
                 else if (_activeObject != hitObj)
                 {
-                    // Eski objeyi eski katmanına döndür
                     _activeObject.layer = _originalLayer;
-
-                    // Yeni objeyi aktif yap
                     _activeObject = hitObj;
-                    _originalLayer = _activeObject.layer; // Yeni objenin eski katmanı
+                    _originalLayer = _activeObject.layer;
                     _activeObject.layer = LayerMask.NameToLayer("Highlight");
+                    UpdateActionHintsForActiveObject();
                 }
-                // Aynı objeyse hiçbir şey yapma
             }
             else
             {
                 if (_activeObject != null)
                 {
-                    _activeObject.layer = _originalLayer; // Geri kendi katmanına al
+                    _activeObject.layer = _originalLayer;
                     _activeObject = null;
                     _originalLayer = -1;
+                    UIManager.Instance?.ClearActionHints();
                 }
+            }
+        }
+
+        private void UpdateActionHintsForActiveObject()
+        {
+            if (UIManager.Instance != null && _activeObject != null)
+            {
+                Tool currentTool = playerData.selectedItem != null ? playerData.selectedItem.toolObject : Tool.Null;
+                UIManager.Instance.UpdateActionHints(_activeObject, currentTool);
             }
         }
 //Grap Functions
@@ -202,6 +208,9 @@ namespace PlayerScripts
             }
             GameLogger.Log($"[PlayerDataManager] Tool changed to {item.name} (handler: {(newTool != null ? newTool.GetType().Name : "none")})");
             OnToolChanged?.Invoke(newTool);
+
+            // Refresh action hints for current active object with new tool
+            UpdateActionHintsForActiveObject();
         }
         public void SaveData()
         {

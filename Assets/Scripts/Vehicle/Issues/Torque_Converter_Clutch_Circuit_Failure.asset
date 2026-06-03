@@ -16,10 +16,11 @@ MonoBehaviour:
   Description: Torque converter clutch not engaging/disengaging properly.
   AvailableLevel: 10
   AffectedPartType: 5
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: P0740
   RequiredTool: 6
   Clues:
   - clueText: Error codes related to torque converter clutch circuit error appear.(e.g.,
       P0740).
+    isAcitve: 0
     isCollected: 0

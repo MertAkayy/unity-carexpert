@@ -16,10 +16,11 @@ MonoBehaviour:
   Description: Turn signal relay is faulty, causing turn signals to malfunction.
   AvailableLevel: 2
   AffectedPartType: 3
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:
   - clueText: The turn signals fail to illuminate or remain constantly on, indicating
       a malfunctioning relay.
+    isAcitve: 0
     isCollected: 0

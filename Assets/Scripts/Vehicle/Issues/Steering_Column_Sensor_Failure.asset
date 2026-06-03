@@ -16,9 +16,10 @@ MonoBehaviour:
   Description: Steering column sensor is faulty, affecting power steering functionality.
   AvailableLevel: 10
   AffectedPartType: 5
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: C1513
   RequiredTool: 6
   Clues:
   - clueText: Error codes related to spark plug error appear.(e.g., C1513).
+    isAcitve: 0
     isCollected: 0

@@ -16,9 +16,10 @@ MonoBehaviour:
   Description: Faulty wheel speed sensor or signal.
   AvailableLevel: 10
   AffectedPartType: 4
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: C1246
   RequiredTool: 6
   Clues:
   - clueText: Error codes for specific wheel sensors appear (e.g., C1246).
+    isAcitve: 0
     isCollected: 0

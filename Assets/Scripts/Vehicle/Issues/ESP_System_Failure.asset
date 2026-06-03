@@ -16,9 +16,10 @@ MonoBehaviour:
   Description: Electronic stability program fault detected.
   AvailableLevel: 22
   AffectedPartType: 5
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: C1282
   RequiredTool: 6
   Clues:
   - clueText: Error codes related to ESP sensors appear (e.g., C1282).
+    isAcitve: 0
     isCollected: 0

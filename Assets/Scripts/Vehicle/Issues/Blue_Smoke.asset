@@ -16,7 +16,7 @@ MonoBehaviour:
   Description: There is blue smoke coming from the exhaust.
   AvailableLevel: 30
   AffectedPartType: 8
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 5
   Clues:

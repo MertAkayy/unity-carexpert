@@ -16,7 +16,7 @@ MonoBehaviour:
   Description: Coolant reservoir is cracked, causing coolant leakage.
   AvailableLevel: 7
   AffectedPartType: 9
-  PossibilityWeight: 90
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:

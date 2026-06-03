@@ -16,7 +16,7 @@ MonoBehaviour:
   Description: Loud noise due to holes or cracks in the exhaust system.
   AvailableLevel: 21
   AffectedPartType: 8
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 5
   Clues:

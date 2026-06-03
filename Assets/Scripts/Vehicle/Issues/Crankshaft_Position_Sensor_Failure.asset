@@ -17,11 +17,13 @@ MonoBehaviour:
     condition.
   AvailableLevel: 18
   AffectedPartType: 5
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: P0335
   RequiredTool: 6
   Clues:
   - clueText: Check Engine Light is on with related fault code(P0335).
+    isAcitve: 0
     isCollected: 0
   - clueText: Sudden stalling while driving, especially at low speeds.
+    isAcitve: 0
     isCollected: 0

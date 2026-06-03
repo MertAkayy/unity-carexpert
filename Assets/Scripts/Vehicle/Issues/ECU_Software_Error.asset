@@ -16,7 +16,7 @@ MonoBehaviour:
   Description: Engine control unit software has errors, causing performance issues.
   AvailableLevel: 10
   AffectedPartType: 5
-  PossibilityWeight: 40
+  PossibilityWeight: 10
   ObdCode: P0600
   RequiredTool: 6
   Clues:

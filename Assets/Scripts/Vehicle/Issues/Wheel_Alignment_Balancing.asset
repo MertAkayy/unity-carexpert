@@ -17,7 +17,7 @@ MonoBehaviour:
     tire wear.
   AvailableLevel: 6
   AffectedPartType: 5
-  PossibilityWeight: 750
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:

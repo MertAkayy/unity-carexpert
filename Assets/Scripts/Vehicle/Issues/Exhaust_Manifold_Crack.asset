@@ -16,7 +16,7 @@ MonoBehaviour:
   Description: Exhaust manifold is cracked, causing exhaust leaks and noise.
   AvailableLevel: 15
   AffectedPartType: 8
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:

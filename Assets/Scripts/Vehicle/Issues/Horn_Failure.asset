@@ -16,7 +16,7 @@ MonoBehaviour:
   Description: Vehicle horn is not working or producing weak/inconsistent sound.
   AvailableLevel: 4
   AffectedPartType: 5
-  PossibilityWeight: 70
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:

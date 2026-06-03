@@ -16,7 +16,7 @@ MonoBehaviour:
   Description: Exhaust gas recirculation system not functioning properly.
   AvailableLevel: 24
   AffectedPartType: 8
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: P0402
   RequiredTool: 5
   Clues:

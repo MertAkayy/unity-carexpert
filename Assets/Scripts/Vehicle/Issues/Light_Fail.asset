@@ -16,9 +16,10 @@ MonoBehaviour:
   Description: The car's light is not working.
   AvailableLevel: 8
   AffectedPartType: 3
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:
   - clueText: The car's light is not working.
+    isAcitve: 0
     isCollected: 0

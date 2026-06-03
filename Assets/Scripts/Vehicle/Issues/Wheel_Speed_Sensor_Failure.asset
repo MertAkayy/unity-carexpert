@@ -16,10 +16,11 @@ MonoBehaviour:
   Description: Faulty or missing wheel speed signal.
   AvailableLevel: 14
   AffectedPartType: 4
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: C0040
   RequiredTool: 6
   Clues:
   - clueText: Error codes related to torque wheel speed sensor error appear.(e.g.,
       C0040).
+    isAcitve: 0
     isCollected: 0

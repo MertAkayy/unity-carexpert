@@ -16,10 +16,11 @@ MonoBehaviour:
   Description: The car's lights are aging and losing brightness.
   AvailableLevel: 9
   AffectedPartType: 3
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:
   - clueText: The headlights or taillights appear significantly dimmer than normal,
       reducing visibility in low-light conditions.
+    isAcitve: 0
     isCollected: 0

@@ -16,9 +16,10 @@ MonoBehaviour:
   Description: Brake light is faulty, preventing brake lights from activating.
   AvailableLevel: 4
   AffectedPartType: 3
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:
   - clueText: The brake lights fail to illuminate when the brake pedal is pressed.
+    isAcitve: 0
     isCollected: 0

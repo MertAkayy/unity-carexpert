@@ -16,9 +16,10 @@ MonoBehaviour:
   Description: Visible corrosion detected on the metal parts.
   AvailableLevel: 4
   AffectedPartType: 1
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:
   - clueText: Visible corrosion detected on the exterior parts.
+    isAcitve: 0
     isCollected: 0

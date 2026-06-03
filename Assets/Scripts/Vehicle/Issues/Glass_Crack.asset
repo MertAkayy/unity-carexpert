@@ -16,9 +16,10 @@ MonoBehaviour:
   Description: There are cracks on the glass.
   AvailableLevel: 1
   AffectedPartType: 2
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:
   - clueText: Visible glass crack on the car glasses.
+    isAcitve: 0
     isCollected: 0

@@ -16,7 +16,7 @@ MonoBehaviour:
   Description: Coolant level is low, risk of overheating.
   AvailableLevel: 8
   AffectedPartType: 9
-  PossibilityWeight: 0
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:

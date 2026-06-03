@@ -16,9 +16,10 @@ MonoBehaviour:
   Description: Thermostat is stuck open, causing engine to run cooler than optimal.
   AvailableLevel: 22
   AffectedPartType: 7
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: P0128
   RequiredTool: 6
   Clues:
   - clueText: Error codes related to thermostat stuck error appear.(e.g., P0128).
+    isAcitve: 0
     isCollected: 0

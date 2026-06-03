@@ -16,7 +16,7 @@ MonoBehaviour:
   Description: Exhaust gasket is leaking, causing noise and emission issues.
   AvailableLevel: 21
   AffectedPartType: 8
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 5
   Clues:

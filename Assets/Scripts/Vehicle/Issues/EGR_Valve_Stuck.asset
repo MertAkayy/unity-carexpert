@@ -16,10 +16,11 @@ MonoBehaviour:
   Description: EGR valve is stuck open or closed, affecting emissions and performance.
   AvailableLevel: 23
   AffectedPartType: 5
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: P0401
   RequiredTool: 6
   Clues:
   - clueText: "An error code related to the EGR Valve appears (e.g., \u201CEGR Valve
       Fault\u201D or P0401 code)."
+    isAcitve: 0
     isCollected: 0

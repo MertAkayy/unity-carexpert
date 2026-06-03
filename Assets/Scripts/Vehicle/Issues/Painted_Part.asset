@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FailureName: Painted_Part
   Description: This is a repainted part of the vehicle.
-  AvailableLevel: 1
+  AvailableLevel: 5
   AffectedPartType: 1
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 2
   Clues:
   - clueText: The paint thickness gauge is measuring paint thickness greater than
       the threshold value.
+    isAcitve: 0
     isCollected: 0

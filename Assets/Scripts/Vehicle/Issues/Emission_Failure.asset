@@ -16,7 +16,7 @@ MonoBehaviour:
   Description: Fault in the vehicle's emission control system.
   AvailableLevel: 16
   AffectedPartType: 8
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 5
   Clues:

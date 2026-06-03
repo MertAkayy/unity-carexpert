@@ -16,9 +16,10 @@ MonoBehaviour:
   Description: Fading and spots were observed from prolonged sunlight exposure.
   AvailableLevel: 6
   AffectedPartType: 1
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:
   - clueText: Visible sun damages on the exterior parts.
+    isAcitve: 0
     isCollected: 0

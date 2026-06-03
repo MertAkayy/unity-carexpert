@@ -16,7 +16,7 @@ MonoBehaviour:
   Description: Catalytic converter is clogged, reducing engine performance.
   AvailableLevel: 12
   AffectedPartType: 8
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 5
   Clues:

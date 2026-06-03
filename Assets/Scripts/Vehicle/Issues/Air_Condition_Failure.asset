@@ -17,9 +17,10 @@ MonoBehaviour:
     air at all.
   AvailableLevel: 2
   AffectedPartType: 5
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:
   - clueText: AC seems on but no cold air comes out.
+    isAcitve: 0
     isCollected: 0

@@ -17,9 +17,10 @@ MonoBehaviour:
     season.
   AvailableLevel: 2
   AffectedPartType: 4
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:
   - clueText: The wheel's available season is different from its current season.
+    isAcitve: 0
     isCollected: 0

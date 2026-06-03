@@ -16,7 +16,7 @@ MonoBehaviour:
   Description: Battery not charging properly; low voltage detected.
   AvailableLevel: 25
   AffectedPartType: 6
-  PossibilityWeight: 0
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 4
   Clues:

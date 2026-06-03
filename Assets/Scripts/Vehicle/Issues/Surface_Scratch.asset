@@ -16,9 +16,10 @@ MonoBehaviour:
   Description: Visible surface scratches on the car body.
   AvailableLevel: 2
   AffectedPartType: 1
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:
   - clueText: Visible surface scratches on the exterior parts.
+    isAcitve: 0
     isCollected: 0

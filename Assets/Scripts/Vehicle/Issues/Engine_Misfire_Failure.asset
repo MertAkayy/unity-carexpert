@@ -16,11 +16,13 @@ MonoBehaviour:
   Description: Cylinders are not firing correctly.
   AvailableLevel: 14
   AffectedPartType: 5
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: P0302
   RequiredTool: 6
   Clues:
   - clueText: Vehicle shakes or loses power during acceleration.
+    isAcitve: 0
     isCollected: 0
   - clueText: Cylinder-related error codes appear (e.g., P0302).
+    isAcitve: 0
     isCollected: 0

@@ -16,10 +16,11 @@ MonoBehaviour:
   Description: Boost pressure too high or too low.
   AvailableLevel: 10
   AffectedPartType: 5
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: P0234
   RequiredTool: 6
   Clues:
   - clueText: Error codes related to turbo boost pressure control error appear.(e.g.,
       P0234).
+    isAcitve: 0
     isCollected: 0

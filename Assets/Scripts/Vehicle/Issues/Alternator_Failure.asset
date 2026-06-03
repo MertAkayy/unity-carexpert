@@ -16,7 +16,7 @@ MonoBehaviour:
   Description: Charging system fault; alternator not generating power.
   AvailableLevel: 32
   AffectedPartType: 6
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: P0620
   RequiredTool: 6
   Clues:

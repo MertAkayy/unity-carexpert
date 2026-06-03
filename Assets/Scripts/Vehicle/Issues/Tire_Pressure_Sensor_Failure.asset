@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FailureName: Tire_Pressure_Sensor_Failure
   Description: Tire pressure monitoring sensor is faulty, giving incorrect readings.
-  AvailableLevel: 6
+  AvailableLevel: 11
   AffectedPartType: 4
-  PossibilityWeight: 0
+  PossibilityWeight: 10
   ObdCode: C0050
   RequiredTool: 6
   Clues:

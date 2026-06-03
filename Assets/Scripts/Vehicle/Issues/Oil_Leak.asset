@@ -16,9 +16,10 @@ MonoBehaviour:
   Description: Oil leakage detected.
   AvailableLevel: 8
   AffectedPartType: 5
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:
   - clueText: There is a visible oil leak under the engine.
+    isAcitve: 0
     isCollected: 0

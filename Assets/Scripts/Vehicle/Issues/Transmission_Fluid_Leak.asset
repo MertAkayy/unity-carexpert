@@ -17,13 +17,15 @@ MonoBehaviour:
     problems.
   AvailableLevel: 11
   AffectedPartType: 5
-  PossibilityWeight: 1
+  PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 1
   Clues:
   - clueText: Red or brownish fluid puddles are visible under the vehicle, particularly
       near the transmission area.
+    isAcitve: 0
     isCollected: 0
   - clueText: The transmission fluid level is noticeably below the recommended mark
       when checked at the reservoir.
+    isAcitve: 0
     isCollected: 0
