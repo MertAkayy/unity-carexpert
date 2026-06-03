@@ -18,6 +18,7 @@ public enum InteriorControlType
 public class InteriorControl : MonoBehaviour, IInteractable
 {
     [SerializeField] private InteriorControlType controlType;
+    private Coroutine _activeHideCoroutine;
 
     private static readonly Dictionary<InteriorControlType, string[]> IssueMap =
         new Dictionary<InteriorControlType, string[]>
@@ -73,11 +74,18 @@ public class InteriorControl : MonoBehaviour, IInteractable
             resultMessage += "No issues detected.";
         }
 
-        if (UIManager.Instance != null)
+        var result = ToolScripts.Base.ToolInspectionResult.CreateSuccess(null, resultMessage);
+        result.DisplayMessage = resultMessage;
+        if (ToolScripts.UI.ToolUIManager.Instance != null)
+        {
+            ToolScripts.UI.ToolUIManager.Instance.ShowResult(result, "Function Test");
+        }
+        else if (UIManager.Instance != null)
         {
             UIManager.Instance.ShowInfo(resultMessage);
-            // Auto-hide after 4 seconds
-            StartCoroutine(HideInfoAfterDelay(4f));
+            if (_activeHideCoroutine != null)
+                StopCoroutine(_activeHideCoroutine);
+            _activeHideCoroutine = StartCoroutine(HideInfoAfterDelay(4f));
         }
     }
 

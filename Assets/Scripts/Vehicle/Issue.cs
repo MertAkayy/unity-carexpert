@@ -14,6 +14,8 @@ public class Issue : ScriptableObject
     [SerializeField] public int PossibilityWeight;
     [SerializeField] public string ObdCode = "PXXXX";
     [SerializeField] public Tool RequiredTool;
+    [Tooltip("If true, this issue can only be detected through interaction (e.g. trying to operate a window), not by visual close-up inspection.")]
+    [SerializeField] public bool RequiresInteraction = false;
     [SerializeField] public Guid IssueId = Guid.NewGuid(); // Auto-generate on creation
     [SerializeField] public List<Clue> Clues = new List<Clue>(); // Initialize to avoid null
 

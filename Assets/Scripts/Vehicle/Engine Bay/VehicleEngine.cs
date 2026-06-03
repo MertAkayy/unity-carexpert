@@ -104,8 +104,8 @@ public class VehicleEngine : VehiclePart, IInteractable, IVehicleEngine, IReadab
     {
         string engineInfo = GetEngineInfoString();
         GameLogger.Log($"[VehicleEngine] Reading: {engineInfo}");
-        DebugToScreen.ShowMessage(engineInfo, 5f);
         DetectIssuesFromRead();
+        ShowReadResult(engineInfo);
     }
 
     private void DetectIssuesFromRead()
@@ -120,7 +120,6 @@ public class VehicleEngine : VehiclePart, IInteractable, IVehicleEngine, IReadab
             {
                 predictedIssues.Add(issue);
                 GameLogger.Log($"[VehicleEngine] 'Low_Oil_Level' added to predicted issues ({GetOilLevelPercentage() * 100f:F0}% oil)");
-                DebugToScreen.ShowMessage("Low Oil Level Detected!", 3f);
             }
         }
     }

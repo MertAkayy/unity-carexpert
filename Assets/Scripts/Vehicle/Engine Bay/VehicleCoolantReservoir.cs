@@ -69,8 +69,8 @@ public class VehicleCoolantReservoir : VehiclePart, IInteractable, IVehicleCoola
     {
         string info = GetReservoirInfoString();
         GameLogger.Log($"[VehicleCoolantReservoir] Reading: {info}");
-        DebugToScreen.ShowMessage(info, 5f);
         DetectIssuesFromRead();
+        ShowReadResult(info);
     }
 
     private void DetectIssuesFromRead()
@@ -85,7 +85,6 @@ public class VehicleCoolantReservoir : VehiclePart, IInteractable, IVehicleCoola
             {
                 predictedIssues.Add(issue);
                 GameLogger.Log($"[VehicleCoolantReservoir] 'Low_Coolant_Level' added to predicted issues ({GetCoolantLevelPercentage() * 100f:F0}% coolant)");
-                DebugToScreen.ShowMessage("Low Coolant Level Detected!", 3f);
             }
         }
     }

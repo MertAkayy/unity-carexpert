@@ -152,11 +152,11 @@ public class PaintingGaugeHandler : MonoBehaviour, IUsableTool
         // Perform measurement
         PerformMeasurement();
 
+        // Show result BEFORE reset (reset nulls _targetPart)
+        DisplayResult();
+
         // Reset positions
         ResetPositions();
-
-        // Show result
-        DisplayResult();
     }
 
     private void PerformMeasurement()

@@ -51,6 +51,10 @@ public class ExteriorPart : VehiclePart ,IInteractable,IExteriorPart,IReadable
                 IsPartPainted = false;
                 IsPartDentRepaired = false;
                 IsPartRepaired = true;
+                // Reset paint thickness to normal range since Replaced_Part
+                // clears previous issues (including any Painted_Part that may
+                // have set a high thickness value)
+                paintThickness = UnityEngine.Random.Range(60, 100);
                 if (_vehicleRegistration != null)
                 {
                     productionName = GetAftermarketBrand(_vehicleRegistration.Brand);
@@ -123,18 +127,30 @@ public class ExteriorPart : VehiclePart ,IInteractable,IExteriorPart,IReadable
     {
         GameLogger.Log("[ExteriorPart] Reading part");
         GameLogger.Log(productionName + "\n" + _productionDateTime);
-        DebugToScreen.ShowMessage("Label: \n" + productionName + "\n" + _productionDateTime, 5F);
-        DetectReplacedPartFromLabel();
+
+        string message = "PART LABEL\n\n";
+        message += $"Part: {name}\n";
+        message += $"Brand: {productionName}\n";
+        message += $"Production Date: {_productionDateTime:yyyy-MM}\n";
+
+        bool replaced = DetectReplacedPartFromLabel();
+
+        if (replaced)
+        {
+            message += "\n⚠ REPLACED PART DETECTED!";
+        }
+
+        ShowReadResult(message);
     }
 
-    private void DetectReplacedPartFromLabel()
+    private bool DetectReplacedPartFromLabel()
     {
-        if (_vehicleRegistration == null) return;
+        if (_vehicleRegistration == null) return false;
 
         bool brandMismatch = !string.Equals(productionName, _vehicleRegistration.Brand, StringComparison.OrdinalIgnoreCase);
         bool dateMismatch = _productionDateTime.Year != _vehicleRegistration.ModelDateTime.Year;
 
-        if (!brandMismatch && !dateMismatch) return;
+        if (!brandMismatch && !dateMismatch) return false;
 
         if (brandMismatch)
             GameLogger.Log($"[ExteriorPart] Brand mismatch on {name}: label='{productionName}' registration='{_vehicleRegistration.Brand}'");
@@ -142,17 +158,18 @@ public class ExteriorPart : VehiclePart ,IInteractable,IExteriorPart,IReadable
             GameLogger.Log($"[ExteriorPart] Date mismatch on {name}: label='{_productionDateTime:yyyy}' registration='{_vehicleRegistration.ModelDateTime:yyyy}'");
 
         VehicleManager vehicleManager = FindObjectOfType<VehicleManager>();
-        if (vehicleManager?.IssueDatabase == null) return;
+        if (vehicleManager?.IssueDatabase == null) return false;
 
         Issue issue = vehicleManager.IssueDatabase.GetByName("Replaced_Part");
-        if (issue == null) return;
+        if (issue == null) return false;
 
         if (!predictedIssues.Contains(issue))
         {
             predictedIssues.Add(issue);
             GameLogger.Log($"[ExteriorPart] 'Replaced_Part' added to predicted issues on {name}");
-            DebugToScreen.ShowMessage("Replaced Part Detected!", 3f);
         }
+
+        return true;
     }
 
     private string GetAftermarketBrand(string originalBrand)

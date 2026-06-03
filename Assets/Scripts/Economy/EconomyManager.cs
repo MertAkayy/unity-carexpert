@@ -278,20 +278,20 @@ namespace Economy
         /// </summary>
         private void InitializeEconomy()
         {
-            // Try all sources and take the highest value (like ProgressionManager does)
-            float bestBalance = _startingBalance;
-
+            // Use PlayerData (JSON) as the primary source of truth.
+            // Only fall back to _startingBalance when no saved data exists.
             if (_playerDataSystem != null)
             {
-                bestBalance = Mathf.Max(bestBalance, _playerDataSystem.PlayerData.money);
+                _currentBalance = _playerDataSystem.PlayerData.money;
             }
-
-            if (TryLoadBalanceFromPrefs(out float savedBalance))
+            else if (TryLoadBalanceFromPrefs(out float savedBalance))
             {
-                bestBalance = Mathf.Max(bestBalance, savedBalance);
+                _currentBalance = savedBalance;
             }
-
-            _currentBalance = bestBalance;
+            else
+            {
+                _currentBalance = _startingBalance;
+            }
             Debug.Log($"[EconomyManager] Loaded balance: ${_currentBalance}");
 
             // Load saved transaction history

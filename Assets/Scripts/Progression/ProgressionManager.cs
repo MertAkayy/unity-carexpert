@@ -153,12 +153,25 @@ namespace Progression
 
         /// <summary>
         /// Gets the total XP required to reach a specific level.
-        /// Uses exponential growth formula.
+        /// Uses a linear formula so progression feels consistent.
+        /// XP per level = 460 + 15 * (level - 1)
+        /// Cumulative: threshold(L) = (L-1) * (460 + 15*(L-2)/2)
+        ///
+        /// Cars needed per level (XP per car: perfect=115, good=100, avg=63, bad=44):
+        /// Level 1->2:   460 XP → 4 perfect,  5 good,  8 avg, 11 bad
+        /// Level 10->11: 595 XP → 6 perfect,  6 good, 10 avg, 14 bad
+        /// Level 20->21: 745 XP → 7 perfect,  8 good, 12 avg, 17 bad
+        /// Level 33->34: 940 XP → 9 perfect, 10 good, 15 avg, 22 bad
         /// </summary>
         public int GetXPThresholdForLevel(int level)
         {
             if (level <= 1) return 0;
-            return Mathf.RoundToInt(baseXPThreshold * Mathf.Pow(thresholdGrowthRate, level - 2));
+            // Linear growth: each level costs 460 + 15*(level-2) XP
+            // Sum formula: total = (L-1) * 460 + 15 * (L-1)*(L-2)/2
+            const int basePerLevel = 460;
+            const int growthPerLevel = 15;
+            int n = level - 1;
+            return n * basePerLevel + growthPerLevel * n * (n - 1) / 2;
         }
 
         private void CheckForLevelUp()

@@ -115,8 +115,8 @@ public class VehicleBattery : VehiclePart, IInteractable, IVehicleBattery, IRead
     {
         string batteryInfo = GetBatteryInfoString();
         GameLogger.Log($"[VehicleBattery] Reading: {batteryInfo}");
-        DebugToScreen.ShowMessage(batteryInfo, 5f);
         DetectIssuesFromRead();
+        ShowReadResult(batteryInfo);
     }
 
     private void DetectIssuesFromRead()

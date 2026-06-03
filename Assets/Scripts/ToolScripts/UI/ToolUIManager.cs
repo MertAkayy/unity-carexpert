@@ -9,6 +9,11 @@ namespace ToolScripts.UI
     /// <summary>
     /// Centralized UI manager for all tool inspections.
     /// Handles progress bars, result display, and notifications.
+    ///
+    /// Uses CanvasGroup (alpha 0/1) instead of SetActive to show/hide panels.
+    /// This avoids TextMeshPro initialization issues with disabled GameObjects.
+    /// Panels should START ENABLED in the editor — Awake() hides them via alpha.
+    /// CanvasGroup components are added automatically at runtime if missing.
     /// </summary>
     public class ToolUIManager : MonoBehaviour
     {
@@ -23,7 +28,6 @@ namespace ToolScripts.UI
         [SerializeField] private TMPro.TextMeshProUGUI resultMessageText;
         [SerializeField] private RectTransform measurementsContainer;
         [SerializeField] private RectTransform measurementItemPrefab;
-        [SerializeField] private RectTransform addToNotesButton;
         [SerializeField] private RectTransform messagePanel;
         [SerializeField] private TMPro.TextMeshProUGUI messageText;
         [SerializeField] private TMPro.TextMeshProUGUI toolInstructionText;
@@ -34,7 +38,14 @@ namespace ToolScripts.UI
 
         private float _messageTimer = 0f;
         private float _resultTimer = 0f;
+        private bool _messageVisible = false;
+        private bool _resultVisible = false;
         private ToolInspectionResult _currentResult;
+
+        // Cached CanvasGroup references
+        private CanvasGroup _progressCanvasGroup;
+        private CanvasGroup _resultCanvasGroup;
+        private CanvasGroup _messageCanvasGroup;
 
         #region Unity Lifecycle
         private void Awake()
@@ -46,7 +57,12 @@ namespace ToolScripts.UI
             }
             _instance = this;
 
-            // Hide all panels initially
+            // Ensure CanvasGroup on each panel (add if missing)
+            _progressCanvasGroup = EnsureCanvasGroup(progressPanel);
+            _resultCanvasGroup = EnsureCanvasGroup(resultPanel);
+            _messageCanvasGroup = EnsureCanvasGroup(messagePanel);
+
+            // Hide all panels initially (via alpha, not SetActive)
             HideAllPanels();
         }
 
@@ -57,17 +73,62 @@ namespace ToolScripts.UI
         }
         #endregion
 
+        #region CanvasGroup Helpers
+
+        /// <summary>
+        /// Ensures a CanvasGroup exists on the panel. Adds one at runtime if missing.
+        /// </summary>
+        private CanvasGroup EnsureCanvasGroup(RectTransform panel)
+        {
+            if (panel == null) return null;
+
+            CanvasGroup cg = panel.GetComponent<CanvasGroup>();
+            if (cg == null)
+            {
+                cg = panel.gameObject.AddComponent<CanvasGroup>();
+            }
+            return cg;
+        }
+
+        private void ShowPanel(CanvasGroup cg)
+        {
+            if (cg == null) return;
+            cg.alpha = 1f;
+            cg.interactable = true;
+            cg.blocksRaycasts = true;
+        }
+
+        private void HidePanel(CanvasGroup cg)
+        {
+            if (cg == null) return;
+            cg.alpha = 0f;
+            cg.interactable = false;
+            cg.blocksRaycasts = false;
+        }
+
+        private bool IsPanelVisible(CanvasGroup cg)
+        {
+            return cg != null && cg.alpha > 0f;
+        }
+        #endregion
+
         #region Progress Display
         public void ShowProgress(string toolName, float duration)
         {
-            if (progressPanel != null)
+            if (_progressCanvasGroup != null)
             {
-                progressPanel.gameObject.SetActive(true);
+                ShowPanel(_progressCanvasGroup);
             }
 
             if (toolInstructionText != null)
             {
                 toolInstructionText.text = $"Using {toolName}...";
+            }
+
+            // Fall back to UIManager if progress panel is not set up
+            if (progressPanel == null && UIManager.Instance != null)
+            {
+                UIManager.Instance.ShowInfo($"Using {toolName}...");
             }
         }
 
@@ -81,9 +142,9 @@ namespace ToolScripts.UI
 
         public void HideProgress()
         {
-            if (progressPanel != null)
+            if (_progressCanvasGroup != null)
             {
-                progressPanel.gameObject.SetActive(false);
+                HidePanel(_progressCanvasGroup);
             }
 
             if (toolInstructionText != null)
@@ -96,16 +157,31 @@ namespace ToolScripts.UI
         #region Result Display
         public void ShowResult(ToolInspectionResult result)
         {
+            string defaultTitle = result.Success ? "Inspection Complete" : "Inspection Failed";
+            ShowResult(result, defaultTitle);
+        }
+
+        public void ShowResult(ToolInspectionResult result, string title)
+        {
             _currentResult = result;
             _resultTimer = 0f;
 
-            if (resultPanel == null) return;
+            // Fall back to UIManager if result panel is not set up
+            if (resultPanel == null)
+            {
+                if (UIManager.Instance != null && !string.IsNullOrEmpty(result.DisplayMessage))
+                {
+                    DebugToScreen.ShowMessage(result.DisplayMessage, resultDisplayDuration);
+                }
+                return;
+            }
 
-            resultPanel.gameObject.SetActive(true);
+            ShowPanel(_resultCanvasGroup);
+            _resultVisible = true;
 
             if (resultTitleText != null)
             {
-                resultTitleText.text = result.Success ? "Inspection Complete" : "Inspection Failed";
+                resultTitleText.text = title;
             }
 
             if (resultMessageText != null)
@@ -118,7 +194,6 @@ namespace ToolScripts.UI
 
         private void DisplayMeasurements(Dictionary<string, string> measurements)
         {
-            // Clear existing measurement items
             if (measurementsContainer != null)
             {
                 foreach (Transform child in measurementsContainer)
@@ -126,7 +201,6 @@ namespace ToolScripts.UI
                     Destroy(child.gameObject);
                 }
 
-                // Add new measurement items
                 if (measurements != null && measurementItemPrefab != null)
                 {
                     foreach (var kvp in measurements)
@@ -145,7 +219,7 @@ namespace ToolScripts.UI
 
         private void UpdateResultDisplay()
         {
-            if (resultPanel != null && resultPanel.gameObject.activeSelf)
+            if (_resultVisible)
             {
                 _resultTimer += Time.deltaTime;
 
@@ -158,33 +232,35 @@ namespace ToolScripts.UI
 
         public void HideResult()
         {
-            if (resultPanel != null)
+            if (_resultCanvasGroup != null)
             {
-                resultPanel.gameObject.SetActive(false);
+                HidePanel(_resultCanvasGroup);
             }
+            _resultVisible = false;
             _currentResult = null;
         }
 
-        public void AddCurrentResultToNotes()
-        {
-            if (_currentResult == null) return;
 
-            // Add to vehicle notes through PlayerDataManager
-            if (PlayerDataManager.Instance != null)
-            {
-                PlayerDataManager.Instance.AddNoteToVehicle(_currentResult.DisplayMessage);
-                ShowMessage("Added to vehicle notes");
-            }
-        }
+
         #endregion
 
         #region Message Display
         public void ShowMessage(string message, float duration = 0f)
         {
-            if (messagePanel != null)
+            float actualDuration = duration > 0f ? duration : 3f;
+
+            // Fall back to UIManager if message panel is not set up
+            if (messagePanel == null)
             {
-                messagePanel.gameObject.SetActive(true);
+                if (UIManager.Instance != null)
+                {
+                    DebugToScreen.ShowMessage(message, actualDuration);
+                }
+                return;
             }
+
+            ShowPanel(_messageCanvasGroup);
+            _messageVisible = true;
 
             if (messageText != null)
             {
@@ -192,19 +268,12 @@ namespace ToolScripts.UI
             }
 
             _messageTimer = 0f;
-            if (duration > 0f)
-            {
-                messageDisplayDuration = duration;
-            }
-            else
-            {
-                messageDisplayDuration = 3f;
-            }
+            messageDisplayDuration = actualDuration;
         }
 
         private void UpdateMessageDisplay()
         {
-            if (messagePanel != null && messagePanel.gameObject.activeSelf)
+            if (_messageVisible)
             {
                 _messageTimer += Time.deltaTime;
 
@@ -217,19 +286,22 @@ namespace ToolScripts.UI
 
         public void HideMessage()
         {
-            if (messagePanel != null)
+            if (_messageCanvasGroup != null)
             {
-                messagePanel.gameObject.SetActive(false);
+                HidePanel(_messageCanvasGroup);
             }
+            _messageVisible = false;
         }
         #endregion
 
         #region Utility
         private void HideAllPanels()
         {
-            if (progressPanel != null) progressPanel.gameObject.SetActive(false);
-            if (resultPanel != null) resultPanel.gameObject.SetActive(false);
-            if (messagePanel != null) messagePanel.gameObject.SetActive(false);
+            HidePanel(_progressCanvasGroup);
+            HidePanel(_resultCanvasGroup);
+            HidePanel(_messageCanvasGroup);
+            _messageVisible = false;
+            _resultVisible = false;
         }
 
         public void ShowInstruction(string instruction)

@@ -13,6 +13,20 @@ public class VehiclePart:MonoBehaviour
             assignedIssues.Add(issue);
         }
     }
+
+    /// <summary>
+    /// Shows a result on the ToolUIManager result panel with a custom title.
+    /// Falls back to DebugToScreen if ToolUIManager is not available.
+    /// </summary>
+    protected void ShowReadResult(string message, string title = "Part Label")
+    {
+        var result = ToolScripts.Base.ToolInspectionResult.CreateSuccess(this, message);
+        result.DisplayMessage = message;
+        if (ToolScripts.UI.ToolUIManager.Instance != null)
+            ToolScripts.UI.ToolUIManager.Instance.ShowResult(result, title);
+        else
+            DebugToScreen.ShowMessage(message, 5f);
+    }
 }
 
 public enum VehiclePartUniqueType

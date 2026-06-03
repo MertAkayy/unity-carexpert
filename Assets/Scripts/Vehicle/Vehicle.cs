@@ -189,6 +189,19 @@ public class Vehicle : MonoBehaviour
     /// </summary>
     private void AssignRepairIssuesFromAccidentsLegacy()
     {
+        int playerLevel = PlayerDataManager.Instance.playerData.level;
+
+        // Only use repair issues the player has unlocked
+        var repairCandidates = new List<Issue>();
+        Issue replacedPart = issuePool.GetByName("Replaced_Part");
+        if (replacedPart != null && playerLevel >= replacedPart.AvailableLevel)
+            repairCandidates.Add(replacedPart);
+        Issue paintedPart = issuePool.GetByName("Painted_Part");
+        if (paintedPart != null && playerLevel >= paintedPart.AvailableLevel)
+            repairCandidates.Add(paintedPart);
+
+        if (repairCandidates.Count == 0) return;
+
         foreach (var report in AccidentReports)
         {
             foreach (var damagedPart in report.DamagedParts)
@@ -197,13 +210,8 @@ public class Vehicle : MonoBehaviour
                 {
                     if (vehiclePart.partPosition == damagedPart)
                     {
-                        int randomSign;
-                            randomSign = UnityEngine.Random.Range(0, 2);
-
-                        if (randomSign == 0)
-                            vehiclePart.AssignIssue(issuePool.GetByName("Painted_Part"));
-                        else if (randomSign == 1)
-                            vehiclePart.AssignIssue(issuePool.GetByName("Replaced_Part"));
+                        Issue selected = repairCandidates[Random.Range(0, repairCandidates.Count)];
+                        vehiclePart.AssignIssue(selected);
                     }
                 }
             }
@@ -227,20 +235,27 @@ public class Vehicle : MonoBehaviour
     /// <summary>
     /// Legacy method - Calculates possibility weights for issues.
     /// Used as fallback when FaultGenerator is not available.
+    /// NOTE: No longer resets weights to 0. Adds bonuses on top of original
+    /// ScriptableObject weights to preserve editor data.
     /// </summary>
     private void CalculateIssuePossibilityWeights()
     {
         var list = issuePool.GetAvailableForLevel(PlayerDataManager.Instance.playerData.level);
         foreach (var issue in list)
         {
-            issue.PossibilityWeight = 0;
+            // Preserve original weight — do NOT reset to 0
             if (issue.AvailableLevel == PlayerDataManager.Instance.playerData.level)
                 issue.PossibilityWeight += 30;
-            if (issue.IsValidFor(exteriorParts[0]) || issue.IsValidFor(glasses[0]) || issue.IsValidFor(lights[0]))
-                issue.PossibilityWeight += 10;
-            if(AccidentReports.Count>0 && issue.IsValidFor(exteriorParts[0]))
+            if (exteriorParts.Count > 0 && glasses.Count > 0 && lights.Count > 0)
+            {
+                if (issue.IsValidFor(exteriorParts[0]) || issue.IsValidFor(glasses[0]) || issue.IsValidFor(lights[0]))
+                    issue.PossibilityWeight += 10;
+            }
+            if(AccidentReports.Count>0 && exteriorParts.Count > 0 && issue.IsValidFor(exteriorParts[0]))
                 issue.PossibilityWeight += 25;
-
+            // Ensure minimum weight so no issue is impossible
+            if (issue.PossibilityWeight <= 0)
+                issue.PossibilityWeight = 1;
         }
     }
 

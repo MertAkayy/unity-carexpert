@@ -183,7 +183,7 @@ public class VehicleExhaust : VehiclePart, IInteractable, IReadable, IVehicleExh
     {
         string exhaustInfo = GetExhaustInfoString();
         GameLogger.Log($"[VehicleExhaust] Reading: {exhaustInfo}");
-        DebugToScreen.ShowMessage(exhaustInfo, 5f);
+        ShowReadResult(exhaustInfo);
     }
 
     private string GetExhaustInfoString()

@@ -156,11 +156,10 @@ public class VehicleWheel : VehiclePart, IInteractable, IVehicleWheel, IReadable
 
     public void Read()
     {
-        Debug.Log("read");
         string tireInfo = GetTireInfoString();
         GameLogger.Log($"[VehicleWheel] Reading: {tireInfo}");
-        DebugToScreen.ShowMessage(tireInfo, 5f);
         DetectTireIssuesFromLabel();
+        ShowReadResult(tireInfo);
     }
 
     private void DetectTireIssuesFromLabel()
@@ -175,7 +174,6 @@ public class VehicleWheel : VehiclePart, IInteractable, IVehicleWheel, IReadable
             {
                 predictedIssues.Add(issue);
                 GameLogger.Log($"[VehicleWheel] 'Expired_Tire' added to predicted issues on {name} (age: {GetTireAge():F1} years)");
-                DebugToScreen.ShowMessage("Expired Tire Detected!", 3f);
             }
         }
 
@@ -186,7 +184,6 @@ public class VehicleWheel : VehiclePart, IInteractable, IVehicleWheel, IReadable
             {
                 predictedIssues.Add(issue);
                 GameLogger.Log($"[VehicleWheel] 'Wrong_Season_Tire' added to predicted issues on {name} (type: {SeasonType})");
-                DebugToScreen.ShowMessage("Wrong Season Tire Detected!", 3f);
             }
         }
     }

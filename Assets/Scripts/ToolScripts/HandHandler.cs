@@ -39,7 +39,7 @@ namespace ToolScripts
             base.Awake();
             toolType = Tool.Handle;
             toolName = "Close-Up Inspection";
-            inspectionDuration = 0f; // Manual inspection - no timer
+            inspectionDuration = 0.4f;
             compatiblePartInterfaces = new string[0]; // Works with any part
         }
 
@@ -92,17 +92,20 @@ namespace ToolScripts
         {
             // Update zoom transition
             UpdateZoom();
+
+            // Run the timer + progress bar (base handles CompleteInspection when done)
+            base.UpdateInspection();
         }
 
         /// <summary>
-        /// Override FinishJob so releasing the button completes the inspection
-        /// instead of cancelling it.
+        /// Override FinishJob so releasing the button early cancels instead of
+        /// completing — the player must hold for the full duration.
         /// </summary>
         public override void FinishJob(InputAction.CallbackContext context)
         {
             if (context.canceled && isInspecting)
             {
-                CompleteInspection();
+                CancelInspection();
             }
         }
 
@@ -115,22 +118,14 @@ namespace ToolScripts
 
             var result = ToolInspectionResult.CreateSuccess(currentTargetPart, "Part inspected.");
             string partType = currentTargetPart.GetType().Name;
-            result.AddMeasurement("Part Type", partType);
-            result.AddMeasurement("Part Name", currentTargetPart.name);
 
-            // Add unique type if available
-            if (currentTargetPart.partUniqueType != null)
-            {
-                result.AddMeasurement("Part Location", currentTargetPart.partUniqueType.ToString());
-            }
-
-            // Detect issues that require Hand tool
+            // Detect issues that require Hand tool (skip interaction-only issues like Window_Regulator)
             int detectedCount = 0;
             if (currentTargetPart.assignedIssues != null)
             {
                 foreach (var issue in currentTargetPart.assignedIssues)
                 {
-                    if (issue.RequiredTool == Tool.Handle)
+                    if (issue.RequiredTool == Tool.Handle && !issue.RequiresInteraction)
                     {
                         result.AddDetectedIssue(issue.FailureName);
                         detectedCount++;
@@ -166,12 +161,7 @@ namespace ToolScripts
 
         private void ShowPartInfo()
         {
-            if (currentTargetPart == null) return;
-
-            string info = $"Inspecting: {currentTargetPart.name}\n";
-            info += $"Type: {currentTargetPart.GetType().Name}";
-
-            ToolUIManager.Instance?.ShowInstruction(info);
+            ToolUIManager.Instance?.ShowInstruction("Close-Up Inspection");
         }
 
         private void StartZoomIn()

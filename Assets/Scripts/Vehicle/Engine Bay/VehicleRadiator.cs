@@ -68,7 +68,7 @@ public class VehicleRadiator : VehiclePart, IVehicleRadiotor, IReadable, IIntera
     {
         string radiatorInfo = GetRadiatorInfoString();
         GameLogger.Log($"[VehicleRadiator] Reading: {radiatorInfo}");
-        DebugToScreen.ShowMessage(radiatorInfo, 5f);
+        ShowReadResult(radiatorInfo);
     }
 
     private string GetRadiatorInfoString()

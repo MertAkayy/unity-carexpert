@@ -19,6 +19,7 @@ MonoBehaviour:
   PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 1
+  RequiresInteraction: 1
   Clues:
   - clueText: The screws that hold the part to the vehicle are worn out.
     isAcitve: 0
