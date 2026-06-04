@@ -26,16 +26,29 @@ public class VehicleReport : MonoBehaviour
     public void RefreshInfo()
     {
         _vehicle = FindAnyObjectByType<Vehicle>();
-        if (_vehicle == null) 
+        if (_vehicle == null)
+        {
             GameLogger.LogError("No vehicle found");
+            return;
+        }
         RefreshRegistrationInformation();
         RefreshIssues();
+        ShowOnResultPanel();
     }
 
     public void OnConfirmation()
     {
         
     }
+    private void ShowOnResultPanel()
+    {
+        string message = registrationText.text + "\n\n" + infoText.text;
+        var result = ToolScripts.Base.ToolInspectionResult.CreateSuccess(null, message);
+        result.DisplayMessage = message;
+        if (ToolScripts.UI.ToolUIManager.Instance != null)
+            ToolScripts.UI.ToolUIManager.Instance.ShowResult(result, "Vehicle Report");
+    }
+
     private void RefreshRegistrationInformation()
     {
         if (_vehicle != null)

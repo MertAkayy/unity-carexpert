@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 
 public class VehicleDoorHandler : MonoBehaviour,IInteractable
 {
-    
+
     [SerializeField] private Transform windowTransform;
     [SerializeField] private VehicleGlass linkedGlass;
     private bool _isWindowOpen=false;
@@ -44,17 +44,30 @@ public class VehicleDoorHandler : MonoBehaviour,IInteractable
         return true;
     }
 
+    private void ShowResultOnPanel(string message)
+    {
+        var result = ToolScripts.Base.ToolInspectionResult.CreateSuccess(null, message);
+        result.DisplayMessage = message;
+        if (ToolScripts.UI.ToolUIManager.Instance != null)
+            ToolScripts.UI.ToolUIManager.Instance.ShowResult(result, "Function Test");
+    }
+
     private void OpenWindow()
     {
+        string resultMessage = $"Window Regulator ({windowLocation})\n\n";
+
         if (HasRegulatorFailure())
         {
+            resultMessage += "Issue: Window_Regulator_Failure\n";
+            resultMessage += "Window cannot open — regulator failure.";
+            ShowResultOnPanel(resultMessage);
             GameLogger.Log($"[VehicleDoorHandler] Window cannot open — regulator failure.");
             return;
         }
-        else
-        {
-            GameLogger.Log($"[VehicleDoorHandler] Window opened");
-        }
+
+        resultMessage += "No issues detected.";
+        ShowResultOnPanel(resultMessage);
+        GameLogger.Log($"[VehicleDoorHandler] Window opened");
 
         windowTransform.DOLocalMove(windowEndPosition.localPosition, 1.5f);
         windowTransform.DOLocalRotate(windowEndPosition.localEulerAngles, 1.5f);

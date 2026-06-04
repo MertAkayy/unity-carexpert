@@ -407,8 +407,17 @@ namespace Customer
                 _dialogueSystem.ShowInspectionResults(_currentCustomer, report);
             }
 
-            // Process payment
-            float payment = _currentCustomer.ProcessPayment();
+            // Process payment — no money if player found nothing
+            int issuesFound = report?.FoundIssuesCount ?? 0;
+            float payment = 0f;
+            if (issuesFound > 0)
+            {
+                payment = _currentCustomer.ProcessPayment();
+            }
+            else
+            {
+                GameLogger.Log("[CustomerManager] No issues found — no payment awarded.");
+            }
 
             // Update statistics
             _customersServedToday++;
@@ -431,7 +440,12 @@ namespace Customer
             }
             screenMessage += $"Earned: ${payment:F2}\n";
             screenMessage += $"XP: +{earnedXP}";
-            DebugToScreen.ShowMessage(screenMessage, 10f);
+            var inspResult = ToolScripts.Base.ToolInspectionResult.CreateSuccess(null, screenMessage);
+            inspResult.DisplayMessage = screenMessage;
+            if (ToolScripts.UI.ToolUIManager.Instance != null)
+                ToolScripts.UI.ToolUIManager.Instance.ShowResult(inspResult, "Inspection Report");
+            else
+                DebugToScreen.ShowMessage(screenMessage, 10f);
 
             if (_debugMode)
             {
@@ -760,6 +774,13 @@ namespace Customer
             float accuracy = report?.AccuracyPercentage / 100f ?? 0f;
             int issuesFound = report?.FoundIssuesCount ?? 0;
             int totalIssues = (report?.FoundIssuesCount ?? 0) + (report?.MissedIssuesCount ?? 0);
+
+            // No XP if player found nothing
+            if (issuesFound == 0)
+            {
+                GameLogger.Log("[CustomerManager] No issues found — no XP awarded.");
+                return 0;
+            }
 
             // Base XP
             int baseXP = 25;

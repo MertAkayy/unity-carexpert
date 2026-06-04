@@ -38,7 +38,7 @@ public class AccidentReport
             {AccidentRegion.Front, new List<ExteriorPartPosition> { ExteriorPartPosition.FrontBumper ,ExteriorPartPosition.Hood,ExteriorPartPosition.FrontLeftFender,ExteriorPartPosition.FrontRightFender}}, 
             {AccidentRegion.Left ,new List<ExteriorPartPosition> { ExteriorPartPosition.FrontLeftFender ,ExteriorPartPosition.FrontLeftDoor,ExteriorPartPosition.RearLeftDoor,ExteriorPartPosition.RearLeftFender}},
             {AccidentRegion.Right ,new List<ExteriorPartPosition> { ExteriorPartPosition.FrontRightFender ,ExteriorPartPosition.FrontRightDoor,ExteriorPartPosition.RearRightDoor,ExteriorPartPosition.RearRightFender}},
-            { AccidentRegion.Rear ,new List<ExteriorPartPosition> { ExteriorPartPosition.RearLeftFender ,ExteriorPartPosition.RearBumper,ExteriorPartPosition.Trunk,ExteriorPartPosition.RearLeftFender}}
+            { AccidentRegion.Rear ,new List<ExteriorPartPosition> { ExteriorPartPosition.RearLeftFender ,ExteriorPartPosition.RearBumper,ExteriorPartPosition.Trunk,ExteriorPartPosition.RearRightFender}}
         };
 
 public AccidentReport(DateTime registrationDate, DateTime modelDateTime)
