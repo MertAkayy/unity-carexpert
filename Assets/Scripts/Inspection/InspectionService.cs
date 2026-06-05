@@ -144,6 +144,10 @@ namespace Inspection
             _inspectedParts.Clear();
             _partToolUsage.Clear();
 
+            // Build the inspection checklist for this vehicle
+            if (InspectionChecklist.Instance != null)
+                InspectionChecklist.Instance.BuildChecklist();
+
             GameLogger.Log($"[InspectionService] Started inspection session for vehicle: {vehicle.name}");
             OnInspectionStarted?.Invoke(vehicle);
         }
@@ -163,6 +167,10 @@ namespace Inspection
 
             _isInspectionActive = false;
             _currentVehicle = null;
+
+            // Clear the checklist
+            if (InspectionChecklist.Instance != null)
+                InspectionChecklist.Instance.ClearChecklist();
 
             OnInspectionEnded?.Invoke(previousVehicle);
         }

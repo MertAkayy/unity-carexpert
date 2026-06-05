@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FailureName: Flat_Tire
   Description: The tire is flat.
-  AvailableLevel: 3
+  AvailableLevel: 4
   AffectedPartType: 4
   PossibilityWeight: 10
   ObdCode: PXXXX
