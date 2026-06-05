@@ -44,8 +44,12 @@ public class UIManager : MonoBehaviour
         if (actionHintsText != null)
             actionHintsText.enabled = false;
 
-        // Subscribe to system events (these persist even if systems aren't initialized yet)
+        // Subscribe to system events
         ServiceLocator.OnAllSystemsInitialized += OnSystemsReady;
+
+        // If systems were already initialized before we subscribed, call it now
+        if (ServiceLocator.IsInitialized)
+            OnSystemsReady();
     }
 
     private void OnSystemsReady()

@@ -16,6 +16,11 @@ namespace Core
         private static bool _isInitialized = false;
 
         /// <summary>
+        /// Whether all systems have been initialized.
+        /// </summary>
+        public static bool IsInitialized => _isInitialized;
+
+        /// <summary>
         /// Event fired when a system is registered.
         /// </summary>
         public static event Action<ISystem> OnSystemRegistered;
