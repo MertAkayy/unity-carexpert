@@ -18,7 +18,8 @@ MonoBehaviour:
   AffectedPartType: 4
   PossibilityWeight: 10
   ObdCode: PXXXX
-  RequiredTool: 1
+  RequiredTool: 9
+  RequiresInteraction: 0
   Clues:
   - clueText: Tire is completely or partially deflated.
     isAcitve: 0

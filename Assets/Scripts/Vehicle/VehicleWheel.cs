@@ -169,21 +169,21 @@ public class VehicleWheel : VehiclePart, IInteractable, IVehicleWheel, IReadable
 
         if (IsExpired())
         {
-            Issue issue = vehicleManager.IssueDatabase.GetByName("Expired_Tire");
+            Issue issue = vehicleManager.IssueDatabase.GetByName("Tire_Expired");
             if (issue != null && !predictedIssues.Contains(issue))
             {
                 predictedIssues.Add(issue);
-                GameLogger.Log($"[VehicleWheel] 'Expired_Tire' added to predicted issues on {name} (age: {GetTireAge():F1} years)");
+                GameLogger.Log($"[VehicleWheel] 'Tire_Expired' added to predicted issues on {name} (age: {GetTireAge():F1} years)");
             }
         }
 
         if (!IsSeasonAppropriate())
         {
-            Issue issue = vehicleManager.IssueDatabase.GetByName("Wrong_Season_Tire");
+            Issue issue = vehicleManager.IssueDatabase.GetByName("Different_Season");
             if (issue != null && !predictedIssues.Contains(issue))
             {
                 predictedIssues.Add(issue);
-                GameLogger.Log($"[VehicleWheel] 'Wrong_Season_Tire' added to predicted issues on {name} (type: {SeasonType})");
+                GameLogger.Log($"[VehicleWheel] 'Different_Season' added to predicted issues on {name} (type: {SeasonType})");
             }
         }
     }

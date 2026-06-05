@@ -19,6 +19,7 @@ MonoBehaviour:
   PossibilityWeight: 10
   ObdCode: PXXXX
   RequiredTool: 1
+  RequiresInteraction: 1
   Clues:
   - clueText: The tire has reached the end of its service life.(2 years)
     isAcitve: 0
